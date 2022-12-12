@@ -1,289 +1,1026 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href= /img/favicon.ico >
-    <title>
-        Hexo
-    </title>
-    <meta name="description" content= 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
-    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
     
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
+  
+  
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
 <meta name="generator" content="Hexo 6.3.0"></head>
-<body id="bodyx">
-    <div class="hd logodiv">
-    <img src="/img/male.png" class="logopng" alt="logo">
-    <p class="logot">
-         Title Name 
-         <span class="logo_2"></span>
-        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
-            Your Words 
-        </h3>
-    </p>
-</div>
 
-
-<div class="hd">
-    <ol class="breadcrumb">
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-            <li><a class="ba" href="/about">关于我👀</a></li>
+          <a class="main-nav-link" href="/">Home</a>
         
-            <li><a class="ba" target="_blank" rel="noopener" href="https://liuxunzhuo.tech">访问主站🎉</a></li>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
-            <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/xunzhuo">GitHub🐒</a></li>
+      </nav>
+      <nav id="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-            
-<script src="/libs/jquery.min.js"></script>
-
-            
-<script src="/js/search.js"></script>
-
-            
-                <form class="site-search-form">
-                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
-                </form>
-                <div id="local-search-result" class="local-search-result-cls"></div>
-            
-            <script type="text/javascript" id="local.search.active">
-                var inputArea       = document.querySelector("#local-search-input");
-                var getSearchFile = function(){
-                    var path = "/search.xml";
-                    searchFunc(path, 'local-search-input', 'local-search-result');
-                }
-                inputArea.onfocus = function(){ getSearchFile() }
-
-                var $resetButton = $("#search-form .fa-times");
-                var $resultArea = $("#local-search-result");
-
-                inputArea.oninput = function(){ $resetButton.show(); }
-                resetSearch = function(){
-                    $resultArea.html("");
-                    document.querySelector("#search-form").reset();
-                    $resetButton.hide();
-                    $(".no-result").hide();
-                }
-                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
-                //No search result
-                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
-                    if (!$(e.target).text()) {
-                        $(".no-result").show(100);
-                    } else {
-                        $(".no-result").hide();
-                    }
-                })
-            </script>
-
-    </ol>
-    <hr>
-</div>
-<div class="hd">
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-21-A0-MD-2021-3-21-A0-MD" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-A0-MD-2021-3-21-A0-MD/" class="article-date">
+  <time class="dt-published" datetime="2021-03-21T14:44:15.000Z" itemprop="datePublished">2021-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
     
     
+      <header class="article-header">
         
-        
-            <div class="titlex">
-                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
-                 2021年 🕛
-                </p>
-            </div>
-            
-        
-        <a class="flink" href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-A0-MD-2021-3-21-A0-MD/">
-            <div class="list">
-                <div class="postname">
-                    A0 MD
-                </div>
-                <div class="posttime">
-                    March 21st
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/">
-            <div class="list">
-                <div class="postname">
-                    AMBER-入门教程（四）
-                </div>
-                <div class="posttime">
-                    March 21st
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C/">
-            <div class="list">
-                <div class="postname">
-                    Amber进阶-黑塞矩阵在哪里
-                </div>
-                <div class="posttime">
-                    March 20th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/">
-            <div class="list">
-                <div class="postname">
-                    Amber--入门教程（三）
-                </div>
-                <div class="posttime">
-                    March 20th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/">
-            <div class="list">
-                <div class="postname">
-                    Amber--入门教程（二）
-                </div>
-                <div class="posttime">
-                    March 19th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
-            <div class="list">
-                <div class="postname">
-                    Amber--入门教程（一）
-                </div>
-                <div class="posttime">
-                    March 17th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/15/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99/">
-            <div class="list">
-                <div class="postname">
-                    生活感悟与守则
-                </div>
-                <div class="posttime">
-                    March 15th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/15/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5/">
-            <div class="list">
-                <div class="postname">
-                    至3.21 周报
-                </div>
-                <div class="posttime">
-                    March 15th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/12/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-12-3-14%E5%91%A8%E6%8A%A5-2021-3-12-%E8%87%B33-14%E5%91%A8%E6%8A%A5/">
-            <div class="list">
-                <div class="postname">
-                    至3.14周报
-                </div>
-                <div class="posttime">
-                    March 12th
-                </div>
-            </div>
-        </a>
-    
-        
-        
-        <a class="flink" href="/2021/03/10/%E7%94%9F%E6%B4%BB-%E5%8D%9A%E5%AE%A2-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">
-            <div class="list">
-                <div class="postname">
-                    hexo+github建立博客遇到的问题
-                </div>
-                <div class="posttime">
-                    March 10th
-                </div>
-            </div>
-        </a>
-    
-</div>
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-A0-MD-2021-3-21-A0-MD/">A0 MD</a>
+    </h1>
+  
 
-    <div class="footer" id="footer">
-    <p><h4>Copyright © 2020 | Author: Your Name | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+      </header>
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
-    
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="pmemd-跑MD流程"><a href="#pmemd-跑MD流程" class="headerlink" title="pmemd 跑MD流程"></a>pmemd 跑MD流程</h2><ol>
+<li>使用N卡（NVIDA）可以在GPU上跑，并行加速</li>
+<li>此前准备阶段已经生成了top和crd文件，需要进行能量最小化，升温两步达到平衡，然后MD模拟<br>注：溶剂盒子似乎影响电荷以及最小化过程</li>
+</ol>
+<ul>
+<li><p>创建三个文件 01_min.in 02_heat.in 03_MD.in</p>
+<img src="https://img.imgdb.cn/item/6056ba00524f85ce293b31dc.png" width='450'>
+<img src="https://img.imgdb.cn/item/6056ba4b524f85ce293b57dc.png" width='450'>
+<img src="https://img.imgdb.cn/item/6056ba66524f85ce293b6469.png" width='450'>
+<img src="https://img.imgdb.cn/item/6056ba81524f85ce293b7319.png" width='450'>
+<img src="https://img.imgdb.cn/item/6056ba94524f85ce293b7c8f.png" width='450'>
+</li>
+<li><p>能量最小化<br>命令<br>  $AMBERHOME&#x2F;bin&#x2F;sander -O -i 01_min.in -o 01_min.out -p name.top -c name.crd -r 01_min.rst -inf 01_min.mdinfo<br>pmemd似乎做不了<br>拓扑文件（势能函数）不变，crd文件转为输出的rst文件里，包括坐标和速度</p>
+</li>
+<li><p>升温<br>命令</p>
+</li>
+</ul>
+<p>利用min的rst和势能，输出升温后的轨迹文件，以及info。速度0.2s一百步，一万步20s</p>
+<ul>
+<li>MD<br>用sander可以实现</li>
+</ul>
+<p>pmemd更好，额外需要一个jobfile.sh跑显卡</p>
+<p>使用命令后台运行md并检查情况<br>    nohup .&#x2F;Jobfile_production.sh &amp;<br>    nvidia-smi</p>
+<ul>
+<li><p>报错： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nohup: ignoring input and appending output to &#x27;nohup.out&#x27;</span><br><span class="line">nohup: failed to run command &#x27;./jobfile_md.sh&#x27;: Permission denied</span><br></pre></td></tr></table></figure>
+<p>  原因是nohup会把错误信息输出出来，但还没输出前就发现out文件输出位置没有权限建立文件<br>  使用Linux重定向，2代表错误输出，1代表标准输出，0代表标准输入。 只要让二者都不输出或者重新定向位置就好了。（这里似乎是都不输出）<br>使用<br>  chmod +x jobfile_md.sh<br>  nohup .&#x2F;jobfile_md.sh 2&gt;log<br>把文本变得可执行，然后把问题输出到log里，报错不平衡，原子解散了，说明还不够平衡；当然也有可能是升温时间太短了？？<br>  ERROR: Calculation halted.  Periodic box dimensions have changed too much from their initial values.<br>  Your system density has likely changed by a large amount, probably from<br>  starting the simulation from a structure a long way from equilibrium.</p>
+<p>  [Although this error can also occur if the simulation has blown up for some reason]</p>
+<p>  The GPU code does not automatically reorganize grid cells and thus you<br>  will need to restart the calculation from the previous restart file.<br>  This will generate new grid cells and allow the calculation to continue.<br>  It may be necessary to repeat this restarting multiple times if your system<br>  is a long way from an equilibrated density.</p>
+<p>  Alternatively you can run with the CPU code until the density has converged<br>  and then switch back to the GPU code.</p>
+</li>
+</ul>
 
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
-</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-A0-MD-2021-3-21-A0-MD/" data-id="clbkdjo5z003acgv2dhb41ejd" data-title="A0 MD" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
 
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="">
-<input type="hidden" id="valine_appKey" value="">
-
-<script src="/libs/jquery.min.js"></script>
+    </footer>
+  </div>
+  
+</article>
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-21-AMBER-入门教程（四）-2021-3-21-AMBER-入门教程（四）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-03-21T14:29:35.000Z" itemprop="datePublished">2021-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/">AMBER-入门教程（四）</a>
+    </h1>
+  
 
-<script src="/js/js.js"></script>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="氢质量重排HMR"><a href="#氢质量重排HMR" class="headerlink" title="氢质量重排HMR"></a>氢质量重排HMR</h2><p>可以进行更长时间的加速分子动力学模拟，降低大分子最高运动频率，避免了氢原子由于高频振动散架如步长可以调到4fs而不是2fs<br>文献原理：<a target="_blank" rel="noopener" href="https://pubs.acs.org/doi/full/10.1021/ct5010406">https://pubs.acs.org/doi/full/10.1021/ct5010406</a></p>
+<h2 id="脂质力场"><a href="#脂质力场" class="headerlink" title="脂质力场"></a>脂质力场</h2><p>（待看）</p>
+<h2 id="蛋白晶体模拟"><a href="#蛋白晶体模拟" class="headerlink" title="蛋白晶体模拟"></a>蛋白晶体模拟</h2><h2 id="室温离子液体模拟"><a href="#室温离子液体模拟" class="headerlink" title="室温离子液体模拟"></a>室温离子液体模拟</h2><h2 id="材料系统模拟"><a href="#材料系统模拟" class="headerlink" title="材料系统模拟"></a>材料系统模拟</h2><h2 id="用3D-RISM替代显式溶剂"><a href="#用3D-RISM替代显式溶剂" class="headerlink" title="用3D-RISM替代显式溶剂"></a>用3D-RISM替代显式溶剂</h2><h2 id="用CHARMM-GUI建立系统"><a href="#用CHARMM-GUI建立系统" class="headerlink" title="用CHARMM-GUI建立系统"></a>用CHARMM-GUI建立系统</h2><h2 id="Antechamber-小分子对接前准备"><a href="#Antechamber-小分子对接前准备" class="headerlink" title="Antechamber 小分子对接前准备"></a>Antechamber 小分子对接前准备</h2><p><a target="_blank" rel="noopener" href="https://xbwang.wordpress.com/2019/04/17/amber%E5%B0%8F%E5%88%86%E5%AD%90%E5%A4%84%E7%90%86/">https://xbwang.wordpress.com/2019/04/17/amber%E5%B0%8F%E5%88%86%E5%AD%90%E5%A4%84%E7%90%86/</a><br>注意mol2里 有连接性问题，可能把ar 变成了2，双键。正常都是可以做的。</p>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/21/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89-2021-3-21-AMBER-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/" data-id="clbkdjo61003ncgv2fga65ssa" data-title="AMBER-入门教程（四）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-20-Amber进阶-黑塞矩阵在哪里-2021-3-20-Amber进阶-黑塞矩阵在哪里" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C/" class="article-date">
+  <time class="dt-published" datetime="2021-03-20T20:41:43.000Z" itemprop="datePublished">2021-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C/">Amber进阶-黑塞矩阵在哪里</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>找手册</p>
+<ul>
+<li><p>1-7章提过了</p>
+</li>
+<li><p>8章：经验共价键键模拟 计算反应<br>  基函数的概述 单个基函数由一个或多个原始高斯函数构成。例如，s-型基函数 φµ(r)是一个高斯分布型函数称为s-型基函数，一个壳层是一套有共同指数的基函数φµ。Gaussian支持任意角动量的壳层：s，p，d，f，g，h五层。一个s-壳层包含一个单独的s-型基函数。一个p-壳层包含三个基函数pX，pY和pZ。sp-壳层包含四个具有共同高斯指数的基函数：一个s-型函数和三个p-函数pX，pY和pZ。</p>
+</li>
+<li><p>AMBER18里搜hessian发现有一个关于second derivative的，但似乎用到mme2，不懂，也没搜到<br>  有一个CartHess2FC.py的模块用了output Hessian 以为是它，实际上利用的是Gaussian输出的fchk文件<br>  小木虫上看到很成熟的利用Gaussian解决hessian乃至找本征频率的做法，<a target="_blank" rel="noopener" href="http://muchong.com/html/201504/8775391_2.html%EF%BC%8C15%E5%B9%B4%E5%B0%B1%E6%9C%89%E4%BA%86">http://muchong.com/html/201504/8775391_2.html，15年就有了</a></p>
+</li>
+<li><p>改变搜索思路，找fchk，找到了量子动力学模块<br>  PIMD可以做模拟，一种是PRIMPIMD和NMPIMD（normal mode path-integral），后者是一种更好的方式，解耦谐波项（在谐波项看到了正则化中的频率ω）</p>
+<p>  <em><strong>流泪了好兄弟</strong></em></p>
+</li>
+</ul>
+<p> 实践证明，以hessian为关键词搜一遍，发现，但凡涉及到的都是偷Gaussian的现成文件来用，也太垃圾了amber，呜呜呜，浪费我一个月啊!!!!!!!!!</p>
+<p> hessian的本质是3n-6个振动自由度的频率值，3n个自由度，但去掉3个振动自由度，3个转动自由度，他们的改变不影响体系相对位置，也就不改变体系能量。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C-2021-3-20-Amber%E8%BF%9B%E9%98%B6-%E9%BB%91%E5%A1%9E%E7%9F%A9%E9%98%B5%E5%9C%A8%E5%93%AA%E9%87%8C/" data-id="clbkdjo5y0038cgv2d0if8i4v" data-title="Amber进阶-黑塞矩阵在哪里" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-20-Amber-入门教程（三）-2021-3-20-Amber-入门教程（三）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-03-20T19:02:30.000Z" itemprop="datePublished">2021-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/">Amber--入门教程（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="使用tleap建立显式水蛋白体系"><a href="#使用tleap建立显式水蛋白体系" class="headerlink" title="使用tleap建立显式水蛋白体系"></a>使用tleap建立显式水蛋白体系</h2><ol>
+<li><p>设立AMBERHOME（系统已经有了）<br>bash下路径设立<br> export AMBERHOME &#x3D; &#x2F;usr&#x2F;local&#x2F;想设计的路径</p>
+</li>
+<li><p>显式溶剂体系准备<br>打开tleap模式后<br> source.leaprc.water.<type><br>一般常用TIP3P，适用于含有水的基团，也有甲醇，氯仿等模型。<br>力场文件是与溶剂文件相对应的 这里使用ff14SB（推荐）对应OPC水溶剂（tip3p更常见），并对应加载OPC中的水化自由能HFE的计算。对于初学者建议不要尝试。这与似乎也与配套的GB&#x2F;SA模型有关，且不是很成熟。 这里涉及第4-7章<br> source leaprc.protein.ff19SB<br> source leaprc.water.opc<br> loadamberparams frcmod.ions1lm_126_hfe_opc</p>
+</li>
+<li><p>处理pdb格式<br>利用上一个教程里的pdb文件<br> name &#x3D; loadpdb name.pdb<br>根据SSBOND改cys cyx，在tleap中连接二硫键</p>
+</li>
+</ol>
+<ul>
+<li>此前可以在moe里看看，实际上二硫键已经连接了，无需再bond，不知为何教程里还bond；如果再bond一次生成参数文件时会报错<br>  bond ramp.27.SG ramp.82.SG<br>  bond ramp.40.SG ramp.72.SG<br>  bond ramp.57.SG ramp.104.SG<br>保存<br>  saveamberparm<br>tleap值得注意的指令见<strong>附1</strong></li>
+</ul>
+<ol start="4">
+<li><p>电中性与溶剂化<br> addions name Na+ 2<br> solvateoct name OPCBOX 10.0<br>10.0有三层溶剂分子，并一般加入150mM NaCl，对应9.03e22 Cl- atom&#x2F;L<br>此时获取体积，如2.08e5 A3 &#x3D; 2.08e-22L，把结果乘以1e-27。 上下相乘得需要加多少个离子<br> 实际结果<em>9.03</em>10e-5<br> addionsrand name Na+ 2 Cl- 2<br><strong>注意：</strong>加入后体系体积会减小，浓度实际大于150mM<br>值得思考，这里为什么是盐溶剂体系，水溶剂体系可以吗？</p>
+</li>
+<li><p>保存检查离子溶剂化后结果<br> saveamberparm  name name.top name.crd</p>
+</li>
+</ol>
+<p><strong>注：</strong>以上流程可以写入一个脚本in文件 （AMBERHOME用$AMBERHOME即可使用，力场文件直接调用，省的敲一堆字）<br>    使用source tleap.in调用<br>    touch process.in #新建文件 使用rm命令删除 可以用空格建立两个文件 使用dd删除一行，：1,2d删除两行，ZZ保存退出<br>文件为<br>    #tleap.in           #title<br>    source leaprc.protein.ff19SB<br>    source leaprc.water.opc<br>    loadamberparams frcmod.ions1lm_126_hfe_opc<br>    ramp&#x3D;loadpdb RAMP1.pdb<br>    bond ramp.27.SG ramp.82.SG<br>    bond ramp.40.SG ramp.72.SG<br>    bond ramp.57.SG ramp.104.SG<br>    SaveAmberParm ramp RAMP1_gas.prmtop RAMP1_gas.inpcrd<br>    addIons ramp Na+ 2<br>    solvateOct ramp OPCBOX 10.0<br>    addIonsRand ramp Na+ 19 Cl- 19<br>    SaveAmberParm ramp RAMP1_ion.prmtop RAMP1_ion.inpcrd<br><strong>注：</strong>可以用cpptraj把输出文件写成pdb<br>创立一个输入转换文件pdb.in<br>    trajin RAMP1_ion.inpcrd<br>    trajout RAMP1_wions_water.pdb PDB<br>excute命令<br>    $AMBERHOME&#x2F;bin&#x2F;cpptraj -p RAMP1_ion.prmtop -i pdb.in&gt;pdb.out     #没有AMBERHOME直接从cpptraj开始就可以</p>
+<ol start="6">
+<li><p>放松溶剂<br> 体系平衡弛豫，使用NVT系综（<br>     控制压强，计算晶格常数使用NPT等温等压，或拉伸压缩模拟<br>     NVE微正则，用于冲击辐照<br>     NPH等压等焓系综<br> 周期性边界（补充跑出去的原子)
+ </p>
+</li>
+<li><p>升温平衡</p>
+</li>
+</ol>
+<hr>
+<h2 id="附1"><a href="#附1" class="headerlink" title="附1"></a>附1</h2><p>tleap检查信息使用<br>    desc xxx</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/20/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89-2021-3-20-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" data-id="clbkdjo5y0036cgv22rkd5tki" data-title="Amber--入门教程（三）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-19-Amber-入门教程（二）-2021-3-19-Amber-入门教程（二）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-03-19T14:49:27.000Z" itemprop="datePublished">2021-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/">Amber--入门教程（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>pdb4amber准备PDB</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tleap</span><br><span class="line">pdb4amber name.pdb &gt; name.mbr.pdb</span><br></pre></td></tr></table></figure>
+<p> 可以做一份拷贝</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp name.pdb name.process.pdb</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>或者自己建立多肽序列(chignolin e.g.)</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pro = sequence&#123; GLY TYR ASP PRO GLU THR GLY THR TRP GLY &#125;</span><br><span class="line">savepdb pro pro.pdb</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>非标准化基团如小分子使用 antechamber <a target="_blank" rel="noopener" href="http://ambermd.org/tutorials/basic/tutorial4b/index.php">http://ambermd.org/tutorials/basic/tutorial4b/index.php</a></li>
+<li>涉及金属比较复杂，见Manual 3.1.1 以及王老师文章</li>
+</ul>
+</li>
+<li><p>处理非标准基团<br>  pdb文件在MODRES中标注修饰了标准残基变成非标准残基，替换的开始位置，并把用HETATM表示，需要替换回来，否则MSE氨基酸左右没有相连<br>  例：<img src='https://img.imgdb.cn/item/60556333524f85ce2995a749.png' width='450' ><br>  把HETATM改为ATOM，把MSE改为MET，把SE符号改为SD（代表met中的硫），把末尾的SE改为S，注意对齐</p>
+<p>  SSBOND定义了CYS二硫键位置<br>  HETATM记录标准氨基酸以及核酸以外的化合物, 包括抑制剂, 辅因子, 离子, 溶剂中的原子，默认不与其他残基相连，水分子也在其中</p>
+</li>
+</ul>
+<p> 对pdb文件的解读，见 <a target="_blank" rel="noopener" href="https://jerkwin.github.io/2015/06/05/PDB%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%B4%E6%98%8E/">https://jerkwin.github.io/2015/06/05/PDB文件格式说明/</a></p>
+<ul>
+<li><p>处理溶剂分子<br>  直接删除，若做显式水溶剂系统，可以保留水分子</p>
+</li>
+<li><p>（可选）氨基酸电子密度缺失<br>  pdb创建者技术不佳，导致残基缺失 可以用vmd&#x2F;pymol查看是否有间断，或者直接看基团序号是否连续</p>
+</li>
+<li><p>处理二硫键<br>  二硫键在amber中名为CYX，在SSBOND里找到，把对应的CYS改为CYX<br>  在connect里补充</p>
+</li>
+<li><p>加氢改名问题<br>  因为需要给X晶体衍射结构加氢，但非标准基团自带氢或者没有氢，所以需要重命名以便加氢&#x2F;不加氢</p>
+   <img src='https://img.imgdb.cn/item/60557c8c524f85ce29a2e92b.png' width='450'>
+
+<p>  <strong>用H++预测His的质子化位点从而改合适名字</strong><br>  <a target="_blank" rel="noopener" href="http://biophysics.cs.vt.edu/faq.php">http://biophysics.cs.vt.edu/faq.php</a><br>  HID–δ位置N原子被质子化（多一个H）<br>  HIE–ε位置N原子被质子化<br>  HIP–两个位置都被质子化。<br>  具体用哪个名字，根据体系的pH值来确定，用网站预测。   </p>
+</li>
+<li><p>（可选）VMD操作简单教程<a target="_blank" rel="noopener" href="http://course.sdu.edu.cn/Download2/20151113131122124.pdf">http://course.sdu.edu.cn/Download2/20151113131122124.pdf</a><br>  VMD的基本操作：旋转、平移和缩放。</p>
+<ul>
+<li>按下鼠标左键并移动鼠标，围绕平行于屏幕的轴旋转分子（a）</li>
+<li>如果是按下鼠标右键并移动，则可以绕着垂直于屏幕的轴旋转分子（b）</li>
+<li>菜单mouse选择translate mode，左键平移<br> 直接在load里下载pdb文件</li>
+</ul>
+<p>  感觉还是moe好<br>  ribbon里选择bb和sc，atom选择element看，很直观，而且本地跑gui界面不卡，不然要吐了</p>
+</li>
+</ul>
+</li>
+<li><p>用leap处理结构文件pdb，mol2(使用参数文件lib, prepi, parm.dat, frcmod)</p>
+<ol>
+<li><p>加载蛋白质力场</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source leaprc.protein.ff14SB</span><br></pre></td></tr></table></figure></li>
+<li><p>用八面体水盒子溶剂化分子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source leaprc.water.tip3p</span><br><span class="line">name = loadpdb &quot;name.mbr.pdb&quot;</span><br><span class="line">slovateOct name SPCBOX 14.0</span><br></pre></td></tr></table></figure>
+<p>或使用GB隐式溶剂模型 GBneck2 radii</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set default PBradii mbondi3</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>原因：由于溶剂分子影响蛋白质结构功能，如静电相互作用降低反应活化能以及疏水作用，以及折叠稳定性，选择特异性，需要表征溶剂化效应(solvation)；由于计算相对复杂，也有使用隐式溶剂模型处理成统计平均效应，降低模拟时间，但也意味着不是万能的。</p>
+</li>
+<li><p>优化：使用GPU图形处理器作为计算平台，以及并行计算，多重网格和快速多极子方法能等计算方法</p>
+</li>
+</ul>
+<p>原理：见附1</p>
+</li>
+<li><p>中和电荷</p>
+<ul>
+<li>检测电荷 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">charge name</span><br></pre></td></tr></table></figure></li>
+<li>相应加上正负电荷，保存拓扑力场文件以及坐标文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addIons name Cl- (number) </span><br><span class="line">addIons name Na+ (number)</span><br><span class="line">saveamberparm name svt.name.top svt.name.crd</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="附1"><a href="#附1" class="headerlink" title="附1"></a>附1</h3><ol>
+<li>PB方程（poisson-boltzmann）《生物分子模拟中的静电计算》<a target="_blank" rel="noopener" href="http://lsec.cc.ac.cn/~lubz/Publication/ChinaCP201502.pdf">http://lsec.cc.ac.cn/~lubz/Publication/ChinaCP201502.pdf</a><br> 计算电解质溶液的静电相互作用偏微分方程，把水简化为均匀电解质，即隐式溶剂化处理。在稀溶液中可以使用Debye-Huckel方程近似<ul>
+<li>适用条件：弱耦合（低表面电荷密度，低浓度的单价离子溶液，高温度）</li>
+<li>局限性：溶液中有一定浓度高价离子，导致粒子间相互作用和关联增强则不适用：<br>  带相同电荷的物体在高价盐溶液中相互吸引，以及带电胶体在高价盐溶液中的电泳呈现电荷反转</li>
+</ul>
+</li>
+<li>并行计算<br> CUDA：computer unified device architecture, NVIDA开发，GPU运算，核心是C语言编辑器<br> OpenML，MPI，Cilk Plus，</li>
+<li>结果可视化<br> pymol，VMD</li>
+<li>广义Born模型 GB，对PB的改进，用于构想转变研究，以及大分子大尺度运动</li>
+<li>PB与GB都可结合表面积SA，计算蛋白质复合物结合自由能</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89-2021-3-19-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="clbkdjo5x0033cgv271x3d4sj" data-title="Amber--入门教程（二）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-AMBER-2021-3-17-Amber-入门教程（一）-2021-3-17-Amber-入门教程（一）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-03-17T17:25:55.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">Amber--入门教程（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><em>氨基酸大分子为例</em></p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ol>
+<li><p>amber基础流程</p>
+ <img src="https://img.imgdb.cn/item/6052183c524f85ce29d6647b.png" width="450" alt="步骤流程图">
+ - 输入pdb文件
+ - pdb4amber转换
+ - leap或antechamber（非标准分子）或MCPB加载力场
+ - 生成prmtop和prmcrd文件
+ - 使用parmed检验并评估上述文件
+ - 进行后续命令处理，利用mdin文件，NAB语言
+
+</li>
+<li><p>不同名称文件包含不同信息</p>
+ <img src="https://img.imgdb.cn/item/60521051524f85ce29d18b0d.png" width="450" alt =不同文件信息内容 >
+ pdb文件包含笛卡尔坐标
+ prmtop文件，又名parm7，top，包含分子，原子名称、种类，电荷，键关系，键参数和非键参数信息，而inpcrd文件包含初始位置坐标
+ lib文件是系统自带的连接，原子名称文件等，似乎必不可缺。（不太清楚功能）
+</li>
+<li><p>对于标准pdb文件提供的信息，amber根据leaprc中的力场文件计算top和crd（还可以用补充包frcmod，但似乎容易报错？）。以及对于非标准可以用antecamber模块建立自己的力场，见<a target="_blank" rel="noopener" href="http://ambermd.org/tutorials/basic/tutorial4b/">http://ambermd.org/tutorials/basic/tutorial4b/</a></p>
+</li>
+<li><p><em>Amber的各种模块</em></p>
+<h3 id="准备模块"><a href="#准备模块" class="headerlink" title="准备模块"></a>准备模块</h3><ul>
+<li><font color=#ff0000 size =4>LEaP：</font><ul>
+<li>创建新系统或修改现有系统的<em><strong>主要程序</strong></em></li>
+<li>包括命令行程序tleap或GUI xleap  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tleap</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>pdb4amber：<ul>
+<li>因为pdb不是为amber设计的，先用pdb4amber模块转换一下</li>
+<li>看CYS有没有写成CYX，连接二硫键  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bond &lt;unit&gt;.&lt;residue #&gt;.&lt;atom name&gt; &lt;unit&gt;.&lt;residue #&gt;.&lt;atom name&gt;</span><br><span class="line">#例：连接1，4二硫键</span><br><span class="line">bond MyUnit.1.SG MyUnit.4.SG</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>parmed:<ul>
+<li>提取top文件中参数信息</li>
+<li>检查参数拓扑文件对复杂系统是否有效（见checkValidity命令）或简单修改文件</li>
+</ul>
+</li>
+<li>antechamber<ul>
+<li>用通用Amber力场（GAFF）开发类药物分子或modified amino acids力场的<em><strong>主要程序</strong></em>。这些力场可以直接用于LEaP中，也可以作为进一步参数开发的起点</li>
+</ul>
+</li>
+<li>MCPB.py  <ul>
+<li>建立，验证金属蛋白和有机金属化合物MM（分子模拟）模型的方法</li>
+</ul>
+</li>
+<li>IPMach.py<ul>
+<li>离子非键合模型参数化</li>
+<li>化学键合模型：与量子化学相关，见《化学键合模型概念的发展》<a target="_blank" rel="noopener" href="http://d.wanfangdata.com.cn/periodical/hxtb2200808001">http://d.wanfangdata.com.cn/periodical/hxtb2200808001</a></li>
+</ul>
+</li>
+<li>paramfit<ul>
+<li>拟合量子数据，生成分子键合力场参数</li>
+</ul>
+</li>
+<li>packmol-memgen<ul>
+<li>处理脂质混合物，多层膜系统</li>
+</ul>
+</li>
+</ul>
+<h3 id="MM，模拟模块"><a href="#MM，模拟模块" class="headerlink" title="MM，模拟模块"></a>MM，模拟模块</h3><ul>
+<li>sander<ul>
+<li>能量最小化的<em><strong>主要程序</strong></em>，利用梯度下降法</li>
+<li>分子动力学模块利用牛顿力学</li>
+</ul>
+</li>
+<li>pmemd <ul>
+<li>sander的一个版本，做了运算速度合并行扫描的优化，pmemd.cuda在GPU上运行</li>
+<li>能进行Born模拟</li>
+</ul>
+</li>
+<li>mdgx<ul>
+<li>包含C语言，简化力场计算的信息流</li>
+<li>可以重新设计分子动力学算法和模型</li>
+</ul>
+</li>
+<li>NAB 核酸建构<ul>
+<li>用于写非周期性模拟的程序语言，用于隐式溶剂力场，替代nmode程序，见37.1节</li>
+</ul>
+</li>
+</ul>
+<h3 id="分析模块"><a href="#分析模块" class="headerlink" title="分析模块"></a>分析模块</h3><ul>
+<li>mdout.analyzer.py<ul>
+<li>提供sander&#x2F;pmemd输出的信息概要</li>
+</ul>
+</li>
+<li>cpptraj<ul>
+<li>主要的trajectory轨迹分析工具，cpp编写，用于叠加态计算，坐标提取，键&#x2F;角&#x2F;二面体值计算，原子位置波动，相关函数（描述函数相关程度），氢键分析，等</li>
+</ul>
+</li>
+<li>pytraj    <ul>
+<li>cpptraj的python包装，结合了numpy，scipy，ipython-notebook模块</li>
+</ul>
+</li>
+<li>pbsa<ul>
+<li>生物分子的溶剂介导能量学的分析，连续计算静电和非静电；支持溶剂介导的静电势可视化</li>
+</ul>
+</li>
+<li>MMPBSA.py<ul>
+<li>分析动力学模拟snapshot的能量</li>
+</ul>
+</li>
+<li>FEW<ul>
+<li>自由能工作流，用TI，MM&#x2F;PBSA或LIE计算蛋白质与配体结合的自由能</li>
+</ul>
+</li>
+<li>amberlite<ul>
+<li>分析蛋白质配体相互作用，NAB程序，python脚本</li>
+</ul>
+</li>
+<li>XtalAnalyze<ul>
+<li>分析晶体模拟轨迹</li>
+</ul>
+</li>
+</ul>
+<h3 id="更多模块"><a href="#更多模块" class="headerlink" title="更多模块"></a>更多模块</h3><p> 见1.2的List</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="clbkdjo5x0031cgv2adimatls" data-title="Amber--入门教程（一）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-生活总结-2021-3-15-生活感悟与守则-2021-3-15-生活感悟与守则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/15/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99/" class="article-date">
+  <time class="dt-published" datetime="2021-03-15T15:01:40.000Z" itemprop="datePublished">2021-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/15/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99/">生活感悟与守则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="置顶"><a href="#置顶" class="headerlink" title="[置顶]"></a>[置顶]</h1><ol>
+<li>multitasking要不得</li>
+<li>你做这个为了什么？你做这个打算多久？除了这个还能做什么？（不仅是手机，其他也是）</li>
+</ol>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol>
+<li><p>需要保持每天写log</p>
+</li>
+<li><p>动作快起来，然后一次专注一件事解决！</p>
+</li>
+<li><p>不要在vscode前想，应该在路上想好写什么</p>
+</li>
+<li><p>如何放松？如果没有放松呢？996自己如何？对啊</p>
+</li>
+<li><p>不玩手机后才能有更深的思考，或者说不玩手机后才能思考到到自己有多少事情需要思考，你的一小会儿娱乐</p>
+<ul>
+<li>提高自己的思考境界：和人讲话交流不要紧张，出门可以反思一下写到log里；被人触犯了不要计较，因为你还有更多重要的事情要做</li>
+</ul>
+</li>
+</ol>
+<p>❶ 健康管理<br>-定时好好休息（90-120分钟）</p>
+<p>❷ 情绪管理<br>-了解自己一天的情绪变化<br>-深呼吸 冷静&amp;解压<br>-赞赏、感激和夸奖身边的人<br>-改变叙述习惯（换位思考 怎样做得更好）</p>
+<p>❸ 精神管理<br>-减少工作的切换&#x2F;打断（用整块时间做事）<br>-减少一天要做的选择</p>
+<p>❹ 心灵管理<br>-做的事要符合三观，创造人生意义和目标</p>
+<p>总结：<br>健康生活，劳逸结合<br>积极面对，夸奖别人<br>专注做事，减少选择<br>思考意义，言行合一​</p>
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><h3 id="处于良好的环境"><a href="#处于良好的环境" class="headerlink" title="处于良好的环境"></a>处于良好的环境</h3><h4 id="离开寝室！"><a href="#离开寝室！" class="headerlink" title="离开寝室！"></a>离开寝室！</h4><p>在宿舍里会被慢慢地侵蚀；而在金创则受周围人学习的影响专心工作。其实在高中也是如此，需要有大家好好学习的氛围才能学进去。但同时，身体也会本能地逃避一味盲目学习的状态。一方面会让自己疲惫，同时也担心自己在歪路上越走越远。</p>
+<p><font color=#ff0000 size =8 weight=bold>守则</font></p>
+<h3 id="1-生活守则"><a href="#1-生活守则" class="headerlink" title="1.生活守则"></a>1.生活守则</h3><h4 id="手机"><a href="#手机" class="headerlink" title="手机"></a>手机</h4><ul>
+<li>早上六点半起床，跑步，下午</li>
+<li>建立惯性：在指定的时间必须出现在指定的地点，进而做指定的事。<ul>
+<li>六点半必须起床去跑步，七点五十到教室或者实验室</li>
+<li>十一点三十五吃饭，如果提前了，下午也要提前</li>
+<li>十三点半开始干活</li>
+<li>十六点三十五吃饭</li>
+<li>十八点二十五干活</li>
+<li>九点左右写log</li>
+<li>二十三点半必须躺在床上睡觉。</li>
+</ul>
+</li>
+</ul>
+<h2 id="做事与小感悟"><a href="#做事与小感悟" class="headerlink" title="做事与小感悟"></a>做事与小感悟</h2><h3 id="言之有物"><a href="#言之有物" class="headerlink" title="言之有物"></a>言之有物</h3><ul>
+<li>写CV的时候意识到，自己的英语表达套话、空话太多。最好写成中文后言之有物，再翻译成英语。</li>
+</ul>
+<h3 id="平淡是真"><a href="#平淡是真" class="headerlink" title="平淡是真"></a>平淡是真</h3><pre><code>&gt; 真正舒服的恋爱，并不是每时每刻都在说话，而是无话可说的时候也不会尴尬。你发消息的时候，也不会因为对方没有秒回，就胡思乱想，而是自己做自己的事，因为信任，你知道他看到了自然会回复。因为你们了解彼此，知道对方一定不会轻易的抛下我。这才是情侣。你们之间不仅仅有爱情，同时也是人生这条路上，不离不弃的伴侣。
+
+&gt; “人和人之间舒服的关系，是可以一直不说话，也可以随时说话。”
+
+&gt; 没话聊很正常，毕竟能聊的都聊过了，生活中也没那么多新鲜事值得聊，关键看两个人是否能接受这种状态。改善的方法很简单，就是多去共同经历一些事，比如看一样的节目、看同一本书、去同一个地方、体验同一种新东西，简单来说就是要花时间去经营爱情，这是双方都要努力去做的。
+
+这样的关系，也是不累的，而不是俩人一无话可说，你就危机感滋生，患得患失、方寸大乱。
+如果谈恋爱就要这么的折磨人，那还不如一直单身下去呢。
+</code></pre>
+<ul>
+<li><p><strong>即使新鲜感已经不在我们身边的时候，我们还能够让聊天不会变成毫无营养的“打卡”吗？</strong></p>
+</li>
+<li><p><strong>拒绝提问积极寻找感受点，对于人的感情，都是一样的</strong></p>
+</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/15/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99-2021-3-15-%E7%94%9F%E6%B4%BB%E6%84%9F%E6%82%9F%E4%B8%8E%E5%AE%88%E5%88%99/" data-id="clbkdjo58000gcgv24opy5p66" data-title="生活感悟与守则" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2021-1季度-2021-3-15-至3-21-周报-2021-3-15-至3-21-周报" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/15/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5/" class="article-date">
+  <time class="dt-published" datetime="2021-03-15T12:47:01.000Z" itemprop="datePublished">2021-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/15/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5/">至3.21 周报</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="本周Todo"><a href="#本周Todo" class="headerlink" title="本周Todo"></a>本周Todo</h2><ol>
+<li>给王老师的CV修改</li>
+<li>综述</li>
+<li>周末的暑研分享</li>
+<li>Amber贯通简单能量优化</li>
+<li>11点半前睡，6点半起，早上跑步，写blog和托福。 9点半，9点到</li>
+</ol>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol>
+<li>除了玩手机，还有科研素养，跑步，唱歌，打球，看杂书，学语言，和安排生活等等事情可以做</li>
+<li>未来计划：一周时间打牢AMBER基础操作，理解在做什么，配套着看桌子上的书。明白究竟软件每个流程在做什么，对以后也有好处，不能只是会找功能，不会用软件。</li>
+</ol>
+<h3 id="3-15"><a href="#3-15" class="headerlink" title="3.15"></a>3.15</h3><ol>
+<li><p>早晨七点起床没摸手机就出门，一口气跑了1.2km，下次要多用大腿</p>
+<ul>
+<li>思考：跑步一时痛苦而后续快乐，过度玩乐一时快乐而后续痛苦，因为都是透支的过程。晚睡的快乐在于这一段是不受拘束的玩乐时间，而早起也是。所以为了长久的快乐要早起。运动，眼睛，都是健康作息，掌握自己的的人，规划合理的人才能拥有的尊严</li>
+</ul>
+</li>
+<li><p>昨天我妈说跑了四十分钟步心脏不太舒服</p>
+</li>
+<li><p>晚上四点多走了找梁师兄关于文章改正思路，需要把每个技术详细列出，不能只是罗列，对于每个分子需要给出结构式，同时要和曹师兄交流ppt画图，抄袭什么的，只要参考的够多，反而说明你详尽。</p>
+</li>
+<li><p>但吃了肯德基后，就在教室里刷微信沙雕图，怎么办？？怎么办？？直接到11点</p>
+<ul>
+<li>问题出在手机时间管理上</li>
+<li>对于没按日程走的时候，手机的使用要怎么安排呢？比如下午我出门后就刷b站，在篮球场坐着等也在刷，买完肯德基路上也在刷，回到教学楼继续刷，形成了巨大的惯性，所以停不下来。</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-16"><a href="#3-16" class="headerlink" title="3.16"></a>3.16</h3><p><strong>关键词：</strong></p>
+<ol>
+<li><p><em>一日流水账</em><br> 上午实验药化因为磁力搅拌器加热坏了升温慢实验做得比较久，当然也可能是好事，因为二次酰化产物少。一口气做完实验，清真简单吃了点素的（减肥），听王老师讲MM，约小哥下午乒乓球，一起吃了晚饭（吃少了，饿，点心铺买了酸奶和大福，医药元素化学上分给dy，lct，cjf了），课上感觉没洗澡好脏。因为听到老师涉及了黑塞矩阵，又试图去找，注意到nab和ssf模块里有，但自己摸了半天不知道怎么用这个模块，也看不懂在做什么。一口气做事，也没和家长打电话。要是昨天的刷手机时间拿来打电话就好了。晚上下楼回去遇到cxc，和他抱怨了进展不顺利。</p>
+<p> <em>不足</em></p>
+<ul>
+<li>本日托福没练，总结没写，很可恶。需要3.17早上补上托福练习。</li>
+<li>本来说30min努力换5min手机玩耍的，但是自己忘记番茄钟计时，晚上回去洗澡前就躺尸刷手机，洗澡的时候也一直刷着看王者荣耀</li>
+</ul>
+</li>
+<li><p>如何看待自己回来快一个月的时间的AMBER探索？<br> 本以为能速战速决，而且听师兄的意思也是如此，自己懵懵懂懂的整了个Tutorial入门教程就开始去manual里找方法了。现在回过头看，因为自己没有及时认识到看不懂amber文件，不明白amber流程，所以花费了这些时间；当然也可说是刚入门不懂学习流程，所以枉费时间。</p>
+</li>
+</ol>
+<h3 id="3-17"><a href="#3-17" class="headerlink" title="3.17"></a>3.17</h3><ol>
+<li><em>一日流水账</em><br> 上午上课前练托福阅读，应该是错了一道题；托福六选三有感觉了，不要抠细节，选择三个宏观的<br> 看到王老师说在美国有connection可以提供，后半节药化课兴奋的没听进去（属实拉跨）<br> 在校车上反思了Amber的学习，打算重新从基础开始，在advanced部分再走自己的路<br> 约了lsm吃饭，注意到南食干锅便宜好吃，草；英语课要求大家卷发言次数和贡献，所以不得不开始卷<br> 下课约了世毕盟韦文倩老师聊天：<br> - 其实本来自己是有些不满的，感觉她对我不够上心，和李梦娇比；因为我喜欢提前做事，但听她聊的意思是，其实一个是剩下的事都靠我自己，且美签拖延，所以没办法<br> - 换mentor，然后给王老师提供信息<br> - 周末安排暑研分享课听一下<br> 坐校车回来后，因为穿衣服太少太冷了六点多回到宿舍，然后躺尸……终于在九点半起床看了一会儿Amber做了点笔记，然后睡了。导致手机使用时间还是比较多的</li>
+</ol>
+<h3 id="3-18"><a href="#3-18" class="headerlink" title="3.18"></a>3.18</h3><ol>
+<li><p><em>一日流水账</em><br> 上午七点半起来跑步，练托福听力（才22分……），上药分课，稀里糊涂做笔记。下午处理了和王老师的暑研沟通信息，发了邮件，然后写药化笔记。写的太慢了，晚上上课都在写，还没写完。8点多因为想洗澡，手机没电了and保安来关门了没有继续学。</p>
+<p> 讲道理，洗澡只要30min就够了；真的是自己懒狗。回去就一直刷手机然后十一点半睡了，3.19早上六点半醒了起不来，八点半才起来，收拾了头发，上厕所啥的加一起，九点十多分才出门吃早餐。</p>
+<p> <em>不足</em></p>
+<ul>
+<li>本日托福没练够，总结没写很可恶</li>
+<li>番茄钟看起来不适合自己……，要额外花精力注意自己学了多久感觉好麻烦and30min换5min有点短确实，试行45min学习换10min手机吧，然后通过看学习时间直接玩手机就好，番茄钟蛮麻烦的，不过可以用番茄钟限定刷手机的时间。</li>
+<li>总结必须当日写完</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-19"><a href="#3-19" class="headerlink" title="3.19"></a>3.19</h3><ol>
+<li><p><em>一日流水账</em><br> 九点吃了早餐后到实验室，学了amber函数名称就去吃回去取快递吃午饭了,然后躺尸在宿舍，看电影，睡觉，到四点出来吃晚饭，和师兄一起回来。然后写给海外教授的套磁。因为怀疑世毕盟培训师对我不上心，所以又问xyg和lc学姐要了她们的材料，xyg学姐还说可以等我写好后帮我看看ps，实际上是套磁和ps不同，ps是长篇大论。写好后九点了，划水关注了一下阿拉斯加安克雷奇的中美会议，试图用outlook规划日程（老健忘了）。</p>
+<p> <em>不足</em><br> 1.瘫在床上……好烦，讲道理不快乐，浪费时间</p>
+</li>
+</ol>
+<h3 id="3-20"><a href="#3-20" class="headerlink" title="3.20"></a>3.20</h3><ol>
+<li>一日流水<br> 今天快乐的学了一天amber，从头理解了力场，以及溶剂化等amber处理过程，明天上午学会升温希望可以。中午兴奋的根本没睡，吃了汉堡王套餐，晚上吃了汤面。对amber和pdb文件的理解更为深入了。晚上和爸妈聊天，还挺好的，意料之中或者意料之外，老妈也挺懒的，或者只是客套话，说自己不知道看什么怎么看，有可能是让我爸多发挥。我爸倒是一如既往的很有想法，想说帮我画画，不过也确实，可以考虑淘宝代画。评估一下自己的日程吧明天。<br> 师兄今天cmd没了不得不重装电脑，感觉好像也不是很难，不过确实挺麻烦的。<br> and差点忘记睡前写总结了，今天没做托福，emmmmm……老懒狗了，找借口。明天下午晚上可劲托福！</li>
+<li>设置xshell字体<a target="_blank" rel="noopener" href="https://www.geek-share.com/detail/2805849754.html">https://www.geek-share.com/detail/2805849754.html</a> 字体dejavu sans mono italic 11</li>
+</ol>
+<h3 id="3-21"><a href="#3-21" class="headerlink" title="3.21"></a>3.21</h3><ol>
+<li>一日流水<br> amber以我的水平做不了量化，没必要揪着它不放，先用Gaussian试一试，再用gromacs试一试。<br> sobereva（卢天）太强了，按知乎的说法，他从12年做到现在，确实撑起中国计算化学领域的一片天，真的活跃<br> 晚上奖励自己跑步回去，22号早上也是跑来的，感觉可以形成一天早晚跑步的习惯，实在是胖啊。<br> 买了个耳机，之前耳机似乎忘在英语教室了还是哪里，一直没找到</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/15/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5-2021-3-15-%E8%87%B33-21-%E5%91%A8%E6%8A%A5/" data-id="clbkdjo5n001ycgv21lbeekbl" data-title="至3.21 周报" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2021-1季度-2021-3-12-3-14周报-2021-3-12-至3-14周报" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/12/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-12-3-14%E5%91%A8%E6%8A%A5-2021-3-12-%E8%87%B33-14%E5%91%A8%E6%8A%A5/" class="article-date">
+  <time class="dt-published" datetime="2021-03-13T02:52:52.000Z" itemprop="datePublished">2021-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/12/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-12-3-14%E5%91%A8%E6%8A%A5-2021-3-12-%E8%87%B33-14%E5%91%A8%E6%8A%A5/">至3.14周报</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="3-12"><a href="#3-12" class="headerlink" title="3.12"></a>3.12</h2><p>《大川端侦探》看了一上午，七点醒了九点半才起床，上了厕所又回去睡了。根本放不下刷b站的手机，可恶，可恶啊。(记录见附1)</p>
+<p>起来去欧巴桑吃了温泉蛋牛丼，没吃饱（因为是brunch，所以又花30r切了一个两盒哈密瓜，（想吃个10r的肉夹馍还怕胖）。到了实验室又出来了，沿着上科大旁边的河边走边吃哈密瓜边看视频。中午回啦睡个觉，研究一会儿图床上传就一点半了，睡觉。</p>
+<p>下午把CV写了，五点半了。出去吃个汉堡王。回来把哈密瓜吃了，看视频看的想玩王者，打了五把，到了七点半，梁师兄发消息“加油”，我也知道自己写的慢。<br>本来想晚上三小时托福的，结果就开始做RNA酶降解的文章事情了，希望走之前能确定写什么，明天上午来翻译完就过剩下的结构，争取下午交给梁师兄。真的很拖了。<br><strong>不要晚睡，不要赖床，赶紧来干活了！！！</strong></p>
+<h2 id="3-13"><a href="#3-13" class="headerlink" title="3.13"></a>3.13</h2><p>上午七点半起床在学校吃了早餐，到实验室，做到下午两三点处理完文章的事情。</p>
+<p>按优先级把英语作业写了，准备复习下药化。打算吃完晚饭回来先把havard老师过一遍，大致有印象，然后下楼做一套托福口语，回来写一个作文。然后做amber练习，以及看matlab。最好能给自己布置下任务。</p>
+<p>没怎么用手机的一天确实很快乐。是一种平淡的快乐，小时候，和高中生活里没有手机的快乐。</p>
+<h2 id="3-14"><a href="#3-14" class="headerlink" title="3.14"></a>3.14</h2><ol>
+<li><p>白天一觉睡到十一点，因为前一天晚上没有学习，没忍住和同学玩了王者，状态一直延续到晚上一点半，早上根本起不来，去吃了午饭后一直看站b被舒适的生活腐蚀了理想自甘堕落。</p>
+</li>
+<li><p>解决的方法唯有规律的生活，比如今晚没有做托福，晚上十一点才走，都是打破了规律，导致后延，这时候的拖延不过是对早上没好好学习的后悔弥补之情作祟。同时，既然诱惑无法克服，就彻底远离他也行。</p>
+</li>
+<li><p>学习或思考一下如何安排白天的学习时间</p>
+</li>
+</ol>
+<p><em>还要做的：看老师，药化报告，药化药分笔记，频率提取</em></p>
+<blockquote>
+<p>附1：<img src="https://img.imgdb.cn/item/604b74f95aedab222ce0c08b.jpg" alt="八点开始的b站记录截图"></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/12/%E5%91%A8%E6%8A%A5-2021-1%E5%AD%A3%E5%BA%A6-2021-3-12-3-14%E5%91%A8%E6%8A%A5-2021-3-12-%E8%87%B33-14%E5%91%A8%E6%8A%A5/" data-id="clbkdjo5o0022cgv2czff6g9j" data-title="至3.14周报" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-生活-博客-2021-3-10-hexo-github建立博客遇到的问题（1）-2021-3-10-hexo-github建立博客遇到的问题（1）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/10/%E7%94%9F%E6%B4%BB-%E5%8D%9A%E5%AE%A2-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-03-11T00:24:50.000Z" itemprop="datePublished">2021-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/10/%E7%94%9F%E6%B4%BB-%E5%8D%9A%E5%AE%A2-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/">hexo+github建立博客遇到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>可以看一下:<a target="_blank" rel="noopener" href="https://hubojing.github.io/2017/11/19/hexo%E5%A4%9A%E6%9C%BA%E5%90%8C%E6%AD%A5/">Hexo多机同步 | 靖待的技术博客 | 小清新IT旅程 | 为中华之崛起而读书 (hubojing.github.io)</a></p>
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><p>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d后报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/FY-Han/FY-Han.github.io.git/&#x27;</span>: OpenSSL SSL_connect: Connection was reset <span class="keyword">in</span> connection to github.com:443</span><br><span class="line">FATAL &#123;</span><br><span class="line">  err: Error: Spawn failed</span><br><span class="line">      at ChildProcess.&lt;anonymous&gt; (D:\7.blog\fyHanBlog\node_modules\hexo-util\lib\spawn.js:51:21)</span><br><span class="line">      at ChildProcess.emit (events.js:315:20)</span><br><span class="line">      at ChildProcess.cp.emit (D:\7.blog\fyHanBlog\node_modules\cross-spawn\lib\enoent.js:34:29)</span><br><span class="line">      at Process.ChildProcess._handle.onexit (internal/child_process.js:277:12) &#123;</span><br><span class="line">    code: 128</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something<span class="string">&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<h3 id="https-wbt5-com-git-fatal-html"><a href="#https-wbt5-com-git-fatal-html" class="headerlink" title="https://wbt5.com/git-fatal.html"></a><a target="_blank" rel="noopener" href="https://wbt5.com/git-fatal.html">https://wbt5.com/git-fatal.html</a></h3><p>提供的方法能解决，非常感谢乌帮图</p>
+<h3 id="这一问题与GFW（墙）有关"><a href="#这一问题与GFW（墙）有关" class="headerlink" title="这一问题与GFW（墙）有关"></a>这一问题与GFW（墙）有关</h3><p>其他网上思路：<br>1）使用ssh链接生成本地密钥<br>2）hexo配置文件config.yml中deploy下repo更改<br>3) sslverify &#x3D; false<br>都暂时没有试成功。其他可能的解决方案：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xxzhangx/article/details/77412629">https://blog.csdn.net/xxzhangx/article/details/77412629</a><br>2.<a target="_blank" rel="noopener" href="https://www.edoou.com/articles/1579672563524552">https://www.edoou.com/articles/1579672563524552</a></p>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><p>结构与实际不符合<br><img src='https://img.imgdb.cn/item/6055a479524f85ce29b8daad.png' width='450'></p>
+<p>一段文本中再缩进会成为代码块<br>and图片后的<strong>文本</strong>可能成为注释缩在一起，最好空一行，反正也要的</p>
+<p>此外，多一个回车推出多级列表编辑</p>
+<p>解决方法: </p>
+<pre><code>1. 段落标题
+    1. 段落标题
+        1. 段落标题
+        2. 段落标题
+    2. 段落标题
+    3. 段落标题
+2. 段落标题
+```
+日后如有需要再更新吧（最好别
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/10/%E7%94%9F%E6%B4%BB-%E5%8D%9A%E5%AE%A2-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89-2021-3-10-hexo-github%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89/" data-id="clbkdjo5l001ocgv28vhxaa0z" data-title="hexo+github建立博客遇到的问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MD/" rel="tag">MD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chemdraw/" rel="tag">chemdraw</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mae/" rel="tag">mae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%9B%B2/" rel="tag">作曲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AMBER/" style="font-size: 17.5px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 17.5px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">学习</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 15px;">生活反思</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/">Weekly blog</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/">Gamd-01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
 </body>
 </html>
