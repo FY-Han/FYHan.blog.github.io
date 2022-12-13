@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"fyhan.blog.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="氨基酸大分子为例 基础知识 amber基础流程    - 输入pdb文件  - pdb4amber转换  - leap或antechamber（非标准分子）或MCPB加载力场  - 生成prmtop和prmcrd文件  - 使用parmed检验并评估上述文件  - 进行后续命令处理，利用mdin文件，NAB语言   不同名称文件包含不同信息    pdb文件包含笛卡尔坐标  prmtop文件，又名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Amber--入门教程（一）">
-<meta property="og:url" content="http://example.com/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:url" content="https://fyhan.blog.github.io/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="氨基酸大分子为例 基础知识 amber基础流程    - 输入pdb文件  - pdb4amber转换  - leap或antechamber（非标准分子）或MCPB加载力场  - 生成prmtop和prmcrd文件  - 使用parmed检验并评估上述文件  - 进行后续命令处理，利用mdin文件，NAB语言   不同名称文件包含不同信息    pdb文件包含笛卡尔坐标  prmtop文件，又名">
 <meta property="og:locale" content="en_US">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imgdb.cn/item/6052183c524f85ce29d6647b.png">
 
-<link rel="canonical" href="http://example.com/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
+<link rel="canonical" href="https://fyhan.blog.github.io/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://fyhan.blog.github.io/2021/03/17/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-2021-3-17-Amber-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">

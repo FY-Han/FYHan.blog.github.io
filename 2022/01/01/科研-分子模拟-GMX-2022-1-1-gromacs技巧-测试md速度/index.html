@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"fyhan.blog.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="使用脚本测试 具体说明：GROMACS (2019.3 GPU版) 并行效率测试及调试思路 - 分子模拟 (Molecular Modeling) - 计算化学公社 (keinsci.com) 两块显卡相对于一块显卡的提升非常有限。如果装了两块显卡，想有效的利用这两块显卡，最好的办法是每块显卡跑一个独立gmx任务。问题是，这两个独立的gmx会相互干扰么？经过测试，结论是：cpu核数足够的情况下两块">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gromacs技巧-测试md速度">
-<meta property="og:url" content="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/index.html">
+<meta property="og:url" content="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="使用脚本测试 具体说明：GROMACS (2019.3 GPU版) 并行效率测试及调试思路 - 分子模拟 (Molecular Modeling) - 计算化学公社 (keinsci.com) 两块显卡相对于一块显卡的提升非常有限。如果装了两块显卡，想有效的利用这两块显卡，最好的办法是每块显卡跑一个独立gmx任务。问题是，这两个独立的gmx会相互干扰么？经过测试，结论是：cpu核数足够的情况下两块">
 <meta property="og:locale" content="en_US">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="gmx">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/">
+<link rel="canonical" href="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/">
 
 
 <script id="page-configurations">
@@ -171,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/">
+    <link itemprop="mainEntityOfPage" href="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">

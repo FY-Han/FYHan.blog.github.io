@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"fyhan.blog.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="GROMACS流程（使用GMX-5.0）  gmx help (module) 或 gmx (module) -h 学了AMBER之后来理解GROMACS更舒服了，而且中文讲解更清晰，AMBER在核酸领域比GROMACS更强，蛋白质差不多，材料领域用LAMMPS本来想学gaussian的，但是gaussian还没弄到win版，先学gromacs吧pdb文件——gmx&#x3D;tleap 产生g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gmx入门-1.类比amber">
-<meta property="og:url" content="http://example.com/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/index.html">
+<meta property="og:url" content="https://fyhan.blog.github.io/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="GROMACS流程（使用GMX-5.0）  gmx help (module) 或 gmx (module) -h 学了AMBER之后来理解GROMACS更舒服了，而且中文讲解更清晰，AMBER在核酸领域比GROMACS更强，蛋白质差不多，材料领域用LAMMPS本来想学gaussian的，但是gaussian还没弄到win版，先学gromacs吧pdb文件——gmx&#x3D;tleap 产生g">
 <meta property="og:locale" content="en_US">
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.imgdb.cn/item/60583dd98322e6675c704344.png">
 
-<link rel="canonical" href="http://example.com/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/">
+<link rel="canonical" href="https://fyhan.blog.github.io/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/">
 
 
 <script id="page-configurations">
@@ -173,7 +173,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/">
+    <link itemprop="mainEntityOfPage" href="https://fyhan.blog.github.io/2021/03/22/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber-2021-3-22-gmx%E5%85%A5%E9%97%A8-1-%E7%B1%BB%E6%AF%94amber/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
