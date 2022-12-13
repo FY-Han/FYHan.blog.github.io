@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,刘训灼,LiuXunzhuo >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            gromacs学习——mdp文件编写
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="mdp文件注解小结"><a href="#mdp文件注解小结" class="headerlink" title="mdp文件注解小结"></a>mdp文件注解小结</h2><p><em>来源：踏雪无痕</em><br>简要摘录，详细的去看文件</p>
+<h3 id="预处理"><a href="#预处理" class="headerlink" title="; 预处理"></a>; 预处理</h3><p>title&#x3D;      # 最长64字符<br>cpp         # 预处理器（默认cpp）<br>include     # 拓扑文件引用其他文件的路径<br>define&#x3D;     # -DFLEXIBLE（用柔性水模型，共轭梯度必要；或-DPOSRES（用于位置限制md）</p>
+<h3 id="模拟控制"><a href="#模拟控制" class="headerlink" title="; 模拟控制"></a>; 模拟控制</h3><p>integrator  #<br>                md：leap-frog做md<br>                sd：stochastic dynamics做md<br>                bd：Euler方法啥的做md<br>                steep：最速下降能量优化 同时设置能量优化最大位移参数 emstep 由emtol决定最大容忍度<br>                cg：共轭梯度能量优化，与最速联用，对能量优化常态分析时用双精度<br>                l-bfgs：不并行，类似cg，收敛快<br>                nm：对tpr文件常态分析，必须为双精度GROMACS<br>                tpi：插入测试粒子</p>
+<p>; 开始时间与步长 单位ps<br>tinit&#x3D;0     # 模拟开始时间，默认0，min不用，只用于md sd bd<br>dt&#x3D;0.002    # 步长2fs，默认1fs，同上<br>nsteps&#x3D;50000# 默认0</p>
+<p>; run continuation or redoing part of a run<br>init_step   # 第i步时间可以算</p>
+<p>; center of mass remove<br>comm_mode &#x3D; Linear  # 质心移动 Linear 平动，Angular转动平动，No不操作</p>
+<p>; numer of steps for mass center removal<br>nstcomm &#x3D; 10    # 操作频率，默认0，单位step</p>
+<h3 id="Langevin动力学"><a href="#Langevin动力学" class="headerlink" title="Langevin动力学"></a>Langevin动力学</h3><p>; friction coefficient and random seed<br>bd_fric &#x3D; 0<br>ld_seed &#x3D; 1993</p>
+<h3 id="能量最小化"><a href="#能量最小化" class="headerlink" title="能量最小化"></a>能量最小化</h3>
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Your Name | Theme By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">Page Views: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">Unique Visitors: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
