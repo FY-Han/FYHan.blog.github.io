@@ -14,8 +14,9 @@
 <meta property="og:description" content="WangLab 工作环境配置因为使用rocky系统，需要重新装amber依赖环境。 Rule of ThumbLinux需要经常update system以保证有最新的系统安装包。更新Rocky Linux使用命令 12sudo dnf update -ysudo dnf clean all  检查rocky或者redhat-based 是否有“development tools”包, 没有就安装">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://fyhan.blog.github.io/%E6%9D%82%E8%AE%B01/image-20220908140653738.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/FY-Han/imagebed/main/202212122336832.png">
 <meta property="article:published_time" content="2022-12-12T01:43:07.000Z">
-<meta property="article:modified_time" content="2022-12-13T01:44:30.100Z">
+<meta property="article:modified_time" content="2022-12-13T04:38:42.047Z">
 <meta property="article:author" content="Fengyang Han">
 <meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
@@ -136,13 +137,15 @@
 <p>不过实际上因为需要pmemd.cuda来做gamd, 不知道为啥wei不行, 因此只能提交给crc做</p>
 <h2 id="amber16安装"><a href="#amber16安装" class="headerlink" title="amber16安装"></a>amber16安装</h2><p>然后再装amber16的时候有问题, 显示mix的语言编译问题,实际上是因为gcc和fortran的版本太高了, 并且要求使用python2. 于是使用anaconda做低版本python2,并且使用conda安装低版本gcc和fortran. </p>
 <h2 id="amber18安装"><a href="#amber18安装" class="headerlink" title="amber18安装"></a>amber18安装</h2><h2 id="schrodinger-配置"><a href="#schrodinger-配置" class="headerlink" title="schrodinger 配置"></a>schrodinger 配置</h2><p><img src="/%E6%9D%82%E8%AE%B01/image-20220908140653738.png" alt="image-20220908140653738"></p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/202212122336832.png"/>
+
 <p>报错找不到东西</p>
 <p>于是根据<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48306849/lib-x86-64-linux-gnu-libz-so-1-version-zlib-1-2-9-not-found">介绍</a>，重新指定softlink<code>ln -s /lib/x86_64-linux-gnu/libz.so.1</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clblpa04g000obgv20lgieg5m" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clblr25zz000kzkv29d4gcx5g" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
