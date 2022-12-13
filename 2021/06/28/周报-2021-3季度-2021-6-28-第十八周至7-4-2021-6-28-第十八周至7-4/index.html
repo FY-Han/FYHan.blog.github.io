@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="6.28看溶酶体综述+改gromacs 6.29林晨腾生日吃晚饭，找到一篇文章，一些描述，调gromacs mdp文件，用l-bgfs方法，以及调了一些距离，韩信挺好玩。胖到了96kg了，以后天天玉米，地瓜啥的，再吃青菜，只吃清水鸡腿，要瘦到85 6.30起来后吃完饭玩了一会儿韩信 7.1-7.5 娱乐：这几天打王者，看b站王者视频，热点视频，asoul视频，游戏视频，恐怖游戏视频。 工作：王老师">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十八周至7.4">
+<meta property="og:url" content="http://example.com/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="6.28看溶酶体综述+改gromacs 6.29林晨腾生日吃晚饭，找到一篇文章，一些描述，调gromacs mdp文件，用l-bgfs方法，以及调了一些距离，韩信挺好玩。胖到了96kg了，以后天天玉米，地瓜啥的，再吃青菜，只吃清水鸡腿，要瘦到85 6.30起来后吃完饭玩了一会儿韩信 7.1-7.5 娱乐：这几天打王者，看b站王者视频，热点视频，asoul视频，游戏视频，恐怖游戏视频。 工作：王老师">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-29T00:16:39.000Z">
+<meta property="article:modified_time" content="2022-11-08T00:57:11.000Z">
+<meta property="article:author" content="Fengyang Han">
+<meta property="article:tag" content="周报">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>第十八周至7.4 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Fengyang Han">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第十八周至7.4
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-28 20:16:39" itemprop="dateCreated datePublished" datetime="2021-06-28T20:16:39-04:00">2021-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-11-07 19:57:11" itemprop="dateModified" datetime="2022-11-07T19:57:11-05:00">2022-11-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h2><p>看溶酶体综述+改gromacs</p>
+<h2 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h2><p>林晨腾生日吃晚饭，找到一篇文章，一些描述，调gromacs mdp文件，用l-bgfs方法，以及调了一些距离，韩信挺好玩。胖到了96kg了，以后天天玉米，地瓜啥的，再吃青菜，只吃清水鸡腿，要瘦到85</p>
+<h2 id="6-30"><a href="#6-30" class="headerlink" title="6.30"></a>6.30</h2><p>起来后吃完饭玩了一会儿韩信</p>
+<h2 id="7-1-7-5"><a href="#7-1-7-5" class="headerlink" title="7.1-7.5"></a>7.1-7.5</h2><ul>
+<li>娱乐：这几天打王者，看b站王者视频，热点视频，asoul视频，游戏视频，恐怖游戏视频。</li>
+<li>工作：王老师这边将频率输出了，在思考以什么方式生成声音，生成乐音</li>
+<li>生活：<ul>
+<li>看了一小会儿书；</li>
+<li>和爸妈聊了一下近期生活；自己也认识到，如果有改变自己的勇气，首先做的就是放下娱乐。最简单的就是，放下这个王者视频，删掉这个游戏，一刹那的决心转化为行动就能停止。力量就在你的手中</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-7"><a href="#7-7" class="headerlink" title="7.7"></a>7.7</h2><ul>
+<li>会做ppt（比如拿个证书？），《风格的元素》</li>
+</ul>
+<h2 id="7-8"><a href="#7-8" class="headerlink" title="7.8"></a>7.8</h2><ul>
+<li>买了个机械闹钟，尽量摆脱手机，避免让它集成过多功能（它只是一个实时信息提醒，以及登录，以及支付，地图工具）</li>
+<li>中午吃饭（12：30-1：00）可以看视频，晚上吃饭（6：00-6：30）可以看视频，睡前（11：00-11：45）可以看视频，给我早起</li>
+<li>绩点还行，3.3几，主要是专业课没拉胯厉害，综述和英语提分。</li>
+<li>给自己布置任务（不是随意的，而是根据一件事布置下一件），这样能活跃起来（）</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag"># 周报</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27/" rel="prev" title="第十六，十七周至6.27">
+      <i class="fa fa-chevron-left"></i> 第十六，十七周至6.27
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-6-30-gmx%E5%85%A5%E9%97%A83/" rel="next" title="gmx入门3">
+      gmx入门3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-28"><span class="nav-number">1.</span> <span class="nav-text">6.28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-29"><span class="nav-number">2.</span> <span class="nav-text">6.29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-30"><span class="nav-number">3.</span> <span class="nav-text">6.30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-7-5"><span class="nav-number">4.</span> <span class="nav-text">7.1-7.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-7"><span class="nav-number">5.</span> <span class="nav-text">7.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-8"><span class="nav-number">6.</span> <span class="nav-text">7.8</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Fengyang Han</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fengyang Han</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

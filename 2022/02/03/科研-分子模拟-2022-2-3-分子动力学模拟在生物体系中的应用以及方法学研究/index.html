@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="MD广泛用于X-ray和NMR结构精修，以及宏观和微观机理的预测。首先是MD的原理和应用，随后是受体的三维建模与蛋白受体激动的机理的MD模拟研究，第三章研究了酶的建模与MD，第四章是糖分子的溶血机理。第五章是含锌离子的分子力场研究 引言历史发展 1957年 Alder和 Wainwright首先在硬球模型下采用分子动力学模拟的方法来研究气体和液体的状态方程，开创了用分子动力学模拟的方法来研究物质宏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分子动力学模拟在生物体系中的应用以及方法学研究">
+<meta property="og:url" content="http://example.com/2022/02/03/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-2022-2-3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MD广泛用于X-ray和NMR结构精修，以及宏观和微观机理的预测。首先是MD的原理和应用，随后是受体的三维建模与蛋白受体激动的机理的MD模拟研究，第三章研究了酶的建模与MD，第四章是糖分子的溶血机理。第五章是含锌离子的分子力场研究 引言历史发展 1957年 Alder和 Wainwright首先在硬球模型下采用分子动力学模拟的方法来研究气体和液体的状态方程，开创了用分子动力学模拟的方法来研究物质宏">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/02/03/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-2022-2-3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/2022.2.3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/image-20220203214032697.png">
+<meta property="og:image" content="http://example.com/2022.2.3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/image-20220203225936954.png">
+<meta property="article:published_time" content="2022-02-03T23:54:46.000Z">
+<meta property="article:modified_time" content="2022-11-08T00:35:56.000Z">
+<meta property="article:author" content="Fengyang Han">
+<meta property="article:tag" content="MD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/03/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-2022-2-3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/2022.2.3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/image-20220203214032697.png">
+
+<link rel="canonical" href="http://example.com/2022/02/03/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-2022-2-3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>分子动力学模拟在生物体系中的应用以及方法学研究 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/03/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-2022-2-3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Fengyang Han">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          分子动力学模拟在生物体系中的应用以及方法学研究
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-03 18:54:46" itemprop="dateCreated datePublished" datetime="2022-02-03T18:54:46-05:00">2022-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-11-07 19:35:56" itemprop="dateModified" datetime="2022-11-07T19:35:56-05:00">2022-11-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MD广泛用于X-ray和NMR结构精修，以及宏观和微观机理的预测。首先是MD的原理和应用，随后是受体的三维建模与蛋白受体激动的机理的MD模拟研究，第三章研究了酶的建模与MD，第四章是糖分子的溶血机理。第五章是含锌离子的分子力场研究</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="历史发展"><a href="#历史发展" class="headerlink" title="历史发展"></a>历史发展</h3><ul>
+<li>1957年 Alder和 Wainwright首先在硬球模型下采用分子动力学模拟的方法来研究气体和液体的状态方程，开创了用分子动力学模拟的方法来研究物质宏观性质的先例</li>
+<li>1964年，Rahman利用 Lennard-jone势函数法对液态氯性质进行了模拟</li>
+<li>1971年，Rahman和Stillinger模拟了液态水的动力学行为</li>
+<li>分子动力学模拟第一次应用到生物大分子领域是在1977年，Karplus和 Mccammon等人运用分子动力学模拟方法研究了牛胰岛素抑制剂的动力学性质。</li>
+</ul>
+<p>尽管模拟的体系很小，但是该分子动力学模拟大大地促进了计算生物学领域的诞生和发展，同时也为人们探索生物分子结构与功能之间的关系提供了个崭新的研究工具。CPU的发展和GPU的出现，计算机集群的普及，增强了模拟的时间尺度与精度。</p>
+<img src="2022.2.3-分子动力学模拟在生物体系中的应用以及方法学研究/image-20220203214032697.png" alt="image-20220203214032697" style="zoom: 50%;" />
+
+<p><strong>近年（09年近年—），为了提高时间尺度，与构象采样效率，提出了</strong></p>
+<ul>
+<li>Replica  Exchange MD（不同温度下的MD交换温度，使得体系跨越较高能垒提高构象采样效率）</li>
+<li>Accelerated MD（增加Bias Potential Function使得体系跨越能垒，脱离势阱），</li>
+<li>粗粒化Coarse-Grained MD，将原子团或者分子转化为bead</li>
+<li>隐式溶剂Generalized Born&#x2F;Poisson-Bolzmann MD</li>
+<li>拉伸动力学模拟Steered MD，给配体加简谐势从而加弹性外力，加速解离与结合</li>
+</ul>
+<p><strong>为了提高精度与构象采样准确性</strong></p>
+<ul>
+<li>QM-MM：没有分子力场的部分使用QM，适合酶催化这类生物大分子模拟，但时间尺度小</li>
+<li>Car-Parrinello MD，引入电动力学系统，使用DFT描述势能函数，通过平面波和平面波和赝势来展开体系的波函数，通过核与电子的运动分离，控制核与电子的运动轨迹满足<br>  波恩-奥本海默近似。整个计算满足统计力学中的<strong>各态历经原理</strong>，并基于第一原理，可以研究小分子反应机理，精度非常高。规模非常小，只能皮秒级别模拟</li>
+</ul>
+<p><strong>计算技术发展</strong></p>
+<ul>
+<li>现场可编程门阵列(Field Programmable Gate Array,FPGA)技术</li>
+<li>网格(Grid)技术：利用网上上空闲可用的CPU</li>
+<li>基于共享存储模型的 Openmp</li>
+<li>基于消息传递的并行编程技术，可以使用超算</li>
+<li>Graphic Processing Unit,GPU的引入</li>
+</ul>
+<h3 id="第一节-MD原理"><a href="#第一节-MD原理" class="headerlink" title="第一节 MD原理"></a>第一节 MD原理</h3><h4 id="分子力场"><a href="#分子力场" class="headerlink" title="分子力场"></a><strong>分子力场</strong></h4><p>对分子内或分子间相互作用的一种半经验描述，原理: $F&#x3D;ma$ . 通过实验或严格的理论计算结果拟合得到一套力场参数和势能函数. 其中，势能函数$V(R)$包含如下项:<br>$$<br>V(R)&#x3D;E_{bond-strech}+E_{angle-bend}+E_{torsion}+E_{vdw}+E_{ele}<br>$$<br>键伸缩能, 键弯曲能, 二面角扭曲能, 范德华作用力, 静电作用力,以及</p>
+<ul>
+<li><strong>非键作用</strong>: 对分子力场的准确度影响非常大，由于在分子动力学模拟时非键相互作用在每一步都要对整个体系进行计算，其计算量非常大。因此在实际应用中通常采用截断值( cutoff )的方法</li>
+<li><strong>周期性体系的长程静电作用</strong>: 通常采用 Particle Mesh Ewald(PME)方法, Ewald加和方法中体系的静电作用能可以分为三部分$E_{dir}、E_{rec}和E_{self}$,其中$E_{self}$计算最为耗时。因此在实际中通常采用插值法来计算.<img src="/2022.2.3-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%96%B9%E6%B3%95%E5%AD%A6%E7%A0%94%E7%A9%B6/image-20220203225936954.png" alt="image-20220203225936954"></li>
+</ul>
+<h4 id="体系初始化"><a href="#体系初始化" class="headerlink" title="体系初始化"></a>体系初始化</h4><p>Maxwell-Boltzmann分布随机生成速度<br>$$<br>\begin{array}{c}<br>P\left(v_{i}\right)&#x3D;\left(\frac{m_{i}}{2 \pi k_{B} T}\right)^{1 &#x2F; 2} \exp \left[-\frac{m_{i} v_{i}^{2}}{2 k_{B} T}\right]<br>\end{array}<br>$$</p>
+<h4 id="积分算法"><a href="#积分算法" class="headerlink" title="积分算法"></a>积分算法</h4><ul>
+<li><strong>Verlet法</strong>: 计算过程中不需要存贮速度，内存要求少，但允许的积分步长不是很长，计算精度适中</li>
+<li><strong>速度 Verlet法</strong>: 精度很好，但计算量大</li>
+<li><strong>Beeman法</strong>: 具有更好的精度，但表达式较复杂而且计算量大</li>
+<li><strong>蛙跳( Leap-frog)法</strong>: 速度是独立于坐标计算的，精度比 Verlet算法好，计算量适中）</li>
+</ul>
+<p>蛙跳法是分子动力学模拟经常采用的积分算法。令 $ \Delta t  $为模拟中的时间步长。将速度  $\vec{v}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right) $ 和 $ \vec{v}<em>{i}\left(t</em>{n}-\Delta t &#x2F; 2\right)$  分别在  $t &#x3D; t_{n}$  时刻处进行 Taylor 级数展开:<br>$$<br>\begin{array}{l}<br>\vec{v}<em>{i}\left(t</em>{n}+\frac{\Delta t}{2}\right) &amp; &#x3D; \vec{v}<em>{i}\left(t</em>{n}\right)+\frac{d v_{i}\left(t_{n}\right)}{d t} \cdot\left(\frac{\Delta t}{2}\right)+\frac{1}{2 !} \frac{d^{2} \vec{v}<em>{i}\left(t</em>{n}\right)}{d t^{2}} \cdot\left(\frac{\Delta t}{2}\right)^{2}+O\left[(\Delta t)^{3}\right] \<br>\vec{v}<em>{i}\left(t</em>{n}-\frac{\Delta t}{2}\right) &amp; &#x3D; \vec{v}<em>{i}\left(t</em>{n}\right)+\frac{d v_{i}\left(t_{n}\right)}{d t} \cdot\left(-\frac{\Delta t}{2}\right)+\frac{1}{2 !} \frac{d^{2} \vec{v}<em>{t}\left(t</em>{n}\right)}{d t^{2}} \cdot\left(-\frac{\Delta t}{2}\right)^{2}+O\left[(\Delta t)^{3}\right]<br>\end{array}<br>$$<br>两式相减得到:<br>$$<br>\begin{align}<br>\vec{v}<em>{i}\left(t</em>{n}+\frac{\Delta t}{2}\right) &amp; &#x3D; \vec{v}<em>{i}\left(t</em>{n}-\frac{\Delta t}{2}\right)+\frac{\vec{F}<em>{i}\left(t</em>{n}\right)}{m_{t}} \cdot \Delta t+O\left[(\Delta t)^{3}\right] \<br>\vec{v}<em>{i}\left(t</em>{n}\right) &amp; &#x3D; \frac{\vec{v}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right)+\vec{v}<em>{i}\left(t</em>{n}-\Delta t &#x2F; 2\right)}{2}<br>\end{align}<br>$$<br>同样, 再将位置 $ \vec{r}<em>{i}\left(t</em>{n}+\Delta t\right)$  和 $ \vec{r}<em>{i}\left(t</em>{n}\right)  $分别在  $t &#x3D; t_{n}+\Delta t &#x2F; 2 $ 时刻处进行 Taylor 级数展开:<br>$$<br>\begin{align}<br>\vec{r}<em>{i}\left(t</em>{n}+\Delta t\right) &amp; &#x3D; \vec{r}<em>{i}\left(t</em>{n}+\frac{\Delta t}{2}\right)+\frac{d \vec{r}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right)}{d t} \cdot\left(\frac{\Delta t}{2}\right)+\frac{1}{2 !} \frac{d^{2} \vec{r}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right)}{d t^{2}} \cdot\left(\frac{\Delta t}{2}\right)^{2}+O\left[(\Delta t)^{3}\right] \<br>\vec{r}<em>{i}\left(t</em>{n}\right) &amp; &#x3D; \vec{r}<em>{i}\left(t</em>{n}+\frac{\Delta t}{2}\right)+\frac{d \vec{r}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right)}{d t} \cdot\left(-\frac{\Delta t}{2}\right)+\frac{1}{2 !} \frac{d^{2} \vec{r}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right)}{d t^{2}} \cdot\left(-\frac{\Delta t}{2}\right)^{2}+O\left[(\Delta t)^{3}\right]<br>\end{align}<br>$$<br>两式相减得到:</p>
+<p>$$<br>\vec{r}<em>{i}\left(t</em>{n}+\Delta t\right) &#x3D; \vec{r}<em>{i}\left(t</em>{n}\right)+\vec{v}<em>{i}\left(t</em>{n}+\Delta t &#x2F; 2\right) \cdot \Delta t+O\left[(\Delta t)^{3}\right]<br>$$</p>
+<h4 id="系综"><a href="#系综" class="headerlink" title="系综"></a>系综</h4><p>ensemble, 对一类性质相同的体系，其微观状态（比如毎个粒子的位置和速度）仍然可以大不相同</p>
+<ol>
+<li>微正则系综microcanonical ensemble(NVE系综)：系综内的各体系具有相同的粒子数，体积和能量。</li>
+<li>正则系综 canonical ensemble(NVT系综)：系综内各体系具有相同的粒子数，体积和温度。体系之间可以交换能量，但是系综内所有体系的能量总和是固定的。</li>
+<li>等温等压系综isothermal-isobaric ensemble(NPT系综)：系综内各个体系具有相同的粒子数，压强和温度。体系间可以交换能量和体积，但是系综内所有体系的能量总和以及体积总和都是固定的。</li>
+<li>巨正则系综grand canonical ensemble(VuT系综)：系综内各个体系具有相同的体积，化学势和温度。体系之间可以交换能量和粒子，但是系综内所有体系的能量总和以及粒子数总和都是固定的。</li>
+</ol>
+<p>常用NPT, 且尽管 Berendsen算法在理论上不能严格地实现NPT系综，但是它能够近似地实现NPT系综并且易编程实现.详见论文</p>
+<p>温控方法:</p>
+<ul>
+<li>Woodcock变标度法( Rescaling)、</li>
+<li>Berendsen变标度法</li>
+<li>Andersen热浴法</li>
+<li>Nose- Hoover恒温扩展法</li>
+</ul>
+<p>压控方法:</p>
+<ul>
+<li>Berendsen的变标度法</li>
+<li>Parrinellc- Rahman法</li>
+</ul>
+<h3 id="第二节-粗粒化"><a href="#第二节-粗粒化" class="headerlink" title="第二节 粗粒化"></a>第二节 粗粒化</h3><p>四种粗粒化作用位点（ coarse- grainedInteraction site)(或者称为珠子bead)类型：帯电类型Q( charged),极性类型P(polr),非极性类型N( nonpolar)和无极性类型C( apolar). </p>
+<p>nonpolar类型应该是指一种弱极性类型。比如说羧酸脂中的脂基官能团则被认为是非极性类型N( nonpolar),羧酸中的中性段基官能团被认为是极性类型P( polar),羧酸中的带电胺基官能团被认为是带电类型Q( (charged),丁基等烷基则被认为无极性类型C( apolar)。珠子的类型还可以根据成氢键的情况和极性的强弱进一步细分。</p>
+<p>建立粗粒化模型的规则如下：将体系中的大分子划分为若干个较为合理的官能团（官能团中的非氢原子数目一般为4左右，但是这个数字不是绝对的，可视具体情况而定），然后将每个官能团的质心作为珠子的位置.</p>
+<p>尽管粗粒化分子动力学模拟在时间尺度上明显优于常规的分子动力学模拟，它能提供一些常规分子动力学模拟中所没有的大尺度动态信息。但丢失了一些详细的结构信息为代价的。如果我们非常关注体系详细的构象变化，则尽量采用常规分子动力学来模拟。如果不是很关心体系中具体的结构信息而是关注整个体系的化学行为的话，那么我们可以选择粗粒化分子动力学模拟。在本文的第四章中我们就采用了粗粒化分子动力学模拟的方法来研究薯预皂甙的溶血机理。</p>
+<h3 id="第三节-QM-x2F-MM"><a href="#第三节-QM-x2F-MM" class="headerlink" title="第三节 QM&#x2F;MM"></a>第三节 QM&#x2F;MM</h3><p>QMMM组合方法对大体系中的各个部分进行分区处理，这样既保证了结果的准确又大大减少了计算量，在生物大分子（特别是酶催化方面）模拟方面得到了广泛的应用。但是计算速度以及所能计算的时间尺度还是远远落后于常规的分子动力学模拟，必须尽可能合理地选择QM区域来减少计算量以提高计算效率。</p>
+<p>在实际QMMM的分子动力学模拟过程中，我们通常将催化口袋附近的重要残基，小分子配体（或小分子中与金属相连或直接参与催化的部分）以及金属离子（往往缺乏准确的分子力场参数）作为QM区,而非关键残基和溶剂作为MM区. 本文第五章即应用QM&#x2F;MM处理含锌离子蛋白体系.  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MD/" rel="tag"># MD</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/31/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-1-31-1-31-2-6/" rel="prev" title="1.31-2.6">
+      <i class="fa fa-chevron-left"></i> 1.31-2.6
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-12-2-20/" rel="next" title="2022.2.12-2-20">
+      2022.2.12-2-20 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E5%8F%91%E5%B1%95"><span class="nav-number">1.1.</span> <span class="nav-text">历史发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-MD%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">第一节 MD原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%AD%90%E5%8A%9B%E5%9C%BA"><span class="nav-number">1.2.1.</span> <span class="nav-text">分子力场</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%93%E7%B3%BB%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">体系初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%AF%E5%88%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">积分算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%BC"><span class="nav-number">1.2.4.</span> <span class="nav-text">系综</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E7%B2%97%E7%B2%92%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">第二节 粗粒化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8A%82-QM-x2F-MM"><span class="nav-number">1.4.</span> <span class="nav-text">第三节 QM&#x2F;MM</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Fengyang Han</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fengyang Han</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一些研究http:&#x2F;&#x2F;www3.mpibpc.mpg.de&#x2F;groups&#x2F;de_groot&#x2F;compbio1&#x2F;p4&#x2F;index.html声图分析,声音信号处理https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;a18261dea58da0116c1749b7.html  使用catdcd进行格式转换  使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GROMACS与声音生成">
+<meta property="og:url" content="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一些研究http:&#x2F;&#x2F;www3.mpibpc.mpg.de&#x2F;groups&#x2F;de_groot&#x2F;compbio1&#x2F;p4&#x2F;index.html声图分析,声音信号处理https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;a18261dea58da0116c1749b7.html  使用catdcd进行格式转换  使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323124610888.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323142419447.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1FME-v1.0.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323144800320.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323152600094.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.1.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.2.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324201144295.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324210501823.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324205404722.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213721974.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213745690.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png">
+<meta property="og:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220330200536662.png">
+<meta property="article:published_time" content="2022-01-01T20:51:40.000Z">
+<meta property="article:modified_time" content="2022-11-08T00:54:09.000Z">
+<meta property="article:author" content="Fengyang Han">
+<meta property="article:tag" content="gmx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323124610888.png">
+
+<link rel="canonical" href="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>GROMACS与声音生成 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Fengyang Han">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GROMACS与声音生成
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-01 15:51:40" itemprop="dateCreated datePublished" datetime="2022-01-01T15:51:40-05:00">2022-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-11-07 19:54:09" itemprop="dateModified" datetime="2022-11-07T19:54:09-05:00">2022-11-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一些研究<a target="_blank" rel="noopener" href="http://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/index.html">http://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/index.html</a><br>声图分析,声音信号处理<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/a18261dea58da0116c1749b7.html">https://wenku.baidu.com/view/a18261dea58da0116c1749b7.html</a></p>
+<ol>
+<li><p>使用catdcd进行格式转换</p>
+</li>
+<li><p>使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx dump 将二进制trr，xtc文件转成ascii可读文件</p>
+</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -f file.xtc &gt;&gt; file.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用gmx covar生成本征向量与协方差矩阵</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx covar -s pro.tpr -f pro20.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用gmx anaeig生成投影</li>
+</ol>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s pro.tpr -f pro20.xtc -v eigenvectors.trr -first 1 -last 1 -proj pc1.xvg  </span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>使用python包处理xyg文件</li>
+</ol>
+<h2 id="2022-3-22-23"><a href="#2022-3-22-23" class="headerlink" title="2022.3.22-23"></a>2022.3.22-23</h2><h3 id="密集RMSD采样"><a href="#密集RMSD采样" class="headerlink" title="密集RMSD采样"></a>密集RMSD采样</h3><h4 id="工作路径与初始构思"><a href="#工作路径与初始构思" class="headerlink" title="工作路径与初始构思"></a>工作路径与初始构思</h4><p> 120机器</p>
+<p>&#x2F;home&#x2F;hfy&#x2F;gromacs&#x2F;1.desres&#x2F;1.1FME&#x2F;DESRES-Trajectory_1FME-0-c-alpha&#x2F;1FME-0-c-alpha&#x2F;rmsd-generate</p>
+<p>由于构象变化过于快速, vmd的rmsd结果只采了200个样(不知道为什么),因此继续在 续生成隔一个点的rmsd计算结果. 方法见<a target="_blank" rel="noopener" href="https://jerkwin.github.io/2017/10/20/GROMACS%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E6%95%99%E7%A8%8B-%E5%A4%9A%E8%82%BD-%E8%9B%8B%E7%99%BD%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%80">GROMACS分子动力学模拟教程：多肽-蛋白相互作用|Jerkwin</a></p>
+<h4 id="原始rmsd结果"><a href="#原始rmsd结果" class="headerlink" title="原始rmsd结果"></a>原始rmsd结果</h4><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323124610888.png" alt="image-20220323124610888"></p>
+<h4 id="模拟结果检查"><a href="#模拟结果检查" class="headerlink" title="模拟结果检查"></a>模拟结果检查</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 首先进行模拟结果检查</span><br><span class="line">gmx check -f traj.xtc</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">Checking file fulltrj.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1014000 time 202800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1014545    200</span><br><span class="line">Time        1014545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1014545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1014545    200</span><br><span class="line"></span><br><span class="line">GROMACS reminds you: &quot;You Can Be Too Early, You Can Be Too Late and You Can Be On Time&quot; (J. Cruijff)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="try-1"><a href="#try-1" class="headerlink" title="try 1"></a>try 1</h4><p>随后因为没有top文件不能生成啥啥的, 不过看到sobereva在<a target="_blank" rel="noopener" href="http://bbs.keinsci.com/thread-428-1-1.html">几种生成有机分子GROMACS拓扑文件的工具</a>中提供了<a target="_blank" rel="noopener" href="http://sobereva.com/soft/Sobtop/">Sobtop</a>,能将pdb转为top文件.(后台下载ing)</p>
+<p>随后发现不会用,下载的不能通过 .&#x2F;sobtop 或 bash sobtop 或 source sobtop运行</p>
+<h5 id="使用命令生成rmsd"><a href="#使用命令生成rmsd" class="headerlink" title="使用命令生成rmsd"></a>使用命令生成rmsd</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj.xtc -s 1FME-CA.pdb -o rmsd.xvg</span><br></pre></td></tr></table></figure>
+
+<p>发现rmsd结果与原始文献不同<a href="2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1FME-v1.0.xvg">数据1</a>, 因为没有rmsd小于5左右的折叠结果, 怀疑是pdb不是质量加权文件? 因为原文使用的是tpr文件(pdb格式也支持), 并且写说是</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323142419447.png" alt="image-20220323142419447"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1FME-v1.0.png" alt="rmsd-1FME"></p>
+<p>所以一方面考虑通过别的方法把pdb文件转成tpr文件</p>
+<p>使用薛定谔将原始的mae文件转成pdb</p>
+<p>中途报错error unknown,但转出来了</p>
+<p>通过sftp传输文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp hfy@192.168.31.120</span><br></pre></td></tr></table></figure>
+
+<p>随后使用gromacs pdb2gmx转文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx pdb2gmx -f 1fme-mae.pdb -o 1fme-mae.gro -p 1fme-mae.top -i ifme-mae.itp </span><br></pre></td></tr></table></figure>
+
+<p>但gromacs依旧把文件当做蛋白质处理, 报错, 怀疑需要生成小分子模板</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">Select the Force Field:</span><br><span class="line">From <span class="string">&#x27;/opt/gmx2018.8/share/gromacs/top&#x27;</span>:</span><br><span class="line"> 1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)</span><br><span class="line"> 2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)</span><br><span class="line"> 3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)</span><br><span class="line"> 4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)</span><br><span class="line"> 5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)</span><br><span class="line"> 6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)</span><br><span class="line"> 7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)</span><br><span class="line"> 8: CHARMM27 all-atom force field (CHARM22 plus CMAP <span class="keyword">for</span> proteins)</span><br><span class="line"> 9: GROMOS96 43a1 force field</span><br><span class="line">10: GROMOS96 43a2 force field (improved alkane dihedrals)</span><br><span class="line">11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)</span><br><span class="line">12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)</span><br><span class="line">13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)</span><br><span class="line">14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)</span><br><span class="line">15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</span><br><span class="line">15</span><br><span class="line"></span><br><span class="line">Using the Oplsaa force field <span class="keyword">in</span> directory oplsaa.ff</span><br><span class="line"></span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/watermodels.dat</span><br><span class="line"></span><br><span class="line">Select the Water Model:</span><br><span class="line"> 1: TIP4P  TIP 4-point, recommended</span><br><span class="line"> 2: TIP4PEW TIP 4-point with Ewald</span><br><span class="line"> 3: TIP3P  TIP 3-point</span><br><span class="line"> 4: TIP5P  TIP 5-point (see http://redmine.gromacs.org/issues/1348 <span class="keyword">for</span> issues)</span><br><span class="line"> 5: TIP5P  TIP 5-point improved <span class="keyword">for</span> Ewald sums</span><br><span class="line"> 6: SPC    simple point charge</span><br><span class="line"> 7: SPC/E  extended simple point charge</span><br><span class="line"> 8: None</span><br><span class="line">8</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.r2b</span><br><span class="line">Reading 1fme-mae.pdb...</span><br><span class="line">Read <span class="string">&#x27;1FME-0-c-alpha&#x27;</span>, 28 atoms</span><br><span class="line">Analyzing pdb file</span><br><span class="line">Splitting chemical chains based on TER records or chain <span class="built_in">id</span> changing.</span><br><span class="line">There are 1 chains and 0 blocks of water and 28 residues with 28 atoms</span><br><span class="line"></span><br><span class="line">  chain  <span class="comment">#res #atoms</span></span><br><span class="line">  1 <span class="string">&#x27;P&#x27;</span>    28     28  </span><br><span class="line"></span><br><span class="line">All occupancies are one</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/atomtypes.atp</span><br><span class="line">Atomtype 814</span><br><span class="line">Reading residue database... (oplsaa)</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.rtp</span><br><span class="line">Residue 51</span><br><span class="line">Sorting it all out...</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.hdb</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb</span><br><span class="line">Processing chain 1 <span class="string">&#x27;P&#x27;</span> (28 atoms, 28 residues)</span><br><span class="line">Identified residue GLU1 as a starting terminus.</span><br><span class="line">Identified residue ARG28 as a ending terminus.</span><br><span class="line">8 out of 8 lines of specbond.dat converted successfully</span><br><span class="line">Start terminus GLU-1: NH3+</span><br><span class="line">End terminus ARG-28: COO-</span><br><span class="line">Checking <span class="keyword">for</span> duplicate atoms....</span><br><span class="line">Generating any missing hydrogen atoms and/or adding termini.</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------</span><br><span class="line">Program:     gmx pdb2gmx, version 2018.8</span><br><span class="line">Source file: src/gromacs/gmxpreprocess/pgutil.cpp (line 128)</span><br><span class="line"></span><br><span class="line">Fatal error:</span><br><span class="line">Residue 1 named GLU of a molecule <span class="keyword">in</span> the input file was mapped</span><br><span class="line">to an entry <span class="keyword">in</span> the topology database, but the atom N used <span class="keyword">in</span></span><br><span class="line">that entry is not found <span class="keyword">in</span> the input file. Perhaps your atom</span><br><span class="line">and/or residue naming needs to be fixed.</span><br><span class="line"></span><br><span class="line">For more information and tips <span class="keyword">for</span> troubleshooting, please check the GROMACS</span><br><span class="line">website at http://www.gromacs.org/Documentation/Errors</span><br></pre></td></tr></table></figure>
+
+<p>如果进行下一步就考虑使用antechamber生成模板构建了,停一下,想想别的方法</p>
+<h4 id="try2"><a href="#try2" class="headerlink" title="try2"></a>try2</h4><p>观察tpr结果,明白到底生成的是什么东西</p>
+<p>随便打开一个此前的tpr, 发现是二进制文件, 于是使用dump命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -s step5_production.tpr &gt;&gt; step5_production.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>注意到tpr文件是冗余的,是提供MD的计算输入信息</p>
+<p>实际上谷歌一下发现, 根据<a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html">File formats — GROMACS 5.1 documentation</a>描述</p>
+<p><strong>Structure+mass(db):</strong> <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#tpr"><em>tpr</em></a>, <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#gro"><em>gro</em></a>, <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#g96"><em>g96</em></a>, or <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#pdb"><em>pdb</em></a></p>
+<p>Structure and mass input for analysis tools. When gro or pdb is used approximate masses will be read from the mass database.</p>
+<p>也就是说其实我pdb输入也不影响.</p>
+<h4 id="try3"><a href="#try3" class="headerlink" title="try3"></a>try3</h4><p>另一个可能是我skip了?看一下如果不skip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj.xtc -s 1FME-CA.pdb -o rmsd-test.xvg </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323144800320.png" alt="image-20220323144800320"></p>
+<p>发现并没有skip, 文件应该是一样的.</p>
+<h4 id="try4"><a href="#try4" class="headerlink" title="try4"></a>try4</h4><p>有没有可能是轨迹文件有问题</p>
+<p>检查发现理论应该是230μs, 但实际只有 [模拟结果检查](# 模拟结果检查)中203μs, 于是进行校正</p>
+<h5 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h5><p>&#x2F;home&#x2F;hfy&#x2F;gromacs&#x2F;1.desres&#x2F;1.1FME&#x2F;DESRES-Trajectory_1FME-0-c-alpha&#x2F;1FME-0-c-alpha&#x2F;origin</p>
+<p>使用catdcd重新生成轨迹(合理怀疑轨迹被ruin了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.xtc -otype xtc -s 1FME-0-c-alpha.mae 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<p>报错:Cannot write timesteps in ‘xtc’ format. 于是改成: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.dcd -otype dcd -stype mae -s 1FME-0-c-alpha.mae 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<p>好像不能直接转,有点麻烦. </p>
+<h5 id="mdconvert"><a href="#mdconvert" class="headerlink" title="mdconvert"></a>mdconvert</h5><p>发现之前文件丢失前的使用的mdconvert软件, 比catdcd好用,<a target="_blank" rel="noopener" href="https://blog.chembiosim.com/alter-md-trajectory-file-format-with-mdconvert/">使用 mdconvert 转换分子动力学模拟轨迹 | Hope (chembiosim.com)</a></p>
+<p>usage: mdconvert [-h] -o OUTPUT [-c CHUNK] [-f] [-s STRIDE] [-i INDEX]<br>                 [-a ATOM_INDICES] [-t TOPOLOGY]<br>                 input [input …]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdconvert -o fulltrj-mdconvert.xtc 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<h5 id="检查结果"><a href="#检查结果" class="headerlink" title="检查结果"></a>检查结果</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx check -f fulltrj-mdconvert.xtc</span><br></pre></td></tr></table></figure>
+
+<p>但是报了错hh,因为timestep有问题</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323152600094.png" alt="image-20220323152600094"></p>
+<h5 id="trjconv修正一下timestep问题-trjcat用于连接轨迹"><a href="#trjconv修正一下timestep问题-trjcat用于连接轨迹" class="headerlink" title="trjconv修正一下timestep问题(trjcat用于连接轨迹)"></a>trjconv修正一下timestep问题(trjcat用于连接轨迹)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmx trjconv -f fulltrj-mdconvert.xtc -o fulltrj-mdconvert-trjconv.xtc -t0 0 -timestep 200   #timestep:ps</span><br><span class="line"></span><br><span class="line">gmx check -f fulltrj-mdconvert-trjconv.xtc</span><br></pre></td></tr></table></figure>
+
+<h5 id="结果修正正确"><a href="#结果修正正确" class="headerlink" title="结果修正正确"></a>结果修正正确</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Checking file fulltrj-mdconvert-trjconv.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1114000 time 222800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1114545    200</span><br><span class="line">Time        1114545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1114545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1114545    200</span><br></pre></td></tr></table></figure>
+
+<h5 id="重新做rmsd-路径"><a href="#重新做rmsd-路径" class="headerlink" title="重新做rmsd 路径"></a>重新做rmsd <a href="#%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84%E4%B8%8E%E5%88%9D%E5%A7%8B%E6%9E%84%E6%80%9D">路径</a></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.1.xvg</span><br></pre></td></tr></table></figure>
+
+<h5 id="xmgrace报错"><a href="#xmgrace报错" class="headerlink" title="xmgrace报错"></a>xmgrace报错</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmgrace rmsd-1.1.xvg</span><br><span class="line"></span><br><span class="line">Messages: [Error]Purging failed.Increase &#x27;Max drawing path length&#x27;in prefs.</span><br></pre></td></tr></table></figure>
+
+<p>于是去 edit-pref 里调整drawing path length, 直接调到最大为1000000</p>
+<h5 id="疑似采样太密集"><a href="#疑似采样太密集" class="headerlink" title="疑似采样太密集"></a>疑似采样太密集</h5><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.1.png" alt="RMSD结果"></p>
+<p>我觉得看不出来的原因是采样太密集了,稀疏为1&#x2F;10看看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.2.xvg -skip 10</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.2.png" alt="rmsd-step10"></p>
+<p>稀疏为1&#x2F;100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.3.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png" alt="rmsd-step10"></p>
+<p>稀疏为1&#x2F;1000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.4.xvg -skip 1000</span><br></pre></td></tr></table></figure>
+
+<p>稀疏为1&#x2F;10000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.5.xvg -skip 10000</span><br></pre></td></tr></table></figure>
+
+<p>稀疏为1&#x2F;100000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.5.xvg -skip 10000</span><br></pre></td></tr></table></figure>
+
+<p>但发现一直稀疏都没有这个效果, 合理怀疑与连点成线有关</p>
+<h5 id="观察数据分布-试图更换绘图方法-观察是否一样-如果不一样-为什么不一样"><a href="#观察数据分布-试图更换绘图方法-观察是否一样-如果不一样-为什么不一样" class="headerlink" title="观察数据分布, 试图更换绘图方法,观察是否一样,如果不一样,为什么不一样?"></a>观察数据分布, 试图更换绘图方法,观察是否一样,如果不一样,为什么不一样?</h5><h6 id="使用rmsd-1-3xvg进行观察"><a href="#使用rmsd-1-3xvg进行观察" class="headerlink" title="使用rmsd-1.3xvg进行观察"></a>使用rmsd-1.3xvg进行观察</h6><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324201144295.png" alt="image-20220324201144295"></p>
+<p>发现 value(rmsd结果和xmgrace绘图结果不同)</p>
+<p>最终通过更稀疏的采样发现</p>
+<p>因为没有改数据类型,害 😵</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324210501823.png" alt="image-20220324210501823"></p>
+<p>而且还是问了师兄才知道为啥</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324205404722.png" alt="image-20220324205404722"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213721974.png" alt="image-20220324213721974"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213745690.png" alt="image-20220324213745690"></p>
+<h4 id="命令流程"><a href="#命令流程" class="headerlink" title="命令流程"></a>命令流程</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx check -f fulltrj-mdconvert-trjconv.xtc</span><br></pre></td></tr></table></figure>
+
+<p>check结果没问题,与文献一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Checking file fulltrj-mdconvert-trjconv.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1114000 time 222800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1114545    200</span><br><span class="line">Time        1114545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1114545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1114545    200</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 计算RMSD 1:100采样 </span><br><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.3.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png" alt="rmsd-step10"></p>
+<h2 id="修正RMSD结果"><a href="#修正RMSD结果" class="headerlink" title="修正RMSD结果"></a>修正RMSD结果</h2><h3 id="try1"><a href="#try1" class="headerlink" title="try1"></a>try1</h3><p>使用vmd脚本生成rmsd的dat文件 </p>
+<p>传入服务器合并(注意每个文件开头的0都删了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat rmsd000.dat rmsd001.dat rmsd002.dat rmsd003.dat rmsd004.dat rmsd005.dat rmsd006.dat rmsd007.dat rmsd008.dat rmsd009.dat rmsd010.dat rmsd011.dat&gt; rmsd-.dat</span><br></pre></td></tr></table></figure>
+
+<h2 id="对2jof进行同样操作"><a href="#对2jof进行同样操作" class="headerlink" title="对2jof进行同样操作"></a>对2jof进行同样操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.dcd -otype dcd -stype mae -s 2JOF-0-c-alpha.mae 2JOF-0-c-alpha-000.dcd 2JOF-0-c-alpha-001.dcd 2JOF-0-c-alpha-002.dcd 2JOF-0-c-alpha-003.dcd 2JOF-0-c-alpha-004.dcd 2JOF-0-c-alpha-005.dcd 2JOF-0-c-alpha-006.dcd 2JOF-0-c-alpha-007.dcd 2JOF-0-c-alpha-008.dcd 2JOF-0-c-alpha-009.dcd 2JOF-0-c-alpha-010.dcd</span><br><span class="line"></span><br><span class="line">mdconvert -o fulltrj-catdcd-mdconvert.xtc fulltrj-catdcd.dcd</span><br><span class="line"></span><br><span class="line">gmx trjconv -f fulltrj-catdcd-mdconvert.xtc -o fulltrj-catdcd-mdconvert-trjconv.xtc -t0 0 -timestep 200</span><br><span class="line"></span><br><span class="line">gmx check -f fulltrj-catdcd-mdconvert-trjconv.xtc</span><br><span class="line"></span><br><span class="line">gmx rms -f fulltrj-catdcd-mdconvert-trjconv.xtc -s 2jof-ca.pdb  -o rmsd-1.1-2jof.xvg</span><br><span class="line"></span><br><span class="line">gmx rms -f fulltrj-catdcd-mdconvert-trjconv.xtc -s 2jof-ca.pdb  -o rmsd-1.3-2jof.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p>实现2jof的rmsd结果</p>
+<h2 id="生成2jof的pca-音乐结果"><a href="#生成2jof的pca-音乐结果" class="headerlink" title="生成2jof的pca-音乐结果"></a>生成2jof的pca-音乐结果</h2><ol>
+<li>使用catdcd进行格式转换([见上](# 对2jof进行同样操作))</li>
+<li>使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx dump 将二进制trr，xtc文件转成ascii可读文件([见上](# 对2jof进行同样操作))</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -f file.xtc &gt;&gt; file.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用gmx covar生成本征向量与协方差矩阵</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx covar -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -o eigenvalues-2jof.xvg -v eigenvectors-2jof.trr -xpma covapic-2jof.xpm </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用gmx anaeig生成第一个投影(简单观察),以及所有的投影(python切割)</li>
+</ol>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -v eigenvectors-2jof.trr -first 1 -last 1 -proj pc1-2jof-ca.xvg  </span><br></pre></td></tr></table></figure>
+
+<p>​		这里可以看到 eigenvalue,小算一下占比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -v eigenvectors-2jof.trr -first 1 -proj pc-a-2jof-ca.xvg  </span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li><p>使用python包处理xyg文件</p>
+<p> 这里憨了找了一天一直没找出来,因为有一个xvg文件的title,前面是23行注释,后面是22行注释,以及最开头要删一行</p>
+</li>
+</ol>
+<h6 id=""><a href="#" class="headerlink" title=""></a><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220330200536662.png" alt="image-20220330200536662"></h6><h2 id="2022-5-22"><a href="#2022-5-22" class="headerlink" title="2022.5.22"></a>2022.5.22</h2><p><strong>归一化后结果很差………………..</strong></p>
+<p>不过用np和pd算一遍没问题..</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gmx/" rel="tag"># gmx</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/" rel="prev" title="gromacs技巧-测试md速度">
+      <i class="fa fa-chevron-left"></i> gromacs技巧-测试md速度
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/29/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2022-1-29-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="next" title="面试准备">
+      面试准备 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-3-22-23"><span class="nav-number">1.</span> <span class="nav-text">2022.3.22-23</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E9%9B%86RMSD%E9%87%87%E6%A0%B7"><span class="nav-number">1.1.</span> <span class="nav-text">密集RMSD采样</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84%E4%B8%8E%E5%88%9D%E5%A7%8B%E6%9E%84%E6%80%9D"><span class="nav-number">1.1.1.</span> <span class="nav-text">工作路径与初始构思</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8Brmsd%E7%BB%93%E6%9E%9C"><span class="nav-number">1.1.2.</span> <span class="nav-text">原始rmsd结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E7%BB%93%E6%9E%9C%E6%A3%80%E6%9F%A5"><span class="nav-number">1.1.3.</span> <span class="nav-text">模拟结果检查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-1"><span class="nav-number">1.1.4.</span> <span class="nav-text">try 1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90rmsd"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">使用命令生成rmsd</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try2"><span class="nav-number">1.1.5.</span> <span class="nav-text">try2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try3"><span class="nav-number">1.1.6.</span> <span class="nav-text">try3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try4"><span class="nav-number">1.1.7.</span> <span class="nav-text">try4</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">工作路径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mdconvert"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">mdconvert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E7%BB%93%E6%9E%9C"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">检查结果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trjconv%E4%BF%AE%E6%AD%A3%E4%B8%80%E4%B8%8Btimestep%E9%97%AE%E9%A2%98-trjcat%E7%94%A8%E4%BA%8E%E8%BF%9E%E6%8E%A5%E8%BD%A8%E8%BF%B9"><span class="nav-number">1.1.7.4.</span> <span class="nav-text">trjconv修正一下timestep问题(trjcat用于连接轨迹)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E4%BF%AE%E6%AD%A3%E6%AD%A3%E7%A1%AE"><span class="nav-number">1.1.7.5.</span> <span class="nav-text">结果修正正确</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%81%9Armsd-%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.7.6.</span> <span class="nav-text">重新做rmsd 路径</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xmgrace%E6%8A%A5%E9%94%99"><span class="nav-number">1.1.7.7.</span> <span class="nav-text">xmgrace报错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%96%91%E4%BC%BC%E9%87%87%E6%A0%B7%E5%A4%AA%E5%AF%86%E9%9B%86"><span class="nav-number">1.1.7.8.</span> <span class="nav-text">疑似采样太密集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83-%E8%AF%95%E5%9B%BE%E6%9B%B4%E6%8D%A2%E7%BB%98%E5%9B%BE%E6%96%B9%E6%B3%95-%E8%A7%82%E5%AF%9F%E6%98%AF%E5%90%A6%E4%B8%80%E6%A0%B7-%E5%A6%82%E6%9E%9C%E4%B8%8D%E4%B8%80%E6%A0%B7-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%B8%80%E6%A0%B7"><span class="nav-number">1.1.7.9.</span> <span class="nav-text">观察数据分布, 试图更换绘图方法,观察是否一样,如果不一样,为什么不一样?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8rmsd-1-3xvg%E8%BF%9B%E8%A1%8C%E8%A7%82%E5%AF%9F"><span class="nav-number">1.1.7.9.1.</span> <span class="nav-text">使用rmsd-1.3xvg进行观察</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.8.</span> <span class="nav-text">命令流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3RMSD%E7%BB%93%E6%9E%9C"><span class="nav-number">2.</span> <span class="nav-text">修正RMSD结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#try1"><span class="nav-number">2.1.</span> <span class="nav-text">try1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B92jof%E8%BF%9B%E8%A1%8C%E5%90%8C%E6%A0%B7%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">对2jof进行同样操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%902jof%E7%9A%84pca-%E9%9F%B3%E4%B9%90%E7%BB%93%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">生成2jof的pca-音乐结果</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link"><span class="nav-number">4.0.0.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-5-22"><span class="nav-number">5.</span> <span class="nav-text">2022.5.22</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Fengyang Han</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fengyang Han</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
