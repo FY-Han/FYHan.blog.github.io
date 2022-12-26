@@ -71,6 +71,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-科研-工作记录-2022-12-26-GaMD-eef" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/26/%E7%A7%91%E7%A0%94-%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95-2022-12-26-GaMD-eef/" class="article-date">
+  <time class="dt-published" datetime="2022-12-26T15:57:06.000Z" itemprop="datePublished">2022-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/26/%E7%A7%91%E7%A0%94-%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95-2022-12-26-GaMD-eef/">GaMD&amp;eef</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="GaMD任务"><a href="#GaMD任务" class="headerlink" title="GaMD任务"></a>GaMD任务</h1><h2 id="跑长时间MD"><a href="#跑长时间MD" class="headerlink" title="跑长时间MD"></a>跑长时间MD</h2><p>分别是100ns-600ns的整体RMSD</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114216.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114403.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231113209.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231112439.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231111788.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231110322.png"/>
+
+<h2 id="使用hole软件看氨基酸效果"><a href="#使用hole软件看氨基酸效果" class="headerlink" title="使用hole软件看氨基酸效果"></a>使用hole软件看氨基酸效果</h2><h3 id="使用hole获取每一帧的半径，然后计算半径的开合状态"><a href="#使用hole获取每一帧的半径，然后计算半径的开合状态" class="headerlink" title="使用hole获取每一帧的半径，然后计算半径的开合状态"></a>使用hole获取每一帧的半径，然后计算半径的开合状态</h3><p>HOLE 现在还可以从CHARMm .DCD 格式的二进制轨迹文件中读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">coord 1grm_single.pdb           ! Co-ordinates in pdb format</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">                                ! n.b. can use ~ in hole</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb hole_out.sph             ! pdb format output of hole sphere centre info</span><br><span class="line">                                ! (for use in sph_process program)</span><br><span class="line">endrad 5.                       ! This is the pore radius that is taken</span><br><span class="line">                                ! as where channel ends. 5.0 Angstroms is good</span><br><span class="line">                                ! for a narrow channel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>1chb.pdb样本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">! run on cholera toxin</span><br><span class="line">coord 02_1chb.pdb</span><br><span class="line">! n.b. no cpoint cvect specified - use new automated procedure to find</span><br><span class="line">radius ~/hole2/rad/simple.rad</span><br><span class="line">ignore hoh tip wat                              ! ignore all atoms from waters</span><br><span class="line">conn                                            ! use new connolly`</span><br><span class="line">shorto 2                                        ! short output</span><br><span class="line">sphpdb 1chb_conn.sph</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">! 2nd example a more complex hole run on maltoporin</span><br><span class="line">!</span><br><span class="line">! first use standard spherical probe</span><br><span class="line">coord  03_1af6.pdb</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb spherical.sph            ! standard hole spherical probe in this run</span><br><span class="line">ignore FRU GLC MG HOH           ! ignore all water, MG ions and sugars in the structure</span><br><span class="line">cvect 0.0 0.0 1.0               ! channel runs in Z direction</span><br><span class="line">! this structure is a trimer - the automatic HOLE guess procedure</span><br><span class="line">! fails to find a point in one of the three channels.</span><br><span class="line">! so overide with a CPOINT card - in this case use an atom</span><br><span class="line">! from one of the sugars bound in the channel:</span><br><span class="line">!HETATM 6858  C1  GLC B   1     -14.285  47.809  82.707  1.00 52.56           C</span><br><span class="line">cpoint -14.285  47.809  82.707</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="仿照脚本计算半径随时间的变化"><a href="#仿照脚本计算半径随时间的变化" class="headerlink" title="仿照脚本计算半径随时间的变化"></a>仿照脚本计算半径随时间的变化</h2><p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line"># calcualte the offset</span><br><span class="line">@ id=1</span><br><span class="line">rm -f center_offset.out</span><br><span class="line">touch center_offset.out</span><br><span class="line">while ($id &lt;= 4001)</span><br><span class="line">        if( ! -e snapshot/snapshot.$id) then</span><br><span class="line">                break</span><br><span class="line">        endif</span><br><span class="line">        pdbextract -i def_mscl.in -p ./snapshot/snapshot.$id -o TMP1.pdb</span><br><span class="line">        grep &quot;P31&quot; ./snapshot/snapshot.$id &gt; TMP2.pdb</span><br><span class="line"></span><br><span class="line">        set ctr1=`translate -i TMP1.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        set ctr2=`translate -i TMP2.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        echo -- $id --</span><br><span class="line">        echo $id $ctr1 $ctr2 &gt;&gt; center_offset.out</span><br><span class="line">        @ id=$id + 1</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">awk -f awk_center_offset.in center_offset.out &gt; center_offset.sum</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>MscL的孔径可达30-40A</p>
+<h3 id="选择到最低的TM1区域的氨基酸"><a href="#选择到最低的TM1区域的氨基酸" class="headerlink" title="选择到最低的TM1区域的氨基酸"></a>选择到最低的TM1区域的氨基酸</h3><p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003808.png"></p>
+<p>单链的结构</p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003901.png" alt="https://journals.asm.org/doi/full/10.1128/MMBR.00055-19"></p>
+<p>TM1（残基 15-45）和 TM2（残基 76-100）<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s00249-009-0460-y">1</a></p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225005330.png"></p>
+<p>看起来下面没问题，上面有问题</p>
+<h3 id="计算五个的几何平均点，并计算半径，"><a href="#计算五个的几何平均点，并计算半径，" class="headerlink" title="计算五个的几何平均点，并计算半径，"></a>计算五个的几何平均点，并计算半径，</h3><h3 id="计算轨迹中的半径变化"><a href="#计算轨迹中的半径变化" class="headerlink" title="计算轨迹中的半径变化"></a>计算轨迹中的半径变化</h3><h1 id="eef任务"><a href="#eef任务" class="headerlink" title="eef任务"></a>eef任务</h1><h2 id="用不同的gpu跑2346的结果"><a href="#用不同的gpu跑2346的结果" class="headerlink" title="用不同的gpu跑2346的结果"></a>用不同的gpu跑2346的结果</h2><p>amberhome在 panda的 &#x2F;home3&#x2F;jwang&#x2F;software</p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>libcudart.so.8.0: cannot open shared object file: No such file or directory <a target="_blank" rel="noopener" href="https://github.com/BVLC/caffe/issues/4944">解决方案</a>, 查到用的是cuda-9.2</p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221224124545.png"></p>
+<p>因此装一个cudatoolkit-8.0</p>
+<h2 id="用vmd检查md的结果，是否配体通过了通道"><a href="#用vmd检查md的结果，是否配体通过了通道" class="headerlink" title="用vmd检查md的结果，是否配体通过了通道"></a>用vmd检查md的结果，是否配体通过了通道</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/26/%E7%A7%91%E7%A0%94-%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95-2022-12-26-GaMD-eef/" data-id="clc4zz1xr000ljwv28s0m8xur" data-title="GaMD&amp;eef" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" rel="tag">工作记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-周报-2022-4-Quarter-2022-12-26-Weekly-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/" class="article-date">
@@ -101,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/" data-id="clc4z8jvk001obwv2cneqgjpl" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/" data-id="clc4zz1yf001njwv20jp34siw" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -137,82 +214,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="23号"><a href="#23号" class="headerlink" title="23号"></a>23号</h2><p>分别是100ns-600ns的整体RMSD</p>
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114216.png"/>
+        <h3 id="使用github做增量备份"><a href="#使用github做增量备份" class="headerlink" title="使用github做增量备份"></a>使用github做增量备份</h3><p>设置linux ssh登录其他账户不用密码</p>
 
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114403.png"/>
-
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231113209.png"/>
-
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231112439.png"/>
-
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231111788.png"/>
-
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231110322.png"/>
-
-<h3 id="使用hole软件看氨基酸效果"><a href="#使用hole软件看氨基酸效果" class="headerlink" title="使用hole软件看氨基酸效果"></a>使用hole软件看氨基酸效果</h3><h4 id="使用hole获取每一帧的半径，然后计算半径的开合状态"><a href="#使用hole获取每一帧的半径，然后计算半径的开合状态" class="headerlink" title="使用hole获取每一帧的半径，然后计算半径的开合状态"></a>使用hole获取每一帧的半径，然后计算半径的开合状态</h4><p>HOLE 现在还可以从CHARMm .DCD 格式的二进制轨迹文件中读取</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">coord 1grm_single.pdb           ! Co-ordinates in pdb format</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">                                ! n.b. can use ~ in hole</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb hole_out.sph             ! pdb format output of hole sphere centre info</span><br><span class="line">                                ! (for use in sph_process program)</span><br><span class="line">endrad 5.                       ! This is the pore radius that is taken</span><br><span class="line">                                ! as where channel ends. 5.0 Angstroms is good</span><br><span class="line">                                ! for a narrow channel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>1chb.pdb样本</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">! run on cholera toxin</span><br><span class="line">coord 02_1chb.pdb</span><br><span class="line">! n.b. no cpoint cvect specified - use new automated procedure to find</span><br><span class="line">radius ~/hole2/rad/simple.rad</span><br><span class="line">ignore hoh tip wat                              ! ignore all atoms from waters</span><br><span class="line">conn                                            ! use new connolly`</span><br><span class="line">shorto 2                                        ! short output</span><br><span class="line">sphpdb 1chb_conn.sph</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">! 2nd example a more complex hole run on maltoporin</span><br><span class="line">!</span><br><span class="line">! first use standard spherical probe</span><br><span class="line">coord  03_1af6.pdb</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb spherical.sph            ! standard hole spherical probe in this run</span><br><span class="line">ignore FRU GLC MG HOH           ! ignore all water, MG ions and sugars in the structure</span><br><span class="line">cvect 0.0 0.0 1.0               ! channel runs in Z direction</span><br><span class="line">! this structure is a trimer - the automatic HOLE guess procedure</span><br><span class="line">! fails to find a point in one of the three channels.</span><br><span class="line">! so overide with a CPOINT card - in this case use an atom</span><br><span class="line">! from one of the sugars bound in the channel:</span><br><span class="line">!HETATM 6858  C1  GLC B   1     -14.285  47.809  82.707  1.00 52.56           C</span><br><span class="line">cpoint -14.285  47.809  82.707</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用github做增量备份"><a href="#使用github做增量备份" class="headerlink" title="使用github做增量备份"></a>使用github做增量备份</h3><p>设置linux ssh登录其他账户不用密码</p>
-<h2 id="24"><a href="#24" class="headerlink" title="24"></a>24</h2><h3 id="eef任务"><a href="#eef任务" class="headerlink" title="eef任务"></a>eef任务</h3><h4 id="用不同的gpu跑2346的结果"><a href="#用不同的gpu跑2346的结果" class="headerlink" title="用不同的gpu跑2346的结果"></a>用不同的gpu跑2346的结果</h4><p>amberhome在 panda的 &#x2F;home3&#x2F;jwang&#x2F;software</p>
-<h5 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h5><p>libcudart.so.8.0: cannot open shared object file: No such file or directory <a target="_blank" rel="noopener" href="https://github.com/BVLC/caffe/issues/4944">解决方案</a>, 查到用的是cuda-9.2</p>
-<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221224124545.png"></p>
-<p>因此装一个cudatoolkit-8.0</p>
-<h4 id="用vmd检查md的结果，是否配体通过了通道"><a href="#用vmd检查md的结果，是否配体通过了通道" class="headerlink" title="用vmd检查md的结果，是否配体通过了通道"></a>用vmd检查md的结果，是否配体通过了通道</h4><h3 id="GaMD任务"><a href="#GaMD任务" class="headerlink" title="GaMD任务"></a>GaMD任务</h3><h4 id="跑长时间MD"><a href="#跑长时间MD" class="headerlink" title="跑长时间MD"></a>跑长时间MD</h4><h4 id="仿照老师的脚本改写，计算半径随时间的变化"><a href="#仿照老师的脚本改写，计算半径随时间的变化" class="headerlink" title="仿照老师的脚本改写，计算半径随时间的变化"></a>仿照老师的脚本改写，计算半径随时间的变化</h4><p>脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line"># calcualte the offset</span><br><span class="line">@ id=1</span><br><span class="line">rm -f center_offset.out</span><br><span class="line">touch center_offset.out</span><br><span class="line">while ($id &lt;= 4001)</span><br><span class="line">        if( ! -e snapshot/snapshot.$id) then</span><br><span class="line">                break</span><br><span class="line">        endif</span><br><span class="line">        pdbextract -i def_mscl.in -p ./snapshot/snapshot.$id -o TMP1.pdb</span><br><span class="line">        grep &quot;P31&quot; ./snapshot/snapshot.$id &gt; TMP2.pdb</span><br><span class="line"></span><br><span class="line">        set ctr1=`translate -i TMP1.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        set ctr2=`translate -i TMP2.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        echo -- $id --</span><br><span class="line">        echo $id $ctr1 $ctr2 &gt;&gt; center_offset.out</span><br><span class="line">        @ id=$id + 1</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">awk -f awk_center_offset.in center_offset.out &gt; center_offset.sum</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>MscL的孔径可达30-40A</p>
-<h5 id="选择到最低的TM1区域的氨基酸"><a href="#选择到最低的TM1区域的氨基酸" class="headerlink" title="选择到最低的TM1区域的氨基酸"></a>选择到最低的TM1区域的氨基酸</h5><p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003808.png"></p>
-<p>单链的结构</p>
-<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003901.png" alt="https://journals.asm.org/doi/full/10.1128/MMBR.00055-19"></p>
-<p>TM1（残基 15-45）和 TM2（残基 76-100）<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s00249-009-0460-y">1</a></p>
-<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225005330.png"></p>
-<p>看起来下面没问题，上面有问题</p>
-<h5 id="计算五个的几何平均点，并计算半径，"><a href="#计算五个的几何平均点，并计算半径，" class="headerlink" title="计算五个的几何平均点，并计算半径，"></a>计算五个的几何平均点，并计算半径，</h5><h5 id="计算轨迹中的半径变化"><a href="#计算轨迹中的半径变化" class="headerlink" title="计算轨迹中的半径变化"></a>计算轨迹中的半径变化</h5>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/" data-id="clc4z8jvj001nbwv2gk0t6pd6" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/" data-id="clc4zz1yd001kjwv21plahcop" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/12/21/test/" class="article-date">
-  <time class="dt-published" datetime="2022-12-21T05:45:55.476Z" itemprop="datePublished">2022-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/21/test/" data-id="clc4z8ju20000bwv28w2r0z34" data-title="" class="article-share-link">Share</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -247,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" data-id="clc4z8juj0002bwv24xlm5ghn" data-title="Git版本控制" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" data-id="clc4zz1x60001jwv25orfemeo" data-title="Git版本控制" class="article-share-link">Share</a>
       
       
       
@@ -384,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/" data-id="clc4z8juy000obwv20ein6qpd" data-title="" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/" data-id="clc4zz1xp000gjwv2awyz7awt" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -432,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-12-15-amd-01/" data-id="clc4z8jvl001rbwv2dnk325p2" data-title="amd-01" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-12-15-amd-01/" data-id="clc4zz1yg001rjwv2a32p9hcz" data-title="amd-01" class="article-share-link">Share</a>
       
       
       
@@ -498,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/" data-id="clc4z8jvi001lbwv2h6dkhjds" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/" data-id="clc4zz1ye001mjwv27rg053hj" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -551,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/hello-world/" data-id="clc4z8juk0003bwv2h5pn5m4l" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/hello-world/" data-id="clc4zz1x90002jwv29fzigs3t" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -622,8 +634,7 @@
 <p>最后work了\</p>
 <p>不过实际上因为需要pmemd.cuda来做gamd, 不知道为啥wei不行, 因此只能提交给crc做</p>
 <h2 id="amber16安装"><a href="#amber16安装" class="headerlink" title="amber16安装"></a>amber16安装</h2><p>然后再装amber16的时候有问题, 显示mix的语言编译问题,实际上是因为gcc和fortran的版本太高了, 并且要求使用python2. 于是使用anaconda做低版本python2,并且使用conda安装低版本gcc和fortran. </p>
-<h2 id="amber18安装"><a href="#amber18安装" class="headerlink" title="amber18安装"></a>amber18安装</h2><h2 id="schrodinger-配置"><a href="#schrodinger-配置" class="headerlink" title="schrodinger 配置"></a>schrodinger 配置</h2><p><img src="/%E6%9D%82%E8%AE%B01/image-20220908140653738.png" alt="image-20220908140653738"></p>
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/202212122336832.png"/>
+<h2 id="amber18安装"><a href="#amber18安装" class="headerlink" title="amber18安装"></a>amber18安装</h2><h2 id="schrodinger-配置"><a href="#schrodinger-配置" class="headerlink" title="schrodinger 配置"></a>schrodinger 配置</h2><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212261111615.png"/>
 
 <p>报错找不到东西</p>
 <p>于是根据<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48306849/lib-x86-64-linux-gnu-libz-so-1-version-zlib-1-2-9-not-found">介绍</a>，重新指定softlink<code>ln -s /lib/x86_64-linux-gnu/libz.so.1</code></p>
@@ -631,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clc4z8jv0000sbwv2f8zca62f" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clc4zz1xt000pjwv2bhqs5zq1" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -784,7 +795,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/" data-id="clc4z8jvl001tbwv2dmmt4b0m" data-title="Gamd-01" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/" data-id="clc4zz1yh001tjwv273kodxmg" data-title="Gamd-01" class="article-share-link">Share</a>
       
       
       
@@ -816,7 +827,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MD/" rel="tag">MD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chemdraw/" rel="tag">chemdraw</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mae/" rel="tag">mae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%9B%B2/" rel="tag">作曲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MD/" rel="tag">MD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chemdraw/" rel="tag">chemdraw</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mae/" rel="tag">mae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%9B%B2/" rel="tag">作曲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" rel="tag">工作记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
     </div>
   </div>
 
@@ -826,7 +837,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
+      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">工作记录</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
     </div>
   </div>
 
@@ -848,15 +859,15 @@
       <ul>
         
           <li>
+            <a href="/2022/12/26/%E7%A7%91%E7%A0%94-%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95-2022-12-26-GaMD-eef/">GaMD&amp;eef</a>
+          </li>
+        
+          <li>
             <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
             <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
-          </li>
-        
-          <li>
-            <a href="/2022/12/21/test/">(no title)</a>
           </li>
         
           <li>

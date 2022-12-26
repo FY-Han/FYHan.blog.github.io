@@ -13,14 +13,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="WangLab 工作环境配置因为使用rocky系统，需要重新装amber依赖环境。 Rule of ThumbLinux需要经常update system以保证有最新的系统安装包。更新Rocky Linux使用命令 12sudo dnf update -ysudo dnf clean all  检查rocky或者redhat-based 是否有“development tools”包, 没有就安装">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://fyhan.blog.github.io/%E6%9D%82%E8%AE%B01/image-20220908140653738.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/FY-Han/imagebed/main/202212122336832.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212261111615.png">
 <meta property="article:published_time" content="2022-12-12T01:43:07.000Z">
-<meta property="article:modified_time" content="2022-12-13T04:38:42.047Z">
+<meta property="article:modified_time" content="2022-12-26T16:11:52.570Z">
 <meta property="article:author" content="Fengyang Han">
 <meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://fyhan.blog.github.io/%E6%9D%82%E8%AE%B01/image-20220908140653738.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212261111615.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -136,8 +135,7 @@
 <p>最后work了\</p>
 <p>不过实际上因为需要pmemd.cuda来做gamd, 不知道为啥wei不行, 因此只能提交给crc做</p>
 <h2 id="amber16安装"><a href="#amber16安装" class="headerlink" title="amber16安装"></a>amber16安装</h2><p>然后再装amber16的时候有问题, 显示mix的语言编译问题,实际上是因为gcc和fortran的版本太高了, 并且要求使用python2. 于是使用anaconda做低版本python2,并且使用conda安装低版本gcc和fortran. </p>
-<h2 id="amber18安装"><a href="#amber18安装" class="headerlink" title="amber18安装"></a>amber18安装</h2><h2 id="schrodinger-配置"><a href="#schrodinger-配置" class="headerlink" title="schrodinger 配置"></a>schrodinger 配置</h2><p><img src="/%E6%9D%82%E8%AE%B01/image-20220908140653738.png" alt="image-20220908140653738"></p>
-<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/202212122336832.png"/>
+<h2 id="amber18安装"><a href="#amber18安装" class="headerlink" title="amber18安装"></a>amber18安装</h2><h2 id="schrodinger-配置"><a href="#schrodinger-配置" class="headerlink" title="schrodinger 配置"></a>schrodinger 配置</h2><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212261111615.png"/>
 
 <p>报错找不到东西</p>
 <p>于是根据<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48306849/lib-x86-64-linux-gnu-libz-so-1-version-zlib-1-2-9-not-found">介绍</a>，重新指定softlink<code>ln -s /lib/x86_64-linux-gnu/libz.so.1</code></p>
@@ -145,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clc4z8jv0000sbwv2f8zca62f" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clc4zz1xt000pjwv2bhqs5zq1" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -189,7 +187,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MD/" rel="tag">MD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chemdraw/" rel="tag">chemdraw</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mae/" rel="tag">mae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%9B%B2/" rel="tag">作曲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MD/" rel="tag">MD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chemdraw/" rel="tag">chemdraw</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mae/" rel="tag">mae</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E6%9B%B2/" rel="tag">作曲</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" rel="tag">博客建立</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" rel="tag">工作记录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" rel="tag">生活反思</a></li></ul>
     </div>
   </div>
 
@@ -199,7 +197,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
+      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">工作记录</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
     </div>
   </div>
 
@@ -221,15 +219,15 @@
       <ul>
         
           <li>
+            <a href="/2022/12/26/%E7%A7%91%E7%A0%94-%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95-2022-12-26-GaMD-eef/">GaMD&amp;eef</a>
+          </li>
+        
+          <li>
             <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
             <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
-          </li>
-        
-          <li>
-            <a href="/2022/12/21/test/">(no title)</a>
           </li>
         
           <li>
