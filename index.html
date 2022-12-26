@@ -71,6 +71,381 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-周报-2022-4-Quarter-2022-12-26-Weekly-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/" class="article-date">
+  <time class="dt-published" datetime="2022-12-26T15:48:55.000Z" itemprop="datePublished">2022-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="12-25"><a href="#12-25" class="headerlink" title="12.25"></a>12.25</h2><p>科研配色（模仿的Viridis配色）</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212261032947.png"/>
+
+<p>vscode主题，monokai，暗色，因为light attracts bugs</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/" data-id="clc4z8jvk001obwv2cneqgjpl" data-title="Weekly blog" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2022-4-Quarter-2022-12-23-Weekly-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/" class="article-date">
+  <time class="dt-published" datetime="2022-12-23T16:09:34.000Z" itemprop="datePublished">2022-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="23号"><a href="#23号" class="headerlink" title="23号"></a>23号</h2><p>分别是100ns-600ns的整体RMSD</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114216.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231114403.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231113209.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231112439.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231111788.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212231110322.png"/>
+
+<h3 id="使用hole软件看氨基酸效果"><a href="#使用hole软件看氨基酸效果" class="headerlink" title="使用hole软件看氨基酸效果"></a>使用hole软件看氨基酸效果</h3><h4 id="使用hole获取每一帧的半径，然后计算半径的开合状态"><a href="#使用hole获取每一帧的半径，然后计算半径的开合状态" class="headerlink" title="使用hole获取每一帧的半径，然后计算半径的开合状态"></a>使用hole获取每一帧的半径，然后计算半径的开合状态</h4><p>HOLE 现在还可以从CHARMm .DCD 格式的二进制轨迹文件中读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">coord 1grm_single.pdb           ! Co-ordinates in pdb format</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">                                ! n.b. can use ~ in hole</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb hole_out.sph             ! pdb format output of hole sphere centre info</span><br><span class="line">                                ! (for use in sph_process program)</span><br><span class="line">endrad 5.                       ! This is the pore radius that is taken</span><br><span class="line">                                ! as where channel ends. 5.0 Angstroms is good</span><br><span class="line">                                ! for a narrow channel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>1chb.pdb样本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">! run on cholera toxin</span><br><span class="line">coord 02_1chb.pdb</span><br><span class="line">! n.b. no cpoint cvect specified - use new automated procedure to find</span><br><span class="line">radius ~/hole2/rad/simple.rad</span><br><span class="line">ignore hoh tip wat                              ! ignore all atoms from waters</span><br><span class="line">conn                                            ! use new connolly`</span><br><span class="line">shorto 2                                        ! short output</span><br><span class="line">sphpdb 1chb_conn.sph</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">! 2nd example a more complex hole run on maltoporin</span><br><span class="line">!</span><br><span class="line">! first use standard spherical probe</span><br><span class="line">coord  03_1af6.pdb</span><br><span class="line">radius ~/hole2/rad/simple.rad   ! Use simple AMBER vdw radii</span><br><span class="line">!</span><br><span class="line">! now optional cards</span><br><span class="line">sphpdb spherical.sph            ! standard hole spherical probe in this run</span><br><span class="line">ignore FRU GLC MG HOH           ! ignore all water, MG ions and sugars in the structure</span><br><span class="line">cvect 0.0 0.0 1.0               ! channel runs in Z direction</span><br><span class="line">! this structure is a trimer - the automatic HOLE guess procedure</span><br><span class="line">! fails to find a point in one of the three channels.</span><br><span class="line">! so overide with a CPOINT card - in this case use an atom</span><br><span class="line">! from one of the sugars bound in the channel:</span><br><span class="line">!HETATM 6858  C1  GLC B   1     -14.285  47.809  82.707  1.00 52.56           C</span><br><span class="line">cpoint -14.285  47.809  82.707</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用github做增量备份"><a href="#使用github做增量备份" class="headerlink" title="使用github做增量备份"></a>使用github做增量备份</h3><p>设置linux ssh登录其他账户不用密码</p>
+<h2 id="24"><a href="#24" class="headerlink" title="24"></a>24</h2><h3 id="eef任务"><a href="#eef任务" class="headerlink" title="eef任务"></a>eef任务</h3><h4 id="用不同的gpu跑2346的结果"><a href="#用不同的gpu跑2346的结果" class="headerlink" title="用不同的gpu跑2346的结果"></a>用不同的gpu跑2346的结果</h4><p>amberhome在 panda的 &#x2F;home3&#x2F;jwang&#x2F;software</p>
+<h5 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h5><p>libcudart.so.8.0: cannot open shared object file: No such file or directory <a target="_blank" rel="noopener" href="https://github.com/BVLC/caffe/issues/4944">解决方案</a>, 查到用的是cuda-9.2</p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221224124545.png"></p>
+<p>因此装一个cudatoolkit-8.0</p>
+<h4 id="用vmd检查md的结果，是否配体通过了通道"><a href="#用vmd检查md的结果，是否配体通过了通道" class="headerlink" title="用vmd检查md的结果，是否配体通过了通道"></a>用vmd检查md的结果，是否配体通过了通道</h4><h3 id="GaMD任务"><a href="#GaMD任务" class="headerlink" title="GaMD任务"></a>GaMD任务</h3><h4 id="跑长时间MD"><a href="#跑长时间MD" class="headerlink" title="跑长时间MD"></a>跑长时间MD</h4><h4 id="仿照老师的脚本改写，计算半径随时间的变化"><a href="#仿照老师的脚本改写，计算半径随时间的变化" class="headerlink" title="仿照老师的脚本改写，计算半径随时间的变化"></a>仿照老师的脚本改写，计算半径随时间的变化</h4><p>脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line"># calcualte the offset</span><br><span class="line">@ id=1</span><br><span class="line">rm -f center_offset.out</span><br><span class="line">touch center_offset.out</span><br><span class="line">while ($id &lt;= 4001)</span><br><span class="line">        if( ! -e snapshot/snapshot.$id) then</span><br><span class="line">                break</span><br><span class="line">        endif</span><br><span class="line">        pdbextract -i def_mscl.in -p ./snapshot/snapshot.$id -o TMP1.pdb</span><br><span class="line">        grep &quot;P31&quot; ./snapshot/snapshot.$id &gt; TMP2.pdb</span><br><span class="line"></span><br><span class="line">        set ctr1=`translate -i TMP1.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        set ctr2=`translate -i TMP2.pdb -f pdb -c check | grep &quot;center&quot; | sed &#x27;s/,//g&#x27; |sed &#x27;s/The molecule center is at://&#x27;`</span><br><span class="line">        echo -- $id --</span><br><span class="line">        echo $id $ctr1 $ctr2 &gt;&gt; center_offset.out</span><br><span class="line">        @ id=$id + 1</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">awk -f awk_center_offset.in center_offset.out &gt; center_offset.sum</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>MscL的孔径可达30-40A</p>
+<h5 id="选择到最低的TM1区域的氨基酸"><a href="#选择到最低的TM1区域的氨基酸" class="headerlink" title="选择到最低的TM1区域的氨基酸"></a>选择到最低的TM1区域的氨基酸</h5><p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003808.png"></p>
+<p>单链的结构</p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225003901.png" alt="https://journals.asm.org/doi/full/10.1128/MMBR.00055-19"></p>
+<p>TM1（残基 15-45）和 TM2（残基 76-100）<a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s00249-009-0460-y">1</a></p>
+<p><img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/20221225005330.png"></p>
+<p>看起来下面没问题，上面有问题</p>
+<h5 id="计算五个的几何平均点，并计算半径，"><a href="#计算五个的几何平均点，并计算半径，" class="headerlink" title="计算五个的几何平均点，并计算半径，"></a>计算五个的几何平均点，并计算半径，</h5><h5 id="计算轨迹中的半径变化"><a href="#计算轨迹中的半径变化" class="headerlink" title="计算轨迹中的半径变化"></a>计算轨迹中的半径变化</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/" data-id="clc4z8jvj001nbwv2gk0t6pd6" data-title="Weekly blog" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/21/test/" class="article-date">
+  <time class="dt-published" datetime="2022-12-21T05:45:55.476Z" itemprop="datePublished">2022-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/21/test/" data-id="clc4z8ju20000bwv28w2r0z34" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Git版本控制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2022-12-16T00:24:02.000Z" itemprop="datePublished">2022-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">Git版本控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" data-id="clc4z8juj0002bwv24xlm5ghn" data-title="Git版本控制" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-CRC-1-basic" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/" class="article-date">
+  <time class="dt-published" datetime="2022-12-15T18:41:23.308Z" itemprop="datePublished">2022-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="CRC-Tutorial"><a href="#CRC-Tutorial" class="headerlink" title="CRC Tutorial"></a>CRC Tutorial</h1><h2 id="要求交互式的gpu"><a href="#要求交互式的gpu" class="headerlink" title="要求交互式的gpu"></a>要求交互式的gpu</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module load gcc/8.2.0 openmpi/4.0.3</span><br><span class="line">module load amber/22</span><br><span class="line"></span><br><span class="line">crc-interactive.py -g -t 12 -n 1 -c 1 -p gtx1080</span><br><span class="line">crc-interactive.py -g -t 12 -n 1 -c 1 -p a100_nvlink</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><h3 id="hardware-overview"><a href="#hardware-overview" class="headerlink" title="hardware overview"></a>hardware overview</h3><h4 id="SMP-h2p-crc-pitt-edu"><a href="#SMP-h2p-crc-pitt-edu" class="headerlink" title="SMP(h2p.crc.pitt.edu)"></a>SMP(h2p.crc.pitt.edu)</h4><p>Symmetric MultiProcessing for single core simulation用于单核仿真的对称多处理</p>
+<p>100 nodes of 24-core Xeon Gold 6126 2.60 GHz (Skylake)</p>
+<p>24 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)</p>
+<p>2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)</p>
+<p>2 nodes of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)</p>
+<p>1 node of 12-core Xeon E5-2643v4 3.40 GHz (Broadwell)</p>
+<h4 id="MPI-h2p-crc-pitt-edu"><a href="#MPI-h2p-crc-pitt-edu" class="headerlink" title="MPI(h2p.crc.pitt.edu)"></a>MPI(h2p.crc.pitt.edu)</h4><p>need multi core simulation需要多核仿真</p>
+<ul>
+<li><p>32 nodes of 20-core(E5-2660 v3)2.6 GHz (Haswell)</p>
+</li>
+<li><p>88 nodes of 16-core Xeon CPU E5-2670 2.60GHz (Sandy Bridge)</p>
+</li>
+<li><p>23 nodes of 64-core AMD Opteron Processor 6276 2.30 GHz</p>
+</li>
+<li><p>96 nodes of 28-core Xeon E5-2690 2.60 GHz (Broadwell)</p>
+</li>
+</ul>
+<h4 id="GPU-h2p-crc-pitt-edu"><a href="#GPU-h2p-crc-pitt-edu" class="headerlink" title="GPU(h2p.crc.pitt.edu)"></a>GPU(h2p.crc.pitt.edu)</h4><p>7 nodes with 4 NVIDIA Titan X GPGPUs&#x2F;node</p>
+<p>18 nodes with 4 NVIDIA GeForce GTX 1080 GPGPUnode</p>
+<p>1 node with 2 NVIDIA K40 GPGPUs</p>
+<p>6 nodes with 2 Titan GPGPUs&#x2F;node</p>
+<h4 id="HTC-htc-sam-pitt-edu"><a href="#HTC-htc-sam-pitt-edu" class="headerlink" title="HTC(htc.sam.pitt.edu)"></a>HTC(htc.sam.pitt.edu)</h4><p>for biostat</p>
+<ul>
+<li><p>4 nodes of 24-core Xeon Gold 6126 2.60 GHz(Skylake)</p>
+</li>
+<li><p>20 nodes of 16-core Intel Xeon E5-2630v3.2.4GHz (Haswell-EP)</p>
+</li>
+</ul>
+<h3 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h3><h4 id="x2F-ihome-75GB-x2F-user"><a href="#x2F-ihome-75GB-x2F-user" class="headerlink" title="&#x2F;ihome 75GB&#x2F;user"></a>&#x2F;ihome 75GB&#x2F;user</h4><p>backed up, can be recovered</p>
+<h4 id="ix-system-5-Terrabyte-x2F-group"><a href="#ix-system-5-Terrabyte-x2F-group" class="headerlink" title="ix system 5 Terrabyte &#x2F;group"></a>ix system 5 Terrabyte &#x2F;group</h4><h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>each PI have 10,000 core hours&#x2F;service units</p>
+<p><img src="/1.basic/image-20220826160826726.png" alt="image-20220826160826726"></p>
+<h3 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h3><h4 id="用xshell"><a href="#用xshell" class="headerlink" title="用xshell"></a>用xshell</h4><h4 id="使用ssh命令-参考"><a href="#使用ssh命令-参考" class="headerlink" title="使用ssh命令(参考)"></a>使用ssh命令(<a target="_blank" rel="noopener" href="https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/">参考</a>)</h4><h5 id="在User的-ssh下建立config文件-添加如下内容"><a href="#在User的-ssh下建立config文件-添加如下内容" class="headerlink" title="在User的.ssh下建立config文件, 添加如下内容"></a>在User的.ssh下建立config文件, 添加如下内容</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host h2p //alias</span><br><span class="line">HostName login1.crc.pitt.edu //domain</span><br><span class="line">FowardX11 <span class="built_in">yes</span></span><br><span class="line">User feh34 //username</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_自定义名字</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="建立密钥，并将公钥保存到服务器，省的每次都输入密码"><a href="#建立密钥，并将公钥保存到服务器，省的每次都输入密码" class="headerlink" title="建立密钥，并将公钥保存到服务器，省的每次都输入密码"></a>建立密钥，并将公钥保存到服务器，省的每次都输入密码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line">id_rsa_h2p</span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa_h2p.pub h2p</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp crc:文件路径 <span class="comment">//取到本地</span></span><br><span class="line"></span><br><span class="line">scp 文件路径 crc: ~/. <span class="comment">//储存路径 文件传输加参数-r</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Globus中间传输"><a href="#Globus中间传输" class="headerlink" title="Globus中间传输"></a>Globus中间传输</h5><p>login 传文件, 一个entpoint:pitt#dtn, 另一个 </p>
+<h3 id="Software-available"><a href="#Software-available" class="headerlink" title="Software available"></a>Software available</h3><h4 id="Lmod"><a href="#Lmod" class="headerlink" title="Lmod"></a>Lmod</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module avail <span class="comment">//what&#x27;s available in brief list</span></span><br><span class="line">module spider <span class="comment">//detailed availablilty of module and can search when name provided</span></span><br><span class="line">module load &lt;name&gt; <span class="comment">//load module(s)</span></span><br><span class="line">module purge <span class="comment">//unload all module</span></span><br><span class="line">module <span class="built_in">list</span> <span class="comment">//list loaded modules</span></span><br></pre></td></tr></table></figure>
+
+<p>免去了compile的烦恼</p>
+<h3 id="Slurm-workload-manager"><a href="#Slurm-workload-manager" class="headerlink" title="Slurm workload manager"></a>Slurm workload manager</h3><table>
+<thead>
+<tr>
+<th align="left">Command</th>
+<th>Slurm</th>
+<th>PBS&#x2F;Torque</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Job Submission</td>
+<td>sbatch job_script</td>
+<td>qsub job_script</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>sbatch -partition&#x3D;queue -nodes&#x3D;1 -cpus-per-node&#x3D;16 -mem&#x3D;64g job script</td>
+<td>qsub -q queue -l nodes&#x3D;1:ppn&#x3D;16 -l mem&#x3D;64g job script</td>
+</tr>
+<tr>
+<td align="left">Node count</td>
+<td>-nodes&#x3D;1</td>
+<td>-l nodes&#x3D;count</td>
+</tr>
+<tr>
+<td align="left">Cores per node</td>
+<td>-cpu-per-node&#x3D;count</td>
+<td>-l ppn&#x3D;count</td>
+</tr>
+<tr>
+<td align="left">Memory size</td>
+<td>-mem&#x3D;16g</td>
+<td>-l mem&#x3D;16384</td>
+</tr>
+<tr>
+<td align="left">Wall clock limit</td>
+<td>-t days-hh:mm:ss</td>
+<td>-l walltime&#x3D;hh:mm:ss</td>
+</tr>
+<tr>
+<td align="left">Job name</td>
+<td>-job-name&#x3D;name</td>
+<td>-N name</td>
+</tr>
+</tbody></table>
+<h4 id="multifactor-priority"><a href="#multifactor-priority" class="headerlink" title="multifactor priority"></a>multifactor priority</h4><p>AGE, fairshare, jobsize(larger are prioritized), partition(unused), QoS(Quality of Service, short max 1 day -2, normal max 3 days in queue -1, long max 6 days in queue -0), generic esorces(more gpus are prioritized)</p>
+<h4 id="partitions-and-hardware-sinfo"><a href="#partitions-and-hardware-sinfo" class="headerlink" title="partitions and hardware(sinfo)"></a>partitions and hardware(sinfo)</h4><ul>
+<li>Cluster:gpu<br>PARTITION:gtx1080(default)<br>PARTITION:titanx<br>PARTITION:k40<br>PARTITION:titan</li>
+<li>CLUSTER:mpi<br>PARTITION:opa(default)<br>PARTITION:ib<br>PARTITION:legacy<br>PARTITION:compbio(limited to Computational Biology)</li>
+<li>CLUSTER:smp<br>PARTITION:smp(defaul<br>PARTITION:high-mem</li>
+</ul>
+<h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crc-sinfo.py //查看各node使用情况</span><br><span class="line">crc-squeue.py //查看自己的计算任务提交情况</span><br><span class="line">crc-usage.py //查看组里资源使用情况,to check out who is the biggest user so as to comete haha</span><br></pre></td></tr></table></figure>
+
+<p>mix alloc (不可用 ) drain（under maintance or frozen) idle down</p>
+<h5 id="查看详细信息"><a href="#查看详细信息" class="headerlink" title="查看详细信息"></a>查看详细信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">squeue //找到序列号</span><br><span class="line">squeue -M ,pi</span><br><span class="line">scontrol -M clustername(smp, gpu,htc:q</span><br><span class="line">,mpi) show job job_number</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>scontrol</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PartitionName=gtx1080</span><br><span class="line">   AllowGroups=ALL AllowAccounts=ALL AllowQos=short,normal,long,gpu-gtx1080-s,gpu-gtx1080-n,gpu-gtx1080-l,gpu-gtx1080-s-invest,gpu-gtx1080-n-invest,gpu-gtx1080-l-invest</span><br><span class="line">   AllocNodes=ALL Default=NO QoS=N/A</span><br><span class="line">   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO</span><br><span class="line">   MaxNodes=4 MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED</span><br><span class="line">   Nodes=gpu-n[17-25]</span><br><span class="line">   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO</span><br><span class="line">   OverTimeLimit=NONE PreemptMode=OFF</span><br><span class="line">   State=UP TotalCPUs=72 TotalNodes=9 SelectTypeParameters=NONE</span><br><span class="line">   JobDefaults=(null)</span><br><span class="line">   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED</span><br><span class="line">   TRES=cpu=72,mem=855000M,node=9,billing=36,gres/gpu=36</span><br><span class="line">   TRESBillingWeights=CPU=0.0,Mem=0.0G,GRES/gpu=1.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="CRC-wrapper"><a href="#CRC-wrapper" class="headerlink" title="CRC-wrapper"></a>CRC-wrapper</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">crc-interactive.py	//Open an interactive session 说明flag,最长在线等待12h,</span><br><span class="line">crc-sinfo.py	//Show available resources on H2P</span><br><span class="line">crc-sus.py	//Show available SUs for a particular account</span><br><span class="line">crc-scancel.py	//Cancel a particular submitted job</span><br><span class="line">crc-squeue.py	//Show all of your submitted jobs</span><br><span class="line">crc-usage.py	//Your account SUs usage on H2P</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<h4 id="对于不同的软件的更多的命令帮助"><a href="#对于不同的软件的更多的命令帮助" class="headerlink" title="对于不同的软件的更多的命令帮助"></a>对于不同的软件的更多的命令帮助</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[feh34@login1 ~]$ cd /ihome/crc/how_to_run/</span><br><span class="line">[feh34@login1 how_to_run]$ ls</span><br><span class="line">abaqus            febio        lumerical        pbdr</span><br><span class="line">abm               fluent       lumerical.test   psi4</span><br><span class="line">amber             gamess       lumerical.test2  qchem</span><br><span class="line">ansys             gaussian     matlab           quantumespresso</span><br><span class="line">bioeng2370_2021f  gpaw         molecularGSM     r</span><br><span class="line">blender           gromacs      molpro           sas</span><br><span class="line">comsol            hello-world  mopac            stata</span><br><span class="line">cp2k              hfss         mosek            tinker</span><br><span class="line">damask            ipc          namd             turbomole</span><br><span class="line">DeepLabCut-1.02   julia        nektar++         vasp</span><br><span class="line">deformetrica      lammps       openfoam         westpa</span><br><span class="line">fdtd              lightgbm     orca             xilinx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不知为何, 取消任务要使用crc-scancel.py 而不能使用scancel, 虽然tab也能补全</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/" data-id="clc4z8juy000obwv20ein6qpd" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-AMBER-2022-12-15-amd-01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/15/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-12-15-amd-01/" class="article-date">
+  <time class="dt-published" datetime="2022-12-15T18:33:00.000Z" itemprop="datePublished">2022-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/15/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-12-15-amd-01/">amd-01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>因为gamd的图很怪，所以自己先跑一个amd试试，因为注意到reweighting的方式是一样的，都是用二面角啥啥的。</p>
+<p>此外，run.sh的2D下面两个都有和1D一样的报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">  File &quot;/data1/feh34/Documents/3.MD/3.GaMD/1.mscl/2.GaMD_with_lipid/2.result/1.GaMD_mscl/PyReweighting-1D.py&quot;, line 147, in main</span><br><span class="line">    hist, newedgesX = np.histogram(data, bins = binsX, weights=weights)</span><br><span class="line">  File &quot;&lt;__array_function__ internals&gt;&quot;, line 180, in histogram</span><br><span class="line">  File &quot;/opt/anaconda3/envs/py3.9/lib/python3.9/site-packages/numpy/lib/histograms.py&quot;, line 791, in histogram</span><br><span class="line">    a, weights = _ravel_and_check_weights(a, weights)</span><br><span class="line">  File &quot;/opt/anaconda3/envs/py3.9/lib/python3.9/site-packages/numpy/lib/histograms.py&quot;, line 297, in _ravel_and_check_weights</span><br><span class="line">    raise ValueError(</span><br><span class="line">ValueError: weights should have the same shape as a.</span><br></pre></td></tr></table></figure>
+
+<p>首先处理小分子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; leaprc.protein.ff14SB</span><br><span class="line">&gt; loadOff solvents.lib</span><br><span class="line">&gt; loadOff tip4pbox.off</span><br><span class="line">&gt; loadOff tip4pewbox.off</span><br><span class="line">&gt; loadamberparams frcmod.tip4pew #loadOff不行</span><br></pre></td></tr></table></figure>
+
+<p>提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Adds counterions in a shell around _unit_ using a Coulombic potential on a grid. If _#ion1_ is 0, the _unit_ is neutralized (_ion1_ must be opposite in charge to _unit_, and _ion2_ cannot be specified). Otherwise,the specified numbers of _ion1_ [_ion2_] are added [in alternating order]. If solvent is present, it is ignored in the charge and steric calculations, and if an ion has a steric conflict with a solvent molecule, the ion is moved to the center of said molecule, and the latter is deleted. (To avoid this behavior, either solvate _after_ addIons, or use addIons2.) Ions must be monoatomic. Note that the one-at-a-time procedure is not</span><br><span class="line">guaranteed to globally minimize the electrostatic energy. When neutralizing</span><br><span class="line">regular-backbone nucleic acids, the first cations will generally be added</span><br><span class="line">between phosphates, leaving the final two ions to be placed somewhere around</span><br><span class="line">the middle of the molecule.</span><br><span class="line">The default grid resolution is 1 Angstrom, extending from an inner radius</span><br><span class="line">of (max ion size + max solute atom size) to an outer radius 4 Angstroms</span><br><span class="line">beyond. A distance-dependent dielectric is used for speed.</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/12/15/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-12-15-amd-01/" data-id="clc4z8jvl001rbwv2dnk325p2" data-title="amd-01" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-周报-2022-4-Quarter-2022-12-12-Weekly-blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/" class="article-date">
@@ -104,11 +479,26 @@
 
 <p>localhost:4000的显示没问题，但是hexo s到github上主题不显示，tag不更新。怀疑与此前的配置有关。</p>
 <p>Dell还没回来</p>
+<h2 id="12-21"><a href="#12-21" class="headerlink" title="12.21"></a>12.21</h2><p>实际上一步一步记录过程就有了</p>
+<p>以为不能生成视频，卡了我很久，实际上就是选择（pdb，crd）选择（parm7，coordinate，perodic coordinate）选择（coordinate，netcdf）几种之间。</p>
+<p>不能重新生成视频</p>
+<p>parm7读入prmtop文件没有蛋白质盒子显示，frame&#x3D;0，但有atoms</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212202325117.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212202326161.png"/>
+
+<p>继续操作轨迹文件默认为二进制</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212202333016.png"/>
+
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212202333481.png"/>
+
+<p>说明不能读，使用netcdf格式读</p>
+<img src="https://raw.githubusercontent.com/FY-Han/imagebed/main/typora/202212202334061.png"/>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/" data-id="clblr260o001dzkv27s38bhz4" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/" data-id="clc4z8jvi001lbwv2h6dkhjds" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -161,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/hello-world/" data-id="clblr25zh0001zkv2f7hkefa4" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/hello-world/" data-id="clc4z8juk0003bwv2h5pn5m4l" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -241,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clblr25zz000kzkv29d4gcx5g" data-title="Weekly blog" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/" data-id="clc4z8jv0000sbwv2f8zca62f" data-title="Weekly blog" class="article-share-link">Share</a>
       
       
       
@@ -371,6 +761,16 @@
 
 <p>因为crd文件太大了，因此中途转移到、bgfs的2.modified_gamd&#x2F;，随后使用cpptraj的trajin合并.反正也不是很重要</p>
 <p>3里忘记设dt&#x3D;0.002和ntf&#x3D;2了，希望影响不大</p>
+<h2 id="结果处理"><a href="#结果处理" class="headerlink" title="结果处理"></a>结果处理</h2><p>生成Psi.dat Phi.dat文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># ./calc_dih.sh</span><br><span class="line">echo &quot;trajin md-1.nc</span><br><span class="line">dihedral Phi :1@C :2@N :2@CA :2@C out Phi</span><br><span class="line">dihedral Psi :2@N :2@CA :2@C :3@N out Psi&quot; &gt; dih-dia.ptraj</span><br><span class="line"></span><br><span class="line">cpptraj dip_vac.top &lt; dih-dia.ptraj</span><br><span class="line">awk &#x27;&#123;print $2&#125;&#x27; Phi | tail -n 20 &gt; Phi.dat</span><br><span class="line">awk &#x27;&#123;print $2&#125;&#x27; Psi | tail -n 20 &gt; Psi.dat</span><br><span class="line"></span><br><span class="line"># v 指定分隔符，FS是指定输入分隔符，OFS指定输出分隔符。</span><br><span class="line">#awk -v FS=&quot;,&quot; -v OFS=&quot;;&quot; &#x27;&#123;print $1,$3&#125;&#x27; test.txt</span><br><span class="line">paste Phi Psi &gt; Phi_Psi.dat</span><br><span class="line">#打开文件删除第一行 如果不使用逗号就不分隔</span><br><span class="line">awk &#x27;&#123;print $2,$4&#125;&#x27; Phi_Psi.dat &gt; Phi_Psi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>“pmf-2D-Phi_Psi-reweight-CE2.png” normally gives the most accurate result</p>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><p>请教何老师，认为需要知道如何解释RC1和RC2，因为可能受限于二面角，采样有限。</p>
+<p>另外应该看vmd结果做个小视频理解（王老师怎么看的？）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cpptraj</span><br><span class="line">parm prmtop</span><br><span class="line">trajin 4.gamd.production.crd # 可以使用1 last 10 调整初始和结束的帧数以及步长</span><br><span class="line">reference 1.mscl.pdb [0]</span><br><span class="line">reference 4.gamd.production.crd first [1]</span><br><span class="line">reference 4.gamd.production.crd last [last]</span><br><span class="line">rms Ref :2-680&amp;!@H= ref [0] out rmsd_ref.agr</span><br><span class="line">rms Ref_1 :2-680&amp;!@H= ref [1] out rmsd_1.agr</span><br><span class="line">rms Ref_last :2-680&amp;!@H= ref [last] out rmsd_last.agr</span><br><span class="line">run</span><br><span class="line">xmgrace rmsd_ref.agr</span><br><span class="line">xmgrace rmsd_1.agr</span><br><span class="line">xmgrace rmsd_last.agr</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="小脚本"><a href="#小脚本" class="headerlink" title="小脚本"></a>小脚本</h1><p>想获取最后一个输出的序号</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- 1 feh34 jwang 255 Nov 23 11:49 tleap.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 9.2M Nov 23 11:49 complex.pdb</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 31M Nov 23 11:49 prmtop</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 4.9M Nov 23 11:49 prmcrd</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 113 Nov 23 11:58 1.gamd.min.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 384 Nov 23 11:59 1.gamd.min.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 3.2M Nov 23 11:59 1.gamd.min.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 59K Nov 23 11:59 1.gamd.min.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 378 Nov 23 12:50 2.gamd.heat.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 556 Nov 23 12:50 2.gamd.heat.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 6.4M Nov 23 12:50 2.gamd.heat.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 77K Nov 23 12:50 2.gamd.heat.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 159M Nov 23 12:50 2.gamd.heat.crd</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 260 Nov 23 13:09 3.gamd.equilibration.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 65 Nov 23 13:54 look.sh</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 1.1K Nov 23 14:04 3.gamd.equilibration.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 6.4M Nov 23 14:04 3.gamd.equilibration.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 105 Nov 23 14:04 gamd-restart.dat</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 39M Nov 23 14:04 3.gamd.equilibration.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 20K Nov 23 14:11 PyReweighting-1D.py</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 19K Nov 23 14:11 PyReweighting-2D.py</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 1.1K Nov 23 15:17 4.gamd.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 6.4M Nov 23 15:18 4.gamd.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 49M Nov 23 15:18 4.gamd.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 216 Nov 23 15:23 4.gamd.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 216 Nov 23 15:24 5.gamd.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 809 Nov 23 15:31 5.v1.after4.longgamd.slurm</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 1.1K Nov 23 16:33 5.gamd.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 6.4M Nov 23 16:34 5.gamd.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 49M Nov 23 16:34 5.gamd.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 216 Nov 23 16:45 6.gamd.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 1.1K Nov 23 17:53 6.gamd.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 6.4M Nov 23 17:54 6.gamd.rst</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 49M Nov 23 17:54 6.gamd.out</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 218 Nov 23 19:22 7.gamd_double.in</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 53 Nov 23 19:24 gamd.log</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 148 Nov 23 19:27 run</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 1.1K Nov 23 19:41 7.gamd_double.mdinfo</span><br><span class="line">-rw-r--r-- 1 feh34 jwang 13M Nov 23 19:42 7.gamd_double.out</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -384,365 +784,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/" data-id="clblr260s001hzkv2daui8ng0" data-title="Gamd-01" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/" data-id="clc4z8jvl001tbwv2dmmt4b0m" data-title="Gamd-01" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMBER/" rel="tag">AMBER</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-3-Quarter-2022-10-3-至2022-10-10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/" class="article-date">
-  <time class="dt-published" datetime="2022-10-03T14:55:42.000Z" itemprop="datePublished">2022-10-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="10-3"><a href="#10-3" class="headerlink" title="10.3"></a>10.3</h2><p>一个很好的jupyter 插件介绍<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Olgbl8s_ty6ADsJx_SwOaQ%EF%BC%8Ctable">https://mp.weixin.qq.com/s/Olgbl8s_ty6ADsJx_SwOaQ，table</a> of contents, autopep8, variable inspector, executetime, 移仓代码输入</p>
-<p><code>paste</code> 命令 直接 合并两个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste file1 file2 &gt; combine_file</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/" data-id="clblr260k0019zkv20sxl5gx2" data-title="至2022.10.10" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-3-Quarter-2022-11-24-至2022-11-27" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/" class="article-date">
-  <time class="dt-published" datetime="2022-10-03T14:55:42.000Z" itemprop="datePublished">2022-10-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/">至2022.10.10</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="11-24"><a href="#11-24" class="headerlink" title="11.24"></a>11.24</h1><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>好久没写周记了，11月初电脑主板motherboard烧了，找人把数据恢复了，电脑留在店里，因为要ownership transfer。开始还不理解啥意思，怎么让我转移ownership。</p>
-<p>数据恢复花了我200刀，老外是真挣钱啊</p>
-<h2 id="工作记录"><a href="#工作记录" class="headerlink" title="工作记录"></a>工作记录</h2><p>今天终于打开了md.in文件的介绍，因为实在是找不到解决方法，因此一项一项看参数。现在英语阅读水平也有了一定的提升，看amber manual里参数设置也没有那么痛苦了hh</p>
-<p>可以打开所有的计算的out文件看标准化参数设置。</p>
-<p>之前有一点纳闷为什么我没有out文件输出，现在看来manual才知道要设置ntwr参数，不设置就是默认的计算完了才输出。而手册里提醒：</p>
-<p><code>Every ntwr steps during dynamics, the “restrt” file will be written, ensuring that recovery from a crash will not be so painful.</code>前两天就是跑了一晚的gamd突然寄了，没结果，也不知道为啥，就只好被迫重跑很折磨</p>
-<p><code>This option is useful if for example one wants to run free energy perturbations from multiple starting points or save a series of restrt files for minimization. Default = nstlim</code></p>
-<p>in文件使用的是fortran编译器</p>
-<h2 id="MD-in-amber"><a href="#MD-in-amber" class="headerlink" title="MD in amber"></a>MD in amber</h2><h3 id="in-文件参数"><a href="#in-文件参数" class="headerlink" title="in 文件参数"></a>in 文件参数</h3><p>第一行是title</p>
-<p>&amp; 后7个字符为comment cards 如 &amp;cntrl，并以 ”&#x2F;“ 结束</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">   2.  CONTROL  DATA  FOR  THE  RUN</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">default_name</span><br><span class="line"></span><br><span class="line">General flags:</span><br><span class="line">     imin    =       0, </span><br><span class="line">     0：无min条件下跑MD</span><br><span class="line">     1：min</span><br><span class="line">     5：read in trajectory using min算法进行analysis</span><br><span class="line">     </span><br><span class="line">     nmropt  =       0</span><br><span class="line">     默认0</span><br><span class="line">     1：使用NMR约束（与NMR结构有关）</span><br><span class="line">     2：读取更多信息</span><br><span class="line">Nature and format of input:</span><br><span class="line">     ntx     =       1</span><br><span class="line">     1： 默认，读取坐标，不读取速度。自建结构或者能量最小化后进行MD使用这个参数，</span><br><span class="line">     5：读取坐标和速度，当有rst文件续跑的时候使用这个，但速度信息在irest=1才会使用。ntb&gt;0会读盒子信息</span><br><span class="line">     </span><br><span class="line">     irest   =       0, </span><br><span class="line">     0：默认，跑新MD，忽略输入文件的速度，除非给了t参数，否则timestep归零</span><br><span class="line">     1：续跑MD，ntx必须为5，</span><br><span class="line">     </span><br><span class="line">     ntrx    =       1</span><br><span class="line"></span><br><span class="line">Nature and format of output:</span><br><span class="line">     ntxo    =       2, ntpr    =      50, ntrx    =       1, ntwr    =26000000</span><br><span class="line">     </span><br><span class="line">     ntxo </span><br><span class="line">     	写入rst文件中的格式</span><br><span class="line">     	=1 ascii 可读文件</span><br><span class="line">     	=2 （default）二进制NetCDF文件</span><br><span class="line">     	</span><br><span class="line">     ntpr 写入mdinfo的频率。默认50</span><br><span class="line">     	最好让结果几百M，不要几个G，太大了没有意义，变化不明显。GaMD 50ns ntpr，566G，dt=0.001ps</span><br><span class="line">     </span><br><span class="line">      ntwr !重要</span><br><span class="line">     	写rst文件的频率，默认为nstlim</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0</span><br><span class="line">     </span><br><span class="line">     ntwx </span><br><span class="line">     	md中写入轨迹mdcrd文件的频率，默认不输出</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">    iwrap</span><br><span class="line">    	把坐标轨迹放到primary box运算，尤其对于长时间模拟建议使用=1，否则会跑出去。如果等于0可能需要进一步	使用cpptraj进行矫正</span><br><span class="line">    	=1 使用</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">     ioutfm  =       1, ntwprt  =       0, idecomp =       0, rbornstat=      0</span><br><span class="line">     </span><br><span class="line">     ioutfm</span><br><span class="line">     	轨迹文件格式</span><br><span class="line">     	=0 ascii</span><br><span class="line">     	=1 二进制 default</span><br><span class="line">     	</span><br><span class="line">     ntwprt</span><br><span class="line">     	轨迹文件（mdcrd 和 mdvel）中包含的原子数。该标志可用于减少这些文件的大小</span><br><span class="line">     	=0 所有</span><br><span class="line">     	&gt;0 包括原子 1 到 ntwprt</span><br><span class="line"></span><br><span class="line">Potential function:</span><br><span class="line">	ntf     =       1, ntb     =       1, igb     =       0, nsnb    =      25</span><br><span class="line">	ipol    =       0, gbsa    =       0, iesp    =       0</span><br><span class="line">	dielc   =   1.00000, cut     =   8.00000, intdiel =   1.00000</span><br><span class="line"></span><br><span class="line">	ntf</span><br><span class="line">		force evaluation，如果使用了shake，则不必需开启</span><br><span class="line">		=1 default</span><br><span class="line">		=2 和ntc=2联用</span><br><span class="line">	ntb</span><br><span class="line">		周期性边界是否在系统上施加非键相互作用的计算，无需设置，由igb和ntp决定，二者默认为0.ntb默认为1</span><br><span class="line">		使用constant volume。如果非0，必须使用周期性盒子</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">Frozen or restrained atoms:</span><br><span class="line">     ibelly  =       0, ntr     =       0</span><br><span class="line"></span><br><span class="line">Molecular dynamics:</span><br><span class="line">     nstlim  =  26000000, nscm    =      1000, nrespa  =         1</span><br><span class="line">          t       =   0.00000, dt      =   0.00100, vlimit  =  -1.00000</span><br><span class="line">          </span><br><span class="line">          dt太小了，需要指定为0.002</span><br><span class="line">          </span><br><span class="line">Langevin dynamics temperature regulation:</span><br><span class="line">     ig      =  413783</span><br><span class="line">     temp0   = 300.00000, tempi   = 300.00000, gamma_ln=   0.00000</span><br><span class="line"></span><br><span class="line">	ntt</span><br><span class="line">		=3开启langevin 温度调节</span><br><span class="line">	ig</span><br><span class="line">		= -1表明体系恒温</span><br><span class="line"></span><br><span class="line">SHAKE:</span><br><span class="line">	ntc     =       2, jfastw  =       0</span><br><span class="line">	tol     =   0.00000</span><br><span class="line">	</span><br><span class="line">	ntc</span><br><span class="line">	要使用 TIP3P，请设置 NTF = NTC = 2</span><br><span class="line">		=2开启shake进行键长约束，和ntf=2联用</span><br><span class="line">	tol</span><br><span class="line">	抖动坐标复位的相对几何公差。推荐最大值：&lt;0.00005埃 默认值 0.00001</span><br><span class="line">		=0.00001 default</span><br><span class="line"></span><br><span class="line">| Intermolecular bonds treatment:</span><br><span class="line">|     no_intermolecular_bonds =       1</span><br><span class="line"></span><br><span class="line">| Energy averages sample interval:</span><br><span class="line">|     ene_avg_sampling =       1</span><br><span class="line"></span><br><span class="line">Ewald parameters:</span><br><span class="line">     verbose =       0, ew_type =       0, nbflag  =       1, use_pme =       1</span><br><span class="line">     vdwmeth =       1, eedmeth =       1, netfrc  =       1</span><br><span class="line">     Box X =  129.245   Box Y =  120.487   Box Z =  147.365</span><br><span class="line">     Alpha =   90.000   Beta  =   90.000   Gamma =   90.000</span><br><span class="line">     NFFT1 =  128       NFFT2 =  128       NFFT3 =  160</span><br><span class="line">     Cutoff=    8.000   Tol   =0.100E-04</span><br><span class="line">     Ewald Coefficient =  0.34864</span><br><span class="line">     Interpolation order =    4</span><br><span class="line">     </span><br><span class="line"> | Gaussian Accelerated Molecular Dynamics (GaMD)</span><br><span class="line">| GaMD input parameters:</span><br><span class="line">| igamd,iEP,iED       =          3         1         1</span><br><span class="line">| ntcmd,nteb,ntave    =    1000000   1000000     50000</span><br><span class="line">| ntcmdprep,ntebprep  =          0         0</span><br><span class="line">| sigma0P,sigma0D     =         6.0000        6.0000</span><br><span class="line"></span><br><span class="line">ntcmd和nteb用于gamd正式计算时的加速度参数评估，尤其是E和k0，netlim=ntcmd+nteb</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="npt与nvt"><a href="#npt与nvt" class="headerlink" title="npt与nvt"></a>npt与nvt</h3><p>通常建议在运行 md 模拟之前平衡系统温度和密度。有几种不同的方法可以做到这一点，但最常用的方法是使用 Berendsen 恒温器和恒压器。要在 Amber 中设置参数，您需要指定以下内容：<br>-nvt：此标志表示您要使用 Berendsen 恒温器。<br>-ntb：此标志表示您要使用 Berendsen 恒压器。<br>-ntt：这是系统的目标温度。<br>-nst：这是您要平衡系统所需的步骤数。<br>-taup：这是 Berendsen 恒温器的时间常数。<br>-tauv：这是 Berendsen 恒压器的时间常数。<br>有关如何设置这些参数的更多信息，请参阅 Amber 手册。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/" data-id="clblr260m001bzkv26mnd0f4r" data-title="至2022.10.10" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-3-Quarter-2022-7-6-至2022-07-13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/" class="article-date">
-  <time class="dt-published" datetime="2022-07-06T18:09:35.000Z" itemprop="datePublished">2022-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/">至2022.07.13</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="07-06"><a href="#07-06" class="headerlink" title="07-06"></a>07-06</h1><p>今天和娄欣怡来了一个古董店, 试了一下它的咖啡豆 偏酸的, 肯尼亚豆 莓莓果风味.</p>
-<p>用的相机:EOS MK500, 感觉这种相机能对焦, 而且设置了白平衡(即什么是白色)</p>
-<p><img src="/2022.7.6-%E8%87%B32022-07-13/image-20220706151249178.png" alt="image-20220706151249178"></p>
-<p>​	色调的不同分布影响色温,</p>
-<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><h3 id="光圈F"><a href="#光圈F" class="headerlink" title="光圈F"></a>光圈F</h3><img src="2022.7.6-至2022-07-13/url=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0505%2Faaab4429j00q9uar3000lc000hs008hm.jpeg" alt="img" style="zoom:50%;" /> 
-
-<p>影响照片景深, 光圈越大背景越虚</p>
-<p>大小影响暗亮</p>
-<h3 id="快门速度T"><a href="#快门速度T" class="headerlink" title="快门速度T"></a>快门速度T</h3><p>控制曝光时间, 慢快门等于延时摄影, 看不清快的东西 </p>
-<h3 id="感光度ISO"><a href="#感光度ISO" class="headerlink" title="感光度ISO"></a>感光度ISO</h3><p>ISO等于设置本底背景对光的敏感程度, 大ISO, 对光敏感, 可以拍出暗处, 但是有更大噪点和颗粒</p>
-<h3 id="曝光标尺"><a href="#曝光标尺" class="headerlink" title="曝光标尺"></a>曝光标尺</h3><p>曝光补偿, 加号就曝光多一些,亮一点,过曝; 减号少一些, 暗一点, 欠曝</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/" data-id="clblr260q001fzkv2cwjr129h" data-title="至2022.07.13" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-2-Quarter-2022-4-26-至2022-05-03" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/" class="article-date">
-  <time class="dt-published" datetime="2022-04-26T13:49:11.000Z" itemprop="datePublished">2022-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/">至2022.05.03</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h1><p>恢复干活! </p>
-<p>好文章: <a target="_blank" rel="noopener" href="https://www.guokr.com/article/461217/">打游戏能打一整天，看书半小时就累，做“正经事”真的不快乐吗？| 果壳 科技有意思 (guokr.com)</a></p>
-<hr>
-<p><strong>坚持写记录:</strong> <strong>每天娱乐时间2h, 如果坚持写记录, 可以2.5h</strong></p>
-<p><strong>&#x3D;&#x3D;毕设 tica&#x3D;&#x3D;</strong></p>
-<p>&#x3D;&#x3D;<strong>junmei的材料还没看, 说好4月开始干活的呢?</strong>&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;王老师 说好写英文材料呢?&#x3D;&#x3D;</p>
-<p><strong>&#x3D;&#x3D;自己的学习&#x3D;&#x3D;</strong></p>
-<hr>
-<h2 id="今日任务"><a href="#今日任务" class="headerlink" title="今日任务"></a>今日任务</h2><p>KjarmaMedic的疫情居家学习时刻表<br>7.30    起床——闹钟×1<br>          洗脸<br>          煮咖啡   做早饭（利用了煮咖啡时间隙做早饭，替代刷油管）<br>8.30    浏览油管刷手机——休闲时光×1<br>          虐狗，吸猫， 放松，变装<br>9.00    开始学习（暂停其它所有工作）<br>           4小时的学习（泡咖啡，啃水果，吃零食，上厕所）——效率最高的状态<br>1.00    做午餐<br>2.00    边看电视剧边吃饭——休闲时光×2<br>2.30    处理生活琐事——闹钟×2<br>         （给父母打电话，虐狗×2）<br>3.00    开始学习（暂停其它所有工作）<br>           下午第二轮四小时学习（上午偏向于学习 ，下偏向于复习巩固）——状态没那么好，比较困顿<br>           灌咖啡<br>           中间抽出15分钟在外面眺望放松<br>7.00     做晚饭<br>            吃饭    收拾<br>8.30     给自己打气（再学一小时就行啦）<br>           学习轻松容易的知识（动画视频网课）<br>9.30     做视频   打电动   处理琐事<br>            三小时娱乐时间——休闲时光×3<br>12.00    洗漱<br>12.30    睡觉（7小时的睡眠）</p>
-<p>一下坐很久 会让我觉得是难事</p>
-<p>应该给自己一个一个简单任务</p>
-<h3 id="休息时"><a href="#休息时" class="headerlink" title="休息时"></a><strong>休息时</strong></h3><ul>
-<li><input checked="" disabled="" type="checkbox"> <strong>&#x3D;&#x3D;给家长打电话&#x3D;&#x3D;</strong></li>
-<li><input checked="" disabled="" type="checkbox"> <strong>&#x3D;&#x3D;打扫屋子&#x3D;&#x3D;</strong></li>
-</ul>
-<h2 id="体重管理"><a href="#体重管理" class="headerlink" title="体重管理"></a>体重管理</h2><table>
-<thead>
-<tr>
-<th>目标体重</th>
-<th>今日体重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>:nine: :four:</td>
-<td>:nine::eight:.:one:</td>
-</tr>
-</tbody></table>
-<p>昨天的运动有非常好的效果</p>
-<hr>
-<h3 id="今日运动"><a href="#今日运动" class="headerlink" title="今日运动"></a>今日运动</h3><p>​	<em><strong>热身</strong></em></p>
-<ul>
-<li><input disabled="" type="checkbox"> 10分钟 其他无跳跃有氧</li>
-</ul>
-<p><em><strong>训练</strong></em>(三选一)</p>
-<ul>
-<li><input disabled="" type="checkbox"> 练腿26min+手臂</li>
-<li><input disabled="" type="checkbox"> 练腹部和背</li>
-<li><input disabled="" type="checkbox"> 全身燃脂:波比跳</li>
-</ul>
-<hr>
-<blockquote>
-<p>实时自我省察(在没手机的情况下, 形成正反馈, 没手机能更好省察, 省察自己按时活动)</p>
-</blockquote>
-<hr>
-<p>今天九点多才起, 然后刷了一上午手机</p>
-<h2 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h2><p>说出示留学生签证和电子会员卡可以多带一件23kg, 那第三程怎么办</p>
-<h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><h1 id="4-28"><a href="#4-28" class="headerlink" title="4.28"></a>4.28</h1><p>恢复干活! </p>
-<p>好文章: <a target="_blank" rel="noopener" href="https://www.guokr.com/article/461217/">打游戏能打一整天，看书半小时就累，做“正经事”真的不快乐吗？| 果壳 科技有意思 (guokr.com)</a></p>
-<hr>
-<p><strong>坚持写记录:</strong> <strong>每天娱乐时间2h, 如果坚持写记录, 可以2.5h</strong></p>
-<p><strong>&#x3D;&#x3D;毕设 tica&#x3D;&#x3D;</strong></p>
-<p>&#x3D;&#x3D;<strong>junmei的材料还没看, 说好4月开始干活的呢?</strong>&#x3D;&#x3D;</p>
-<p>&#x3D;&#x3D;王老师 说好写英文材料呢?&#x3D;&#x3D;</p>
-<p><strong>&#x3D;&#x3D;自己的学习&#x3D;&#x3D;</strong></p>
-<hr>
-<h2 id="今日任务-1"><a href="#今日任务-1" class="headerlink" title="今日任务"></a>今日任务</h2><p>Fengyang的疫情居家学习时刻表<br>7.30    起床——闹钟×1<br>          洗脸<br>          煮咖啡   做早饭（利用了煮咖啡时间隙做早饭，替代刷油管）<br>8.30    浏览油管刷手机——休闲时光×1<br>            虐狗，吸猫， 放松，变装<br>            开始学习前5分钟快速收拾干净桌面进入状态<br>9.30    开始学习（暂停其它所有工作）<br>           4小时的学习（泡咖啡，啃水果，吃零食，上厕所）——效率最高的状态<br>1.00    做午餐<br>2.00    边看电视剧边吃饭——休闲时光×2<br>2.30    处理生活琐事——闹钟×2<br>         （给父母打电话，虐狗×2）<br>3.00    开始学习（暂停其它所有工作）<br>           下午第二轮四小时学习（上午偏向于学习 ，下偏向于复习巩固）——状态没那么好，比较困顿<br>           灌咖啡<br>           中间抽出15分钟在外面眺望放松<br>7.00     做晚饭<br>            吃饭    收拾<br>8.30     给自己打气（再学一小时就行啦）<br>           学习轻松容易的知识（动画视频网课）<br>9.30     做视频   打电动   处理琐事<br>            三小时娱乐时间——休闲时光×3<br>12.00    洗漱<br>12.30    睡觉（7小时的睡眠）</p>
-<p>一下坐很久 会让我觉得是难事</p>
-<p>应该给自己一个一个简单任务</p>
-<h3 id="休息时-1"><a href="#休息时-1" class="headerlink" title="休息时"></a><strong>休息时</strong></h3><h2 id="体重管理-1"><a href="#体重管理-1" class="headerlink" title="体重管理"></a>体重管理</h2><table>
-<thead>
-<tr>
-<th>目标体重</th>
-<th>今日体重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>:nine: :four:</td>
-<td>:nine::eight:.:seven:</td>
-</tr>
-</tbody></table>
-<p>因为昨晚看比赛吃了东西, 所以今早体重上升. 睡衣净重1kg</p>
-<p>5分钟手机时间可以吗? 只抗原看, 其余时间不</p>
-<p>小新:作为职业 你会的别人都会 对自己还是不满意 真的都很不容易 职业 竞技 就是让人热血沸腾的</p>
-<h1 id="4-29"><a href="#4-29" class="headerlink" title="4.29"></a>4.29</h1><p>没有一点压力就是不行，你不努力别人却始终在努力 因为你做的是职业，是professional的事</p>
-<img src="2022.4.26-至2022-05-03/image-20220429221112021.png" alt="image-20220429221112021" style="zoom:200%;" />
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/" data-id="clblr260h0015zkv21mog6hxl" data-title="至2022.05.03" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-2-Quarter-2022-4-19-至2022-04-26" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/" class="article-date">
-  <time class="dt-published" datetime="2022-04-19T05:51:26.000Z" itemprop="datePublished">2022-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/">至2022.04.26</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="4-18"><a href="#4-18" class="headerlink" title="4.18"></a>4.18</h1><p>早上起来一直看netflix, 属于是后反劲反噬.没有运动, </p>
-<p>乐园之夜,朴勋政新作(新世界导演) 很有力度,然后突然知道了有阳可能要滚蛋后就自暴自弃看王国去了..哈哈哈,一直到2点. </p>
-<p>然后写了一个bat脚本更新本日记, 感觉bat也有很多可以学的: 参考</p>
-<h1 id="4-20"><a href="#4-20" class="headerlink" title="4.20"></a>4.20</h1><p>开始学习c语言和MD</p>
-<h1 id="4-21"><a href="#4-21" class="headerlink" title="4.21"></a>4.21</h1><p>今天就干劲满满了,和检查点的设置也有关系.</p>
-<p>早晨起来必须喝咖啡, 才能使中午不用睡觉.</p>
-<p>将事件列2个检查点, 比如和xx口头汇报(纸质汇报似乎对我鞭策力度不大)</p>
-<p>和室友聊分房费(我爸认为二楼好多了轮流半年), 和junmei交周报多沟通, 赶紧交毕设, 运动(厕所运动)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/" data-id="clblr260g0014zkv2dbr0gpnw" data-title="至2022.04.26" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-学习总结-2022-4-16-关于解决问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2022-04-16T13:08:45.000Z" itemprop="datePublished">2022-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">关于解决问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>以综述，和以成音化工作为例<br> (提醒自己启动反思的方法: 睡个好觉，工作时间包括午休时间不要娱乐，然后散步，或者独自思考，有一个舒服的环境，非常重要，这也是我最最最核心的竞争力，我的大脑</p>
-<p> 根据已有知识思考总结，如果发现迷茫解决不了，先找出困惑的点就，或者查询文献看看别人类似工作怎么做的，这样找到问题，然后解决问题</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" data-id="clblr25zl0003zkv22ji14yxw" data-title="关于解决问题" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
     </footer>
   </div>
@@ -780,7 +826,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AMBER/" style="font-size: 17.5px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 17.5px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 15px;">生活反思</a>
+      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
     </div>
   </div>
 
@@ -802,23 +848,23 @@
       <ul>
         
           <li>
-            <a href="/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/">Weekly blog</a>
+            <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/hello-world/">Hello World</a>
+            <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/">Weekly blog</a>
+            <a href="/2022/12/21/test/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/">Gamd-01</a>
+            <a href="/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">Git版本控制</a>
           </li>
         
           <li>
-            <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
+            <a href="/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/">(no title)</a>
           </li>
         
       </ul>

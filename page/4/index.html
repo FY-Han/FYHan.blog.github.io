@@ -71,6 +71,487 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-科研-分子模拟-GMX-2022-1-1-GROMACS与声音生成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/" class="article-date">
+  <time class="dt-published" datetime="2022-01-01T20:51:40.000Z" itemprop="datePublished">2022-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/">GROMACS与声音生成</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一些研究<a target="_blank" rel="noopener" href="http://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/index.html">http://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/index.html</a><br>声图分析,声音信号处理<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/a18261dea58da0116c1749b7.html">https://wenku.baidu.com/view/a18261dea58da0116c1749b7.html</a></p>
+<ol>
+<li><p>使用catdcd进行格式转换</p>
+</li>
+<li><p>使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx dump 将二进制trr，xtc文件转成ascii可读文件</p>
+</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -f file.xtc &gt;&gt; file.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用gmx covar生成本征向量与协方差矩阵</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx covar -s pro.tpr -f pro20.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用gmx anaeig生成投影</li>
+</ol>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s pro.tpr -f pro20.xtc -v eigenvectors.trr -first 1 -last 1 -proj pc1.xvg  </span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>使用python包处理xyg文件</li>
+</ol>
+<h2 id="2022-3-22-23"><a href="#2022-3-22-23" class="headerlink" title="2022.3.22-23"></a>2022.3.22-23</h2><h3 id="密集RMSD采样"><a href="#密集RMSD采样" class="headerlink" title="密集RMSD采样"></a>密集RMSD采样</h3><h4 id="工作路径与初始构思"><a href="#工作路径与初始构思" class="headerlink" title="工作路径与初始构思"></a>工作路径与初始构思</h4><p> 120机器</p>
+<p>&#x2F;home&#x2F;hfy&#x2F;gromacs&#x2F;1.desres&#x2F;1.1FME&#x2F;DESRES-Trajectory_1FME-0-c-alpha&#x2F;1FME-0-c-alpha&#x2F;rmsd-generate</p>
+<p>由于构象变化过于快速, vmd的rmsd结果只采了200个样(不知道为什么),因此继续在 续生成隔一个点的rmsd计算结果. 方法见<a target="_blank" rel="noopener" href="https://jerkwin.github.io/2017/10/20/GROMACS%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E6%95%99%E7%A8%8B-%E5%A4%9A%E8%82%BD-%E8%9B%8B%E7%99%BD%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8/#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%86%E6%9E%90%E4%B8%80">GROMACS分子动力学模拟教程：多肽-蛋白相互作用|Jerkwin</a></p>
+<h4 id="原始rmsd结果"><a href="#原始rmsd结果" class="headerlink" title="原始rmsd结果"></a>原始rmsd结果</h4><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323124610888.png" alt="image-20220323124610888"></p>
+<h4 id="模拟结果检查"><a href="#模拟结果检查" class="headerlink" title="模拟结果检查"></a>模拟结果检查</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 首先进行模拟结果检查</span><br><span class="line">gmx check -f traj.xtc</span><br><span class="line"></span><br><span class="line">结果:</span><br><span class="line">Checking file fulltrj.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1014000 time 202800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1014545    200</span><br><span class="line">Time        1014545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1014545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1014545    200</span><br><span class="line"></span><br><span class="line">GROMACS reminds you: &quot;You Can Be Too Early, You Can Be Too Late and You Can Be On Time&quot; (J. Cruijff)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="try-1"><a href="#try-1" class="headerlink" title="try 1"></a>try 1</h4><p>随后因为没有top文件不能生成啥啥的, 不过看到sobereva在<a target="_blank" rel="noopener" href="http://bbs.keinsci.com/thread-428-1-1.html">几种生成有机分子GROMACS拓扑文件的工具</a>中提供了<a target="_blank" rel="noopener" href="http://sobereva.com/soft/Sobtop/">Sobtop</a>,能将pdb转为top文件.(后台下载ing)</p>
+<p>随后发现不会用,下载的不能通过 .&#x2F;sobtop 或 bash sobtop 或 source sobtop运行</p>
+<h5 id="使用命令生成rmsd"><a href="#使用命令生成rmsd" class="headerlink" title="使用命令生成rmsd"></a>使用命令生成rmsd</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj.xtc -s 1FME-CA.pdb -o rmsd.xvg</span><br></pre></td></tr></table></figure>
+
+<p>发现rmsd结果与原始文献不同<a href="2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1FME-v1.0.xvg">数据1</a>, 因为没有rmsd小于5左右的折叠结果, 怀疑是pdb不是质量加权文件? 因为原文使用的是tpr文件(pdb格式也支持), 并且写说是</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323142419447.png" alt="image-20220323142419447"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1FME-v1.0.png" alt="rmsd-1FME"></p>
+<p>所以一方面考虑通过别的方法把pdb文件转成tpr文件</p>
+<p>使用薛定谔将原始的mae文件转成pdb</p>
+<p>中途报错error unknown,但转出来了</p>
+<p>通过sftp传输文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp hfy@192.168.31.120</span><br></pre></td></tr></table></figure>
+
+<p>随后使用gromacs pdb2gmx转文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx pdb2gmx -f 1fme-mae.pdb -o 1fme-mae.gro -p 1fme-mae.top -i ifme-mae.itp </span><br></pre></td></tr></table></figure>
+
+<p>但gromacs依旧把文件当做蛋白质处理, 报错, 怀疑需要生成小分子模板</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">Select the Force Field:</span><br><span class="line">From <span class="string">&#x27;/opt/gmx2018.8/share/gromacs/top&#x27;</span>:</span><br><span class="line"> 1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)</span><br><span class="line"> 2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)</span><br><span class="line"> 3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)</span><br><span class="line"> 4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)</span><br><span class="line"> 5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)</span><br><span class="line"> 6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)</span><br><span class="line"> 7: AMBERGS force field (Garcia &amp; Sanbonmatsu, PNAS 99, 2782-2787, 2002)</span><br><span class="line"> 8: CHARMM27 all-atom force field (CHARM22 plus CMAP <span class="keyword">for</span> proteins)</span><br><span class="line"> 9: GROMOS96 43a1 force field</span><br><span class="line">10: GROMOS96 43a2 force field (improved alkane dihedrals)</span><br><span class="line">11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)</span><br><span class="line">12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)</span><br><span class="line">13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)</span><br><span class="line">14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)</span><br><span class="line">15: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)</span><br><span class="line">15</span><br><span class="line"></span><br><span class="line">Using the Oplsaa force field <span class="keyword">in</span> directory oplsaa.ff</span><br><span class="line"></span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/watermodels.dat</span><br><span class="line"></span><br><span class="line">Select the Water Model:</span><br><span class="line"> 1: TIP4P  TIP 4-point, recommended</span><br><span class="line"> 2: TIP4PEW TIP 4-point with Ewald</span><br><span class="line"> 3: TIP3P  TIP 3-point</span><br><span class="line"> 4: TIP5P  TIP 5-point (see http://redmine.gromacs.org/issues/1348 <span class="keyword">for</span> issues)</span><br><span class="line"> 5: TIP5P  TIP 5-point improved <span class="keyword">for</span> Ewald sums</span><br><span class="line"> 6: SPC    simple point charge</span><br><span class="line"> 7: SPC/E  extended simple point charge</span><br><span class="line"> 8: None</span><br><span class="line">8</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.r2b</span><br><span class="line">Reading 1fme-mae.pdb...</span><br><span class="line">Read <span class="string">&#x27;1FME-0-c-alpha&#x27;</span>, 28 atoms</span><br><span class="line">Analyzing pdb file</span><br><span class="line">Splitting chemical chains based on TER records or chain <span class="built_in">id</span> changing.</span><br><span class="line">There are 1 chains and 0 blocks of water and 28 residues with 28 atoms</span><br><span class="line"></span><br><span class="line">  chain  <span class="comment">#res #atoms</span></span><br><span class="line">  1 <span class="string">&#x27;P&#x27;</span>    28     28  </span><br><span class="line"></span><br><span class="line">All occupancies are one</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/atomtypes.atp</span><br><span class="line">Atomtype 814</span><br><span class="line">Reading residue database... (oplsaa)</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.rtp</span><br><span class="line">Residue 51</span><br><span class="line">Sorting it all out...</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.hdb</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb</span><br><span class="line">Opening force field file /opt/gmx2018.8/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb</span><br><span class="line">Processing chain 1 <span class="string">&#x27;P&#x27;</span> (28 atoms, 28 residues)</span><br><span class="line">Identified residue GLU1 as a starting terminus.</span><br><span class="line">Identified residue ARG28 as a ending terminus.</span><br><span class="line">8 out of 8 lines of specbond.dat converted successfully</span><br><span class="line">Start terminus GLU-1: NH3+</span><br><span class="line">End terminus ARG-28: COO-</span><br><span class="line">Checking <span class="keyword">for</span> duplicate atoms....</span><br><span class="line">Generating any missing hydrogen atoms and/or adding termini.</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------</span><br><span class="line">Program:     gmx pdb2gmx, version 2018.8</span><br><span class="line">Source file: src/gromacs/gmxpreprocess/pgutil.cpp (line 128)</span><br><span class="line"></span><br><span class="line">Fatal error:</span><br><span class="line">Residue 1 named GLU of a molecule <span class="keyword">in</span> the input file was mapped</span><br><span class="line">to an entry <span class="keyword">in</span> the topology database, but the atom N used <span class="keyword">in</span></span><br><span class="line">that entry is not found <span class="keyword">in</span> the input file. Perhaps your atom</span><br><span class="line">and/or residue naming needs to be fixed.</span><br><span class="line"></span><br><span class="line">For more information and tips <span class="keyword">for</span> troubleshooting, please check the GROMACS</span><br><span class="line">website at http://www.gromacs.org/Documentation/Errors</span><br></pre></td></tr></table></figure>
+
+<p>如果进行下一步就考虑使用antechamber生成模板构建了,停一下,想想别的方法</p>
+<h4 id="try2"><a href="#try2" class="headerlink" title="try2"></a>try2</h4><p>观察tpr结果,明白到底生成的是什么东西</p>
+<p>随便打开一个此前的tpr, 发现是二进制文件, 于是使用dump命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -s step5_production.tpr &gt;&gt; step5_production.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>注意到tpr文件是冗余的,是提供MD的计算输入信息</p>
+<p>实际上谷歌一下发现, 根据<a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html">File formats — GROMACS 5.1 documentation</a>描述</p>
+<p><strong>Structure+mass(db):</strong> <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#tpr"><em>tpr</em></a>, <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#gro"><em>gro</em></a>, <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#g96"><em>g96</em></a>, or <a target="_blank" rel="noopener" href="https://manual.gromacs.org/documentation/5.1/user-guide/file-formats.html#pdb"><em>pdb</em></a></p>
+<p>Structure and mass input for analysis tools. When gro or pdb is used approximate masses will be read from the mass database.</p>
+<p>也就是说其实我pdb输入也不影响.</p>
+<h4 id="try3"><a href="#try3" class="headerlink" title="try3"></a>try3</h4><p>另一个可能是我skip了?看一下如果不skip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj.xtc -s 1FME-CA.pdb -o rmsd-test.xvg </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323144800320.png" alt="image-20220323144800320"></p>
+<p>发现并没有skip, 文件应该是一样的.</p>
+<h4 id="try4"><a href="#try4" class="headerlink" title="try4"></a>try4</h4><p>有没有可能是轨迹文件有问题</p>
+<p>检查发现理论应该是230μs, 但实际只有 [模拟结果检查](# 模拟结果检查)中203μs, 于是进行校正</p>
+<h5 id="工作路径"><a href="#工作路径" class="headerlink" title="工作路径"></a>工作路径</h5><p>&#x2F;home&#x2F;hfy&#x2F;gromacs&#x2F;1.desres&#x2F;1.1FME&#x2F;DESRES-Trajectory_1FME-0-c-alpha&#x2F;1FME-0-c-alpha&#x2F;origin</p>
+<p>使用catdcd重新生成轨迹(合理怀疑轨迹被ruin了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.xtc -otype xtc -s 1FME-0-c-alpha.mae 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<p>报错:Cannot write timesteps in ‘xtc’ format. 于是改成: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.dcd -otype dcd -stype mae -s 1FME-0-c-alpha.mae 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<p>好像不能直接转,有点麻烦. </p>
+<h5 id="mdconvert"><a href="#mdconvert" class="headerlink" title="mdconvert"></a>mdconvert</h5><p>发现之前文件丢失前的使用的mdconvert软件, 比catdcd好用,<a target="_blank" rel="noopener" href="https://blog.chembiosim.com/alter-md-trajectory-file-format-with-mdconvert/">使用 mdconvert 转换分子动力学模拟轨迹 | Hope (chembiosim.com)</a></p>
+<p>usage: mdconvert [-h] -o OUTPUT [-c CHUNK] [-f] [-s STRIDE] [-i INDEX]<br>                 [-a ATOM_INDICES] [-t TOPOLOGY]<br>                 input [input …]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mdconvert -o fulltrj-mdconvert.xtc 1FME-0-c-alpha-000.dcd 1FME-0-c-alpha-001.dcd 1FME-0-c-alpha-002.dcd 1FME-0-c-alpha-003.dcd 1FME-0-c-alpha-004.dcd 1FME-0-c-alpha-005.dcd 1FME-0-c-alpha-006.dcd 1FME-0-c-alpha-007.dcd 1FME-0-c-alpha-008.dcd 1FME-0-c-alpha-009.dcd 1FME-0-c-alpha-010.dcd 1FME-0-c-alpha-011.dcd</span><br></pre></td></tr></table></figure>
+
+<h5 id="检查结果"><a href="#检查结果" class="headerlink" title="检查结果"></a>检查结果</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx check -f fulltrj-mdconvert.xtc</span><br></pre></td></tr></table></figure>
+
+<p>但是报了错hh,因为timestep有问题</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220323152600094.png" alt="image-20220323152600094"></p>
+<h5 id="trjconv修正一下timestep问题-trjcat用于连接轨迹"><a href="#trjconv修正一下timestep问题-trjcat用于连接轨迹" class="headerlink" title="trjconv修正一下timestep问题(trjcat用于连接轨迹)"></a>trjconv修正一下timestep问题(trjcat用于连接轨迹)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmx trjconv -f fulltrj-mdconvert.xtc -o fulltrj-mdconvert-trjconv.xtc -t0 0 -timestep 200   #timestep:ps</span><br><span class="line"></span><br><span class="line">gmx check -f fulltrj-mdconvert-trjconv.xtc</span><br></pre></td></tr></table></figure>
+
+<h5 id="结果修正正确"><a href="#结果修正正确" class="headerlink" title="结果修正正确"></a>结果修正正确</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Checking file fulltrj-mdconvert-trjconv.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1114000 time 222800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1114545    200</span><br><span class="line">Time        1114545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1114545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1114545    200</span><br></pre></td></tr></table></figure>
+
+<h5 id="重新做rmsd-路径"><a href="#重新做rmsd-路径" class="headerlink" title="重新做rmsd 路径"></a>重新做rmsd <a href="#%E5%B7%A5%E4%BD%9C%E8%B7%AF%E5%BE%84%E4%B8%8E%E5%88%9D%E5%A7%8B%E6%9E%84%E6%80%9D">路径</a></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.1.xvg</span><br></pre></td></tr></table></figure>
+
+<h5 id="xmgrace报错"><a href="#xmgrace报错" class="headerlink" title="xmgrace报错"></a>xmgrace报错</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmgrace rmsd-1.1.xvg</span><br><span class="line"></span><br><span class="line">Messages: [Error]Purging failed.Increase &#x27;Max drawing path length&#x27;in prefs.</span><br></pre></td></tr></table></figure>
+
+<p>于是去 edit-pref 里调整drawing path length, 直接调到最大为1000000</p>
+<h5 id="疑似采样太密集"><a href="#疑似采样太密集" class="headerlink" title="疑似采样太密集"></a>疑似采样太密集</h5><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.1.png" alt="RMSD结果"></p>
+<p>我觉得看不出来的原因是采样太密集了,稀疏为1&#x2F;10看看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.2.xvg -skip 10</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.2.png" alt="rmsd-step10"></p>
+<p>稀疏为1&#x2F;100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.3.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png" alt="rmsd-step10"></p>
+<p>稀疏为1&#x2F;1000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.4.xvg -skip 1000</span><br></pre></td></tr></table></figure>
+
+<p>稀疏为1&#x2F;10000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.5.xvg -skip 10000</span><br></pre></td></tr></table></figure>
+
+<p>稀疏为1&#x2F;100000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.5.xvg -skip 10000</span><br></pre></td></tr></table></figure>
+
+<p>但发现一直稀疏都没有这个效果, 合理怀疑与连点成线有关</p>
+<h5 id="观察数据分布-试图更换绘图方法-观察是否一样-如果不一样-为什么不一样"><a href="#观察数据分布-试图更换绘图方法-观察是否一样-如果不一样-为什么不一样" class="headerlink" title="观察数据分布, 试图更换绘图方法,观察是否一样,如果不一样,为什么不一样?"></a>观察数据分布, 试图更换绘图方法,观察是否一样,如果不一样,为什么不一样?</h5><h6 id="使用rmsd-1-3xvg进行观察"><a href="#使用rmsd-1-3xvg进行观察" class="headerlink" title="使用rmsd-1.3xvg进行观察"></a>使用rmsd-1.3xvg进行观察</h6><p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324201144295.png" alt="image-20220324201144295"></p>
+<p>发现 value(rmsd结果和xmgrace绘图结果不同)</p>
+<p>最终通过更稀疏的采样发现</p>
+<p>因为没有改数据类型,害 😵</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324210501823.png" alt="image-20220324210501823"></p>
+<p>而且还是问了师兄才知道为啥</p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324205404722.png" alt="image-20220324205404722"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213721974.png" alt="image-20220324213721974"></p>
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220324213745690.png" alt="image-20220324213745690"></p>
+<h4 id="命令流程"><a href="#命令流程" class="headerlink" title="命令流程"></a>命令流程</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx check -f fulltrj-mdconvert-trjconv.xtc</span><br></pre></td></tr></table></figure>
+
+<p>check结果没问题,与文献一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Checking file fulltrj-mdconvert-trjconv.xtc</span><br><span class="line">Reading frame       0 time    0.000   </span><br><span class="line"># Atoms  28</span><br><span class="line">Precision 0.001 (nm)</span><br><span class="line">Reading frame  1114000 time 222800000.000   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Item        #frames Timestep (ps)</span><br><span class="line">Step        1114545    200</span><br><span class="line">Time        1114545    200</span><br><span class="line">Lambda           0</span><br><span class="line">Coords      1114545    200</span><br><span class="line">Velocities       0</span><br><span class="line">Forces           0</span><br><span class="line">Box         1114545    200</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 计算RMSD 1:100采样 </span><br><span class="line">gmx rms -f fulltrj-mdconvert-trjconv.xtc -s 1FME-CA.pdb -o rmsd-1.3.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/rmsd-1.3.png" alt="rmsd-step10"></p>
+<h2 id="修正RMSD结果"><a href="#修正RMSD结果" class="headerlink" title="修正RMSD结果"></a>修正RMSD结果</h2><h3 id="try1"><a href="#try1" class="headerlink" title="try1"></a>try1</h3><p>使用vmd脚本生成rmsd的dat文件 </p>
+<p>传入服务器合并(注意每个文件开头的0都删了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat rmsd000.dat rmsd001.dat rmsd002.dat rmsd003.dat rmsd004.dat rmsd005.dat rmsd006.dat rmsd007.dat rmsd008.dat rmsd009.dat rmsd010.dat rmsd011.dat&gt; rmsd-.dat</span><br></pre></td></tr></table></figure>
+
+<h2 id="对2jof进行同样操作"><a href="#对2jof进行同样操作" class="headerlink" title="对2jof进行同样操作"></a>对2jof进行同样操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">./catdcd -o fulltrj-catdcd.dcd -otype dcd -stype mae -s 2JOF-0-c-alpha.mae 2JOF-0-c-alpha-000.dcd 2JOF-0-c-alpha-001.dcd 2JOF-0-c-alpha-002.dcd 2JOF-0-c-alpha-003.dcd 2JOF-0-c-alpha-004.dcd 2JOF-0-c-alpha-005.dcd 2JOF-0-c-alpha-006.dcd 2JOF-0-c-alpha-007.dcd 2JOF-0-c-alpha-008.dcd 2JOF-0-c-alpha-009.dcd 2JOF-0-c-alpha-010.dcd</span><br><span class="line"></span><br><span class="line">mdconvert -o fulltrj-catdcd-mdconvert.xtc fulltrj-catdcd.dcd</span><br><span class="line"></span><br><span class="line">gmx trjconv -f fulltrj-catdcd-mdconvert.xtc -o fulltrj-catdcd-mdconvert-trjconv.xtc -t0 0 -timestep 200</span><br><span class="line"></span><br><span class="line">gmx check -f fulltrj-catdcd-mdconvert-trjconv.xtc</span><br><span class="line"></span><br><span class="line">gmx rms -f fulltrj-catdcd-mdconvert-trjconv.xtc -s 2jof-ca.pdb  -o rmsd-1.1-2jof.xvg</span><br><span class="line"></span><br><span class="line">gmx rms -f fulltrj-catdcd-mdconvert-trjconv.xtc -s 2jof-ca.pdb  -o rmsd-1.3-2jof.xvg -skip 100</span><br></pre></td></tr></table></figure>
+
+<p>实现2jof的rmsd结果</p>
+<h2 id="生成2jof的pca-音乐结果"><a href="#生成2jof的pca-音乐结果" class="headerlink" title="生成2jof的pca-音乐结果"></a>生成2jof的pca-音乐结果</h2><ol>
+<li>使用catdcd进行格式转换([见上](# 对2jof进行同样操作))</li>
+<li>使用trjconv和trjcat合并 注意时间戳（t0，timestep）。可以使用gmx dump 将二进制trr，xtc文件转成ascii可读文件([见上](# 对2jof进行同样操作))</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx dump -f file.xtc &gt;&gt; file.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用gmx covar生成本征向量与协方差矩阵</li>
+</ol>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx covar -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -o eigenvalues-2jof.xvg -v eigenvectors-2jof.trr -xpma covapic-2jof.xpm </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用gmx anaeig生成第一个投影(简单观察),以及所有的投影(python切割)</li>
+</ol>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -v eigenvectors-2jof.trr -first 1 -last 1 -proj pc1-2jof-ca.xvg  </span><br></pre></td></tr></table></figure>
+
+<p>​		这里可以看到 eigenvalue,小算一下占比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gmx anaeig -s 2jof-ca.pdb -f fulltrj-catdcd-mdconvert-trjconv.xtc -v eigenvectors-2jof.trr -first 1 -proj pc-a-2jof-ca.xvg  </span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li><p>使用python包处理xyg文件</p>
+<p> 这里憨了找了一天一直没找出来,因为有一个xvg文件的title,前面是23行注释,后面是22行注释,以及最开头要删一行</p>
+</li>
+</ol>
+<h6 id=""><a href="#" class="headerlink" title=""></a><img src="/2022.1.1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/image-20220330200536662.png" alt="image-20220330200536662"></h6><h2 id="2022-5-22"><a href="#2022-5-22" class="headerlink" title="2022.5.22"></a>2022.5.22</h2><p><strong>归一化后结果很差………………..</strong></p>
+<p>不过用np和pd算一遍没问题..</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E4%B8%8E%E5%A3%B0%E9%9F%B3%E7%94%9F%E6%88%90/" data-id="clc4z8jvn001ybwv253706754" data-title="GROMACS与声音生成" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-GMX-2022-1-1-gromacs技巧-测试md速度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/" class="article-date">
+  <time class="dt-published" datetime="2022-01-01T20:29:42.000Z" itemprop="datePublished">2022-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/">gromacs技巧-测试md速度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>使用<a href="A:\life\blog\source_posts\科研学习\分子模拟\软件\GMX\2022.1.1-gromacs技巧-测试md速度\gmxbench.sh">脚本</a>测试</p>
+<p>具体说明：<a target="_blank" rel="noopener" href="http://bbs.keinsci.com/thread-13861-1-4.html">GROMACS (2019.3 GPU版) 并行效率测试及调试思路 - 分子模拟 (Molecular Modeling) - 计算化学公社 (keinsci.com)</a></p>
+<p>两块显卡相对于一块显卡的提升非常有限。如果装了两块显卡，想有效的利用这两块显卡，最好的办法是每块显卡跑一个独立gmx任务。问题是，这两个独立的gmx会相互干扰么？经过测试，结论是：<strong>cpu核数足够的情况下两块显卡单独运行两个Gromacs任务完全没有影响</strong>。<a target="_blank" rel="noopener" href="http://bbs.keinsci.com/thread-13910-1-1.html?tdsourcetag=s_pcqq_aiomsg">JCC,2019</a>的那篇文章中也可以看到，N显卡相对于单显卡的速度几乎就是N倍。</p>
+<p>单Rank下，随着openmp threads数量增多，显卡计算NB+BF的速度最终超过了NB+PME，这是因为1080性能略差，这样CPU并行数量上去之后，CPU计算PME的速度最终能够超过GPU计算PME的速度。而多节点运行事实上不划算</p>
+<p>&#x3D;&#x3D;<strong>进程&#x3D;火车，线程&#x3D;车厢</strong></p>
+<ul>
+<li>线程在进程下行进（单纯的车厢无法运行）</li>
+<li>一个进程可以包含多个线程（一辆火车可以有多个车厢）</li>
+<li>不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘）</li>
+<li>同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易）</li>
+<li>进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源）</li>
+<li>进程间不会相互影响，一个线程挂掉将导致整个进程挂掉（一列火车不会影响到另外一列火车，但是如果一列火车上中间的一节车厢着火了，将影响到所有车厢）</li>
+<li>进程可以拓展到多机，进程最多适合多核（不同火车可以开在多个轨道上，同一火车的车厢不能在行进的不同的轨道上）</li>
+<li>进程使用的内存地址可以上锁，即一个线程使用某些共享内存时，其他线程必须等它结束，才能使用这一块内存。（比如火车上的洗手间）－”互斥锁”</li>
+<li>进程使用的内存地址可以限定使用量（比如火车上的餐厅，最多只允许多少人进入，如果满了需要在门口等，等有人出来了才能进去）－“信号量</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-gromacs%E6%8A%80%E5%B7%A7-%E6%B5%8B%E8%AF%95md%E9%80%9F%E5%BA%A6/" data-id="clc4z8jvp0022bwv2guiahzk3" data-title="gromacs技巧-测试md速度" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-GMX-2022-1-1-GROMACS安装报错" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/" class="article-date">
+  <time class="dt-published" datetime="2022-01-01T20:26:40.000Z" itemprop="datePublished">2022-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/">GROMACS安装报错</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>gromacs装的时候发现gcc版本太老（很可能不是这个问题）报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Target &quot;cmTC_ac7df&quot; requires the language dialect &quot;CXX17&quot; , but CMake does</span><br><span class="line">  not know the compile flags to use to enable it.</span><br></pre></td></tr></table></figure>
+
+<p>检索到相关问题</p>
+<p><img src="A:\life\blog\source_posts\科研学习\计算机技术\配置电脑\tmpEBEE.png" alt="tmpEBEE"></p>
+<p>于是更新gcc9.4.0，但gcc安装包装在了&#x2F;sob&#x2F;下后以为没用就删除了，导致配置环境变量.bashrc时找不到对应文件路径以指定PATH和动态链接库。师兄根据报错装了相关的补充包，并重新编译。</p>
+<p>&#x3D;&#x3D;<strong>编译使用make -j36 install（最多有40个CPU核），提高编译速度，并重新装在&#x2F;opt&#x2F;中</strong>&#x3D;&#x3D;</p>
+<p><strong>另一台89机器的环境变量配置</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### set gcc</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/opt/gcc-6.5.0/bin:<span class="variable">$&#123;PATH&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;opt/gcc-6.5.0/lib64:<span class="variable">$&#123;LD_LIBRARY_PATH&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>对应的gcc文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(base) [root@Server-P100 hfy]# which gcc</span><br><span class="line">/usr/bin/gcc</span><br><span class="line">(base) [root@Server-P100 hfy]# whereis gcc</span><br><span class="line">gcc: /usr/bin/gcc /usr/lib/gcc /usr/libexec/gcc /opt/gcc-6.5.0/bin/gcc /usr/share/man/man1/gcc.1.gz /usr/share/info/gcc.info.gz</span><br></pre></td></tr></table></figure>
+
+<p>但是在120机器对应找不到，反而在local文件夹下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[hfy@server-p100-sioc ~]$ which gcc</span><br><span class="line">/usr/local/bin/gcc</span><br><span class="line">[hfy@server-p100-sioc ~]$ whereis gcc</span><br><span class="line">gcc: /usr/bin/gcc /usr/lib/gcc /usr/local/bin/gcc /usr/local/lib/gcc /usr/libexec/gcc /usr/share/man/man1/gcc.1.gz</span><br></pre></td></tr></table></figure>
+
+<p>于是试图通过使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name xxx 2&amp;&gt;1 | grep -v &quot;Permission denied&quot;</span><br></pre></td></tr></table></figure>
+
+<p> 比对检索。最终找到含有类似文件的两个路径，并继续设置环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### set gcc</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/local/bin/:<span class="variable">$&#123;PATH&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;/usr/local/gcc-9.4.0/build/x86_64-pc-linux-gnu/:<span class="variable">$&#123;LD_LIBRARY_PATH&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>随后发现动态链接库未更新，运行gmx命令报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[hfy@server-p100-sioc ~]$ gmx</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#x27; not found (required by gmx)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&#x27; not found (required by gmx)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `CXXABI_1.3.8&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.22&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `CXXABI_1.3.11&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br><span class="line">gmx: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#x27; not found (required by /usr/local/gromacs-2021.3/build/lib/libgromacs.so.6)</span><br></pre></td></tr></table></figure>
+
+<p>根据教程解决类似 &#x2F;usr&#x2F;lib64&#x2F;libstdc++.so.6: version &#96;GLIBCXX_3.4.21’ not found 的问题 <a target="_blank" rel="noopener" href="https://itbilu.com/linux/management/NymXRUieg.html">IT笔录 (itbilu.com)</a>更新库。</p>
+<p>&#x3D;&#x3D;<strong>完成gromacs安装</strong>&#x3D;&#x3D;</p>
+<p>但为了装双精度版本，我把<code>gromacs/build</code>文件夹删了……以为用完了，要重新安装，结果导致gromacs没有关键对应的GMXRC文件。需要重新安装。</p>
+<p>重新安装中指定了<code>/usr/bin/gcc</code> 作为C_compiler，但是报错</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[100%] Building CXX object src/programs/CMakeFiles/gmx.dir/legacymodules.cpp.o</span><br><span class="line">[100%] Building CXX object src/programs/CMakeFiles/gmx.dir/gmx.cpp.o</span><br><span class="line">[100%] Building CXX object share/template/CMakeFiles/template.dir/template.cpp.o</span><br><span class="line">[100%] Linking CXX executable ../../bin/gmx</span><br><span class="line">../../lib/libgromacs.so.3.5.0: undefined reference to `gmx::formatString(char const*, ...)<span class="string">&#x27;</span></span><br><span class="line"><span class="string">../../lib/libgromacs.so.3.5.0: undefined reference to `canDetectGpus(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;*)&#x27;</span></span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br><span class="line">make[2]: *** [bin/gmx] Error 1</span><br><span class="line">make[1]: *** [src/programs/CMakeFiles/gmx.dir/all] Error 2</span><br><span class="line">make[1]: *** Waiting <span class="keyword">for</span> unfinished <span class="built_in">jobs</span>....</span><br><span class="line">[100%] Linking CXX executable ../../bin/template</span><br><span class="line">../../lib/libgromacs.so.3.5.0: undefined reference to `gmx::formatString(char const*, ...)<span class="string">&#x27;</span></span><br><span class="line"><span class="string">../../lib/libgromacs.so.3.5.0: undefined reference to `canDetectGpus(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;*)&#x27;</span></span><br><span class="line">collect2: error: ld returned 1 <span class="built_in">exit</span> status</span><br><span class="line">make[2]: *** [bin/template] Error 1</span><br><span class="line">make[1]: *** [share/template/CMakeFiles/template.dir/all] Error 2</span><br><span class="line">make: *** [all] Error 2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake3 .. -DCMAKE_INSTALL_PREFIX=/opt/gmx2018.8 -DCMAKE_C_COMPILER=<span class="string">&#x27;/usr/bin/gcc&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="最终解决办法，进行GCC版本管理：Centos6安装gcc4-8及以上版本"><a href="#最终解决办法，进行GCC版本管理：Centos6安装gcc4-8及以上版本" class="headerlink" title="最终解决办法，进行GCC版本管理：Centos6安装gcc4.8及以上版本"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/52fhy/p/12547521.html">最终解决办法，进行GCC版本管理：Centos6安装gcc4.8及以上版本</a></h3><p>由于gcc编译起来真的是非常非常的慢，而且特别耗资源，故使用<code>devtoolset</code>这个工具，几分钟就搞定了gcc版本升级的问题。具体操作方法见文章。</p>
+<p>使用中，在root权限下指定了gcc版本后，在user权限下gcc版本居然是不一样的。</p>
+<p><img src="/2022.1.1-GROMACS%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/image-20220101152824002.png" alt="image-20220101152824002"></p>
+<p>最终通过使用gcc.7版本，完成安装。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/01/01/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2022-1-1-GROMACS%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/" data-id="clc4z8jvo0021bwv276rncr3a" data-title="GROMACS安装报错" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-科研-分子模拟-GMX-2021-6-30-gmx入门3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-6-30-gmx%E5%85%A5%E9%97%A83/" class="article-date">
+  <time class="dt-published" datetime="2021-06-30T14:42:08.000Z" itemprop="datePublished">2021-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-6-30-gmx%E5%85%A5%E9%97%A83/">gmx入门3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="继续探索"><a href="#继续探索" class="headerlink" title="继续探索"></a>继续探索</h2><p>网上搜索，注意到提示需要full trajectory file<br>结果突然发现80min后出结果了，</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2021/06/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-6-30-gmx%E5%85%A5%E9%97%A83/" data-id="clc4z8jvm001wbwv2c5gghssy" data-title="gmx入门3" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2021-3季度-2021-6-28-第十八周至7-4-2021-6-28-第十八周至7-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/" class="article-date">
+  <time class="dt-published" datetime="2021-06-29T00:16:39.000Z" itemprop="datePublished">2021-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/">第十八周至7.4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="6-28"><a href="#6-28" class="headerlink" title="6.28"></a>6.28</h2><p>看溶酶体综述+改gromacs</p>
+<h2 id="6-29"><a href="#6-29" class="headerlink" title="6.29"></a>6.29</h2><p>林晨腾生日吃晚饭，找到一篇文章，一些描述，调gromacs mdp文件，用l-bgfs方法，以及调了一些距离，韩信挺好玩。胖到了96kg了，以后天天玉米，地瓜啥的，再吃青菜，只吃清水鸡腿，要瘦到85</p>
+<h2 id="6-30"><a href="#6-30" class="headerlink" title="6.30"></a>6.30</h2><p>起来后吃完饭玩了一会儿韩信</p>
+<h2 id="7-1-7-5"><a href="#7-1-7-5" class="headerlink" title="7.1-7.5"></a>7.1-7.5</h2><ul>
+<li>娱乐：这几天打王者，看b站王者视频，热点视频，asoul视频，游戏视频，恐怖游戏视频。</li>
+<li>工作：王老师这边将频率输出了，在思考以什么方式生成声音，生成乐音</li>
+<li>生活：<ul>
+<li>看了一小会儿书；</li>
+<li>和爸妈聊了一下近期生活；自己也认识到，如果有改变自己的勇气，首先做的就是放下娱乐。最简单的就是，放下这个王者视频，删掉这个游戏，一刹那的决心转化为行动就能停止。力量就在你的手中</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-7"><a href="#7-7" class="headerlink" title="7.7"></a>7.7</h2><ul>
+<li>会做ppt（比如拿个证书？），《风格的元素》</li>
+</ul>
+<h2 id="7-8"><a href="#7-8" class="headerlink" title="7.8"></a>7.8</h2><ul>
+<li>买了个机械闹钟，尽量摆脱手机，避免让它集成过多功能（它只是一个实时信息提醒，以及登录，以及支付，地图工具）</li>
+<li>中午吃饭（12：30-1：00）可以看视频，晚上吃饭（6：00-6：30）可以看视频，睡前（11：00-11：45）可以看视频，给我早起</li>
+<li>绩点还行，3.3几，主要是专业课没拉胯厉害，综述和英语提分。</li>
+<li>给自己布置任务（不是随意的，而是根据一件事布置下一件），这样能活跃起来（）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2021/06/28/%E5%91%A8%E6%8A%A5-2021-3%E5%AD%A3%E5%BA%A6-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4-2021-6-28-%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8%E8%87%B37-4/" data-id="clc4z8jw20035bwv2ev6thf1n" data-title="第十八周至7.4" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2021-2季度-2021-6-26-第十六，十七周至6-27-2021-6-26-第十六，十七周至6-27" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27/" class="article-date">
+  <time class="dt-published" datetime="2021-06-26T20:45:11.000Z" itemprop="datePublished">2021-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27/">第十六，十七周至6.27</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="6-26"><a href="#6-26" class="headerlink" title="6.26"></a>6.26</h2><p>前两周写期末综述，复习背书and期末。大前天考完后晚上和卓夫寝室出去唐镇吃了清蒸鱼，前天打了一天的游戏，昨天看了一天指环王，今天上午起来在寝室睡到了九点多，看了会儿b站，快十点，出来吃早餐（香锅）。然后一直看生化危机。继续看指环王。</p>
+<h2 id="6-27"><a href="#6-27" class="headerlink" title="6.27"></a>6.27</h2><p>上午一直在划水，把自己拖到了lab，在lab里摸鱼划水，下午到晚上的时候，开始恢复过来，处理了一会儿gmx，一直到晚上（本来还想写综述的，但是有一种力量阻止了我，让我继续研究gmx问题）<br>以后注意每次linux工作最好用screen -S &lt;新任务名&gt;，昨晚似乎就因为自动重启，算了半天的东西没了<br>晚上回去</p>
+<p>时间规划：<br>    1. basic不可动的 借鉴工作时间早八-晚十，所以路上时间看自己的规划了<br>        1.1 计划十一点睡到六点半或者七点起床，<br>    2. 大项目拆成几个小项目，比如查资料，这一阶段查的目的是什么，拆分一个一个小目标<br>        2.1 想到有什么要做列出来，完成这些小工作<br>        2.2 分成四类项目：<br>            - 重要：15min-2h<br>            - 紧急：&lt;15min<br>            - 不重要不紧急：<br>            - 习惯：希望自己坚持做的事情
+    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2021/06/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27-2021-6-26-%E7%AC%AC%E5%8D%81%E5%85%AD%EF%BC%8C%E5%8D%81%E4%B8%83%E5%91%A8%E8%87%B36-27/" data-id="clc4z8jw00030bwv257zg1na2" data-title="第十六，十七周至6.27" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-周报-2021-2季度-2021-6-7-第十五周至6-13-2021-6-7-第十五周至6-13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/07/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13/" class="article-date">
@@ -109,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/06/07/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13/" data-id="clblr261w002rzkv2455h2144" data-title="第十五周至6.13" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2021/06/07/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13-2021-6-7-%E7%AC%AC%E5%8D%81%E4%BA%94%E5%91%A8%E8%87%B36-13/" data-id="clc4z8jw10033bwv2gwtnddav" data-title="第十五周至6.13" class="article-share-link">Share</a>
       
       
       
@@ -198,7 +679,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/31/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-31-%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%91%A8-6-6-2021-5-31-%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%91%A8-6-6/" data-id="clblr261s002mzkv27eb8er9z" data-title="第十四周-6.6" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2021/05/31/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-31-%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%91%A8-6-6-2021-5-31-%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%91%A8-6-6/" data-id="clc4z8jvz002ybwv2and29vdp" data-title="第十四周-6.6" class="article-share-link">Share</a>
       
       
       
@@ -286,7 +767,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/27/%E7%A7%91%E7%A0%94-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8-2021-5-27-chemdraw%E6%8A%80%E5%B7%A7/" data-id="clblr2601000mzkv2a0r47fn6" data-title="chemdraw技巧" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2021/05/27/%E7%A7%91%E7%A0%94-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8-2021-5-27-chemdraw%E6%8A%80%E5%B7%A7/" data-id="clc4z8jux000kbwv27w073i3j" data-title="chemdraw技巧" class="article-share-link">Share</a>
       
       
       
@@ -353,474 +834,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/24/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-24-%E7%AC%AC%E5%8D%81%E4%B8%89%E5%91%A8-5-30-2021-5-24-%E7%AC%AC%E5%8D%81%E4%B8%89%E5%91%A8-5-30/" data-id="clblr261o002hzkv26lea12h6" data-title="第十三周 -5.30" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2021-2季度-2021-5-18-第十二周-5-23-2021-5-18-第十二周-5-23" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/18/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23/" class="article-date">
-  <time class="dt-published" datetime="2021-05-18T20:40:59.000Z" itemprop="datePublished">2021-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/05/18/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23/">第十二周-5.23</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="5-17"><a href="#5-17" class="headerlink" title="5.17"></a>5.17</h2><p>打王者+补完这一版paper给曹师兄</p>
-<h2 id="5-18"><a href="#5-18" class="headerlink" title="5.18"></a>5.18</h2><p>过柱子实验，听王老师（审稿人）讲文章写作：关于写作思路。<br>累了，回去整理微信好友，然后睡觉</p>
-<h2 id="5-19"><a href="#5-19" class="headerlink" title="5.19"></a>5.19</h2><p>一大早就醒了，梦到梁师兄了要当院士了草。干活吧，冲期末。日程安排起来。</p>
-<h2 id="5-20-22"><a href="#5-20-22" class="headerlink" title="5.20-22"></a>5.20-22</h2><p>按部就班的听课后，就刷手机，打王者，看a-soul。和junmei沟通说可以准备j签材料了。<br>5.22袁隆平和吴孟超去世了</p>
-<h2 id="5-23"><a href="#5-23" class="headerlink" title="5.23"></a>5.23</h2><p>早上快九点起来，天气雨，清凉，不想玩手机了，把衣服晾了想专心干活，但离开宿舍之前看了一下嘉然切片，然后不小心就点进了大仙视频，然后就忘记自己在玩手机了，九点半才出门。<br>这种看切片和娱乐视频，只是一种虚空刺激，窃以为可以</p>
-<ul>
-<li>前几天和未来米国学校的新同学微信聊天，聊到一些偏实践的内容，比如掌握哪些软件，会写什么语言。这个讨论的结果是：<strong>好学校不会把重心放在手把手教你怎么操作软件，怎么编写代码，他们绝大部分时间会用来教理论，教学术，教更高屋建瓴（你想说更“虚”也行）的东西，然后默认你是个智商不错也不算太懒的好孩子，自己会搞定那些实际的操作。如果你因为这个而觉得自己的学习脱节了，那可能你真的脱节了。。。</strong> <strong>牛校提供的是资源，氛围，同伴，不只是老师和课本</strong></li>
-</ul>
-<p>作者：郦橙锦妖<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23732327/answer/25585926">https://www.zhihu.com/question/23732327/answer/25585926</a></p>
-<p>下午运动，晚上在馄饨店吃完后回到图书馆已经累了……也不想看文章……u感觉这个时候应该趴一下或者如何，喝点咖啡，提振精神。结果是，装了lol玩了两把，然后看书也没看进去。这种游戏适合几个人一起玩，属于齐心协力攻坚克难型，不是王者那种简单易上手。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/18/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23-2021-5-18-%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%91%A8-5-23/" data-id="clblr261m002ezkv2bfee7ifp" data-title="第十二周-5.23" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2021-2季度-2021-5-11-第十一周-5-16-2021-5-11-第十一周-5-16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/11/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16/" class="article-date">
-  <time class="dt-published" datetime="2021-05-11T17:56:32.000Z" itemprop="datePublished">2021-05-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/05/11/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16/">第十一周-5.16</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="5-10"><a href="#5-10" class="headerlink" title="5.10"></a>5.10</h2><h2 id="5-11"><a href="#5-11" class="headerlink" title="5.11"></a>5.11</h2><h2 id="5-12"><a href="#5-12" class="headerlink" title="5.12"></a>5.12</h2><p>美签一些问答<br><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVlhGam1mdUdjdlVn">https://docs.qq.com/doc/DVlhGam1mdUdjdlVn</a></p>
-<p>做了英语pre，本来还没那么流畅，不过pre的时候很自然地就说出来稿子。预计7min的pre说了7.5min，中间还有老师插嘴。做ppt+写稿，校稿之前花了一晚上大约三四个小时，早上八点到九点二十从完全不会开始的练习做了4-5遍吧，第二遍就明显能记住稿子了，也和ppt上的提示信息关系很大。老师说change her stereotype for pharmacy hhh。脚疼回寝室了，应该</p>
-<h2 id="5-13-15"><a href="#5-13-15" class="headerlink" title="5.13-15"></a>5.13-15</h2><ul>
-<li>周四药分课认真听了听+做笔记，其实挺值得听的，把hzq正装送去洗了</li>
-<li>脚疼贴了膏药，非常好用，看别人修单车：感觉这就是成年人，独立人自己解决问题的快乐。以前真的不知道。近来看动漫越来越觉得“靠谱的成年男性”很好，不管是我爸，王任小老师（问题必然能解决，虽然看起来很难或很简单），翔鹰师兄（大多问题都知道）或者番里比如成年蓝波，迪诺，巴特，上司荒卷，七海等。</li>
-<li>过的有点浑浑噩噩这几天……</li>
-<li>周六写文章+看《攻壳机动队》第一季，很好的番，制作精良，反思的是机械和人的关系，以及人生和人事的思考等等。</li>
-</ul>
-<h2 id="5-16"><a href="#5-16" class="headerlink" title="5.16"></a>5.16</h2><p>写一天文章+玩王者</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/11/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16-2021-5-11-%E7%AC%AC%E5%8D%81%E4%B8%80%E5%91%A8-5-16/" data-id="clblr261h0027zkv2grbzgues" data-title="第十一周-5.16" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2021-2季度-2021-5-3-第十周-5-9-2021-5-3-第十周-5-9" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/03/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9/" class="article-date">
-  <time class="dt-published" datetime="2021-05-03T23:36:04.000Z" itemprop="datePublished">2021-05-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/05/03/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9/">第十周-5.9</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>如何制定健身计划？洗数据洗好了，（junmei这周补课没空），（）下周准备，</p>
-<h2 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h2><ul>
-<li>昨晚熬夜搞gmx，上午到实验室没精神，改了一会儿E3就想睡觉；中午回去洗澡午睡晚上六点半才来。不想写的原因我觉得是没有方向，不知道怎么改改什么，一直在刷b站，非常痛苦；最后改完了E3部分，看曹师兄的批注建议，写出来自己的7个修改具体操作内容，充满了目的性以及干劲。明天上午来写组会ppt，英语作业+英语挑项目，药分ppt，然后改这个内容！争取五一干完这一稿发给师兄！</li>
-</ul>
-<h2 id="5-4"><a href="#5-4" class="headerlink" title="5.4"></a>5.4</h2><ul>
-<li>早起了，和爸妈聊了下换手机（荣耀40 轻奢？联想独显?）,做组会ppt；注意photoshop导出空心图像时用png格式不然，透明区域是白色的。</li>
-<li>介绍组会ppt：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37422718/answer/107038092">https://www.zhihu.com/question/37422718/answer/107038092</a><ol>
-<li>演示文稿里应该使用非衬线字体(sans-serif)如苹果通用Helvetica，新罗马用于打印文本；中文宋体衬线，黑体无衬线（可以考虑细黑）</li>
-<li>应该用一些bullet总结文字信息，符号的替代品是dash和slash。文字和符号之间应该有一个空格</li>
-</ol>
-</li>
-<li>ppt画球<ul>
-<li>shift拉出一个圆，三维格式里顶部底部棱台宽高均为半径（cm）</li>
-</ul>
-</li>
-<li>做了一天ppt，麻了，应该再多借鉴借鉴别人，也很感激梁师兄的安排。</li>
-</ul>
-<h2 id="5-5"><a href="#5-5" class="headerlink" title="5.5"></a>5.5</h2><ul>
-<li>麻了，早晨再改了一下ppt，然后对照着把稿子写了出来；92机器坏了不能用，中午一点组会开到晚上六点半，组里同学一起去长泰秋炙和牛寿喜烧，吃了138的，疯狂吃肉真的还挺爽的哈哈哈，饮料不重要。</li>
-</ul>
-<h2 id="5-6"><a href="#5-6" class="headerlink" title="5.6"></a>5.6</h2><ul>
-<li>药分滴定实验做到五点多：乙醇溶解加成了水，过滤压力大了微孔滤膜射出来把瓶子打碎了，滴定结果都是十几……简直无语……我懒得配溶液，就用了隔壁同学的，想着有个数据就行；结果最后滴定出来，人家都是27，28，空白38，我一个是28，一个是22，空白是十几……算都没法算……虽然但是，空白不应该如此的。姜琳琳不出所料，最终又说我数据造假……上次分化就直接不给我签字……这次勉强给签了字……，……，只能说滴定分析实验不适合我吧。以及，没有人教过我，实验失败了要怎么样…………</li>
-<li>晚上感觉累，又不想玩一晚上手机，所以去门口电影院看了《悬崖之上》，讲东北抗战期间我方特务执行任务的故事，情节有张力，下午或晚上打电话的时候可以推荐</li>
-</ul>
-<h2 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h2><ul>
-<li>瘫在床上洗澡+收拾衣服+看剧《家教》《极主夫道》，立领衣服确实显得比较成熟哈哈，算是有点从忙碌里缓过来了，中午吃个香锅又回去睡午觉。实在是不想干活，真的一干就好久，好多……太麻了……；但这种去做不想做的事，感觉就是成长吧……麻了麻了</li>
-<li>晚上吃了寿司拼盘（一般）和炸猪排拉面，日式食物确实越来越suki了，不过还是绿地那里质量好一点，这里的饭啥的属实一般，韩国菜欧巴桑那里价位差不多但口味比他好，感觉不是很值得，但低价位套餐还可以。</li>
-<li>晚上一个是构思了英语pre的工作，然后取西装衬衫，问老板得知可以自己修铝合金车把手，打印材料（然后放到书包里），图书馆取预定的书</li>
-<li>回来用python把数据洗了，确实批量操作挺好用，但没时间深究，只能说能用就行，然后准备啥时候用薛定谔看看这个库能不能用，打算先把protac这一稿写完再做，明天问问师兄92机器啥时候能用</li>
-<li>买了母亲节康乃馨看看能不能送到；睡前看一眼买的书，打算开始运动计划了，又胖了。</li>
-<li>整理了以下世毕盟之前材料，有空看，退了一些群（看下电脑助手材料）</li>
-<li>综上：<em><strong>protac</strong></em>，药化课前写英语作业以及protac，安排运动计划，明天下午坐车回来可以打电话。周末问junmei J签证</li>
-<li>最后：李晨学姐拉我进了两个美签群，以及查询签证余量的网站：<br><a target="_blank" rel="noopener" href="https://checkee.info/index.php">https://checkee.info/index.php</a><br><a target="_blank" rel="noopener" href="https://tuixue.online/visa/">https://tuixue.online/visa/</a></li>
-<li>最终12：30搞完了，睡……</li>
-</ul>
-<h2 id="5-8"><a href="#5-8" class="headerlink" title="5.8"></a>5.8</h2><ul>
-<li>感觉很困，药化课就随便听听……，标标重点，发现4.28的药化镇痛部分一点记录都没有……感觉有点怪，因为记得有说什么物质合成路线看似复杂实际就是加成，亲核取代什么的，上课同时刷微信美签群，中午去上课的车上也没睡着，老师觉得英语pre的提纲挺好的，下午在车上看家教，吃完饭后，最终回宿舍看完了家教睡了一觉。晚上刷手机……给家长打电话，意识到ppt（power point）应该是先有稿子，ppt像提词器一样提示自己。周一汇报的时候跟junmei说已经洗好了，问问能不能去。</li>
-<li>以及，节奏要再快一点，一件事一件事做之前想好要做几点。</li>
-<li>胖了，93kg多，应该是放题吃的……</li>
-</ul>
-<h2 id="5-9"><a href="#5-9" class="headerlink" title="5.9"></a>5.9</h2><ul>
-<li>七点起床刷手机洗澡，最终九点半写完昨天回顾，要今明两天把protac这一稿交给师兄</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/05/03/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9-2021-5-3-%E7%AC%AC%E5%8D%81%E5%91%A8-5-9/" data-id="clblr261q002jzkv2aehla43o" data-title="第十周-5.9" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-科研-分子模拟-Schrodinger-2021-4-30-Schrodinger-1-Beginer-2021-4-30-Schrodinger-1-Beginer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-Schrodinger-2021-4-30-Schrodinger-1-Beginer-2021-4-30-Schrodinger-1-Beginer/" class="article-date">
-  <time class="dt-published" datetime="2021-05-01T02:38:03.000Z" itemprop="datePublished">2021-04-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-Schrodinger-2021-4-30-Schrodinger-1-Beginer-2021-4-30-Schrodinger-1-Beginer/">Schrodinger-1.Beginer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>Startup</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-Schrodinger-2021-4-30-Schrodinger-1-Beginer-2021-4-30-Schrodinger-1-Beginer/" data-id="clblr262t0049zkv27savcv9i" data-title="Schrodinger-1.Beginer" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mae/" rel="tag">mae</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-科研-分子模拟-GMX-2021-4-30-gmx入门-2-探索nm-2021-4-30-gmx入门-2-探索nm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm/" class="article-date">
-  <time class="dt-published" datetime="2021-04-30T22:31:23.000Z" itemprop="datePublished">2021-04-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm/">gmx入门-2.探索nm</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="https://img.imgdb.cn/item/608bde23d1a9ae528f976e83.png" alt="方向"></p>
-<h2 id="安装双精度"><a href="#安装双精度" class="headerlink" title="安装双精度"></a>安装双精度</h2><ol>
-<li>su - </li>
-<li>yum install epel-release<ul>
-<li>yum install cmake3</li>
-<li>一路 y</li>
-<li>cmake3 &#x2F;V     如果显示出了3.x的版本号就说明没问题了</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="http://www.fftw.org/fftw-3.3.8.tar.gz%EF%BC%8C%E7%A7%BB%E5%88%B0/usr/local/">http://www.fftw.org/fftw-3.3.8.tar.gz，移到/usr/local/</a>   下，gromacs也在这里<ul>
-<li>tar -zxf fftw-3.3.8.tar.gz</li>
-<li>cd fftw-3.3.8</li>
-<li>.&#x2F;configure –prefix&#x3D;&#x2F;hfy&#x2F;fftw338 –enable-sse2 –enable-avx –enable-float –enable-shared –enable-avx2   (这是单精度，双精度从这里开始，流程再走一遍，删掉–enable-float)</li>
-<li>make -j install</li>
-</ul>
-</li>
-<li>cd gromacs-2019.6<ul>
-<li>mkdir build</li>
-<li>cd build</li>
-<li>export CMAKE_PREFIX_PATH&#x3D;&#x2F;hfy&#x2F;fftw338</li>
-<li>cmake3 .. -DCMAKE_INSTALL_PREFIX&#x3D;&#x2F;sob&#x2F;gmx2019.6 -DGMX_GPU&#x3D;off (在有GPU机器上需要加-DGMX_GPU&#x3D;off命令,因默认编写gpu版本，再加上-DGMX_DOUBLE&#x3D;ON命令)</li>
-<li>make -j install</li>
-</ul>
-</li>
-<li>修改用户目录下.bashrc ，末尾加入 source &#x2F;hfy&#x2F;gmx2019.6&#x2F;bin&#x2F;GMXRC<ul>
-<li>gmx -version 确认</li>
-</ul>
-</li>
-</ol>
-<h2 id="Hessian"><a href="#Hessian" class="headerlink" title="Hessian"></a>Hessian</h2><ul>
-<li><p>Hessian mdp文件（感觉也差不多，但emtol应该0.01或者更小）不过此前的Fmax可能设得太大了<br>  define              &#x3D; -DFLEXIBLE<br>  constraints         &#x3D;  none<br>  integrator          &#x3D;  nm<br>  nsteps              &#x3D;  10000</p>
-<p>  emtol               &#x3D;  1.0  ;这里不确定<br>  emstep              &#x3D;  0.01</p>
-<p>  ns_type             &#x3D;  grid<br>  pbc                 &#x3D;  xyz<br>  nstlist             &#x3D;  5<br>  rlist               &#x3D;  0.9<br>  coulombtype         &#x3D;  PME</p>
-<p>  vdwtype             &#x3D;  Cut-off<br>  rvdw                &#x3D;  0.9</p>
-<p>  Tcoupl &#x3D; no<br>  Pcoupl &#x3D; no<br>  gen_vel &#x3D; no</p>
-</li>
-<li><p>准备<br>  gmx grompp -f Hessian.mdp -c npt-pr.gro -p fws.top -o Hessian.tpr</p>
-<ul>
-<li>感觉不应该，因为这是升温后的结果，应该用能量最小化才能算hessian</li>
-</ul>
-</li>
-</ul>
-<p>因为log里报：<br>    Maximum force: 3.60376e+03<br>    The force is probably not small enough to ensure that you are at a minimum.<br>    Be aware that negative eigenvalues may occur<br>    when the resulting matrix is diagonalized.<br>    Finished mdrun on rank 0 Sun May  2 21:56:50 2021<br>所以全流程重来，在VM里emtol里就降低力的最大值，先试试emtol 100，并在做一次共轭cg，并直接进行真空模拟<br>    1k次收敛到700，3.5k次收敛100</p>
-<ol>
-<li><p>gmx_d pdb2gmx -f fws.pdb -o fws.gro -p fws.top -i fws.itp -ff amber99sb-ildn -water tip3p -ignh</p>
-</li>
-<li><p>gmx_d editconf -f fws.gro -o fws-PB.gro -bt dodecahedron -d 1.2</p>
-</li>
-<li><p>gmx grompp -f fws-VM1.mdp -c fws-PB.gro -p fws.top -o fws-VM1.tpr -maxwarn 1</p>
-<ul>
-<li><p>如果这里就使用gmx_d 的话不能快速的收敛，一万步收到94 force，而gmx能3.5k步略多收到400，9.8k步收到25 force，15k步最小化到20</p>
-</li>
-<li><p>fws-VM1.mdp<br>  ; 传递给预处理器的一些定义<br>  define          &#x3D; -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量</p>
-<p>  ; 模拟类型, 结束控制, 输出控制参数<br>  integrator      &#x3D; steep         ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>  emtol           &#x3D; 20            ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>  emstep          &#x3D; 0.01          ; 初始步长(nm)<br>  nsteps          &#x3D; 4000          ; 在能量最小化中, 指定最大迭代次数<br>  nstenergy       &#x3D; 10            ; 能量写出频率<br>  energygrps      &#x3D; System        ; 要写出的能量组</p>
-<p>  ; 近邻列表, 相互作用计算参数<br>  nstlist         &#x3D; 1             ; 更新近邻列表的频率. 1表示每步都更新<br>  ns_type         &#x3D; grid          ; 近邻列表确定方法(simple或grid)<br>  coulombtype     &#x3D; PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>  rlist           &#x3D; 1.0           ; 短程力近邻列表的截断值<br>  rcoulomb        &#x3D; 1.0           ; 长程库仑力的截断值<br>  vdwtype         &#x3D; cut-off       ; 计算范德华作用的方法<br>  rvdw            &#x3D; 1.0           ; 范德华距离截断值<br>  constraints     &#x3D; none          ; 设置模型中使用的约束<br>  pbc             &#x3D; xyz           ; 3维周期性边界条件<br>  cutoff-scheme   &#x3D; Verlet        ; 版本不加这个会有一个note提醒</p>
-</li>
-</ul>
-</li>
-<li><p>gmx mdrun -v -deffnm fws-VM1</p>
-</li>
-<li><p>gmx_d grompp -f fws-VM2.mdp -c fws-VM1.gro -p fws.top -o fws-VM2.tpr -maxwarn 1</p>
-<ul>
-<li><p>fws-VM2.mdp<br>  ; 传递给预处理器的一些定义<br>  define          &#x3D; -DFLEXIBLE    ; 使用柔性水模型而非刚性模型, 这样最陡下降法可进一步最小化能量</p>
-<p>  ; 模拟类型, 结束控制, 输出控制参数<br>  integrator      &#x3D; cg            ; 指定使用最陡下降法进行能量最小化. 若设为<code>cg</code>则使用共轭梯度法<br>  emtol           &#x3D; 1.0         ; 若力的最大值小于此值则认为能量最小化收敛(单位kJ mol^-1^ nm^-1^)<br>  emstep          &#x3D; 0.01          ; 初始步长(nm)<br>  nsteps          &#x3D; 10000         ; 在能量最小化中, 指定最大迭代次数<br>  nstenergy       &#x3D; 20            ; 能量写出频率<br>  energygrps      &#x3D; System        ; 要写出的能量组</p>
-<p>  ; 近邻列表, 相互作用计算参数<br>  nstlist         &#x3D; 1             ; 更新近邻列表的频率. 1表示每步都更新<br>  ns_type         &#x3D; grid          ; 近邻列表确定方法(simple或grid)<br>  coulombtype     &#x3D; PME           ; 计算长程静电的方法. PME为粒子网格Ewald方法, 还可以使用cut-off<br>  rlist           &#x3D; 1.0           ; 短程力近邻列表的截断值<br>  rcoulomb        &#x3D; 1.0           ; 长程库仑力的截断值<br>  vdwtype         &#x3D; cut-off       ; 计算范德华作用的方法<br>  rvdw            &#x3D; 1.0           ; 范德华距离截断值<br>  constraints     &#x3D; none          ; 设置模型中使用的约束<br>  pbc             &#x3D; xyz           ; 3维周期性边界条件</p>
-</li>
-</ul>
-</li>
-<li><p>gmx_d mdrun -v -deffnm fws-VM2</p>
-<ul>
-<li><p>没装双精度报错：<br>  Energy minimization has stopped, but the forces have not converged to the<br>  requested precision Fmax &lt; 1 (which may not be possible for your system). It<br>  stopped because the algorithm tried to make a new step whose size was too<br>  small, or there was no change in the energy since last step. Either way, we<br>  regard the minimization as converged to within the available machine<br>  precision, given your starting configuration and EM parameters.</p>
-<p>  Double precision normally gives you higher accuracy, but this is often not<br>  needed for preparing to run molecular dynamics.</p>
-<p>  writing lowest energy coordinates.</p>
-<p>  Polak-Ribiere Conjugate Gradients converged to machine precision in 3590 steps,<br>  but did not reach the requested Fmax &lt; 1.<br>  Potential Energy  &#x3D; -3.9830898e+03<br>  Maximum force     &#x3D;  3.4626892e+01 on atom 493<br>  Norm of force     &#x3D;  4.0448758e+00</p>
-</li>
-<li><p>9.6k步收敛到1</p>
-</li>
-</ul>
-</li>
-<li><p>Hessian mdp<br> define              &#x3D;  -DFLEXIBLE<br> constraints         &#x3D;  none<br> integrator          &#x3D;  nm<br> nsteps              &#x3D;  10000<br><br> emtol               &#x3D;  0.01<br> emstep              &#x3D;  0.01<br><br><br> ns_type             &#x3D;  grid<br> pbc                 &#x3D;  xyz<br> nstlist             &#x3D;  5<br> rlist               &#x3D;  0.9<br> coulombtype         &#x3D;  PME<br><br> vdwtype             &#x3D;  Cut-off<br> rvdw                &#x3D;  0.9</p>
-</li>
-<li><p>gmx_d grompp -f Hessian.mdp -c fws-VM2.gro -p fws.top -o Hessian.tpr -maxwarn 1</p>
-<ul>
-<li>报错，需要后续修正<br> WARNING 1 [file fws.top, line 4771]:<br> You are using Ewald electrostatics in a system with net charge. This can<br> lead to severe artifacts, such as ions moving into regions with low<br> dielectric, due to the uniform background charge. We suggest to<br> neutralize your system with counter ions, possibly in combination with a<br> physiological salt concentration.</li>
-</ul>
-</li>
-<li><p>gmx_d mdrun -v -s Hessian.tpr -o H-traj.trr -c confout.gro -e ener.edr -g md.log -mtx nm.mtx</p>
-<ul>
-<li>突然报错，因为maximum force 691 所以不给我做了……，也不是不给，就是生成的特别小一个matrix，而且很明显这个力太大了，应该0.01以下的</li>
-<li>试试VM1,2阶段再小点</li>
-<li>VM1 23k步到极限了，</li>
-<li>试试gmx VM1然后 gmx_d VM1-1继续小，然后gmx_d VM2<ul>
-<li>VM1 13k到 17 设为20</li>
-<li>gmx_d VM1-1 45k步到8 设为9</li>
-<li>gmx_d VM2 cg法 17k步＜0.1 47k步0.086</li>
-</ul>
-</li>
-<li>然而跑了又报错maximum force 671……</li>
-<li>不过也许没事</li>
-</ul>
-</li>
-<li><p>gmx_d nmeig -f nm.mtx -s Hessian.tpr -of eigenfreq.xvg -ol eigenval.xvg -os spectrum.xvg -v eigenvec.trr -last -1</p>
-</li>
-</ol>
-<ul>
-<li><p>有人建议使用elastic model，但是由于电势不来自实验，EF是任意的，不过网站还在架构中</p>
-</li>
-<li><p>编译时默认就是编译出能单机并行的，你一看CPU占用率就知道。计算时默认会用机子上所有核心，人为指定要用的核数的话用-nt选项。</p>
-</li>
-<li><p>只出50个结果，溶剂条件全是0，真空下有4个0，是低频结果</p>
-</li>
-<li><p>“电子能量”包括四项：(1)电子的动能(2)电子与电子间的库仑互斥能(3)核与核之间的库仑互斥能(4)电子与核之间的库仑吸引能。所以一般所说的“电子能量”其实并不完全是它的字面意思，因为也把核之间的互斥能包含了进去。</p>
-<ul>
-<li>电子能量的能量零点是假设核与电子都没有动能，体系中所有电子和原子核都被分离到无穷远的情况的能量。这个能量也可以被视为是体系的绝对能量</li>
-<li>单点能：某一构型的电子总能量，不包括零点能     总能量 &#x3D; 单点能 + 零点能（振动频率和的一半，忽略非谐性）<br>  &#x3D; V0 + 1&#x2F;2 h（k&#x2F;m）^0.5<br>  &#x3D; 单点能 + 1&#x2F;2 v</li>
-</ul>
-</li>
-</ul>
-<h2 id="改进思路"><a href="#改进思路" class="headerlink" title="改进思路"></a>改进思路</h2><p>问题：freq全是0，得不到数值</p>
-<ol>
-<li>师兄说可能是蛋白质结构没有能量最小化，也可能是结构异常<br> 1.1 确证有无能量最小化<br> 1.1.1 报maximum force错误，教程里有建议跑很久<br> 1.1.2 试图消除报的错<br>     1.1.2.1 加一个cutoff-scheme   &#x3D; Verlet，再加一个genion，邻居搜索改成0（真空），但看漏斗网蜘蛛毒素溶剂化研究教程里，指出如果进行真空溶剂化，就需要这样<br>     1.1.2.2 直接真空把emtol放到10以内很难实现，应该要跑很久，所以现收敛到500，在正式模拟中再提高精度，似乎以前没有做最后一步成品模拟<br>     - 生成拓扑文件<br>     - 真空能量最小化<br>     - 做6w cg法最大力下降到0.01<br>         期间使用<br>         gmx energy -f file.edr -o file.xvg<br>         xmgrace file.xvg<br>         查看能量下降图（可以中途使用editconf -f file.gro -o file.pdb 进行转换<br>     - 再做hessian还是力700，大了<br>     - 试着11.5w步，进一步下降到0.001 emtol最大力为732，反而之前的最大力为713……<br>     VM1：力 713.357   VM2 828 VM2-1 713.04 VM3 819.37 VM3-1 749.25 VM3-2 731.95<br>     使用dump中途输出一下frequency（看是否可用）<br>         gmx dump -f xxx.trr -om xxx.mdp &gt;&gt;xxx.txt<br>     试试用大的计算一下？<br>         gmx nmeig nm.mtx<br> 1.2 检查结构</li>
-<li></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/04/30/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-GMX-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm-2021-4-30-gmx%E5%85%A5%E9%97%A8-2-%E6%8E%A2%E7%B4%A2nm/" data-id="clblr262s0047zkv21ff18z2c" data-title="gmx入门-2.探索nm" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gmx/" rel="tag">gmx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2021-2季度-2021-4-26-第九周-5-2-2021-4-26-第九周-5-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2/" class="article-date">
-  <time class="dt-published" datetime="2021-04-26T20:33:05.000Z" itemprop="datePublished">2021-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2/">第九周-5.2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>protac 12h + 组会报告工作+工作6h+薛定谔学时6h</p>
-<h2 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h2><ul>
-<li>上午起床后一直到下午都在看《家庭教师》，主角的成长确实很吸引我关注。</li>
-<li>跳绳500下；跑步</li>
-</ul>
-<h2 id="4-27"><a href="#4-27" class="headerlink" title="4.27"></a>4.27</h2><ul>
-<li>白天做实验，下午装了薛定谔挺好，但是把充电器忘实验室了，结果晚上没逃医药元素化学，一直在玩王者</li>
-<li>8.1国内可以直接去美国了，五月给UIUC发邮件看能不能去，这也是借口不去找junmei，或者到时候看进度跑过去</li>
-</ul>
-<h2 id="4-28"><a href="#4-28" class="headerlink" title="4.28"></a>4.28</h2><ul>
-<li>早起跑步800m，思考给事情规划每周的工作时间，不能一直拖；打了疫苗，恰了饭</li>
-<li>因为昨天没带充电器，自己也没想着借别人的，结果药化没好好听讲打王者去了</li>
-<li>晚上来实验室专心写药分实验报告</li>
-<li>好好生活，学会取舍，知道取舍什么，有的东西必须做，有的东西是工作，才是有责任和担当</li>
-</ul>
-<h2 id="4-29"><a href="#4-29" class="headerlink" title="4.29"></a>4.29</h2><ul>
-<li>起来跑了两圈步</li>
-<li>要给junmei wang写周报了，困得一批，就安排练gmx了，吃了驴肉火烧，晚上和大家一起打游戏</li>
-</ul>
-<h2 id="4-30"><a href="#4-30" class="headerlink" title="4.30"></a>4.30</h2><ul>
-<li>昨天累到了，十二点半左右睡，早上九点起来，看《家庭教师》，非常具有启发性：虽然在描写主角的成长，但对我的成长也很有借鉴意义，需要把自己逼到绝境，找到自己的决心来源（比如主角是守护身边的人），然后能够不断地奋进，奋进，奋进。比如不让自己享受娱乐，做专一的事务（比如洗衣做饭，我还不具备这个条件）；有的人放弃游戏，吃美食，意志坚定，因为他有责任，为了决心有事情要做。</li>
-</ul>
-<h2 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h2><ul>
-<li>上午也是在看《家庭教师》，但不只是像在看动漫，这种热血成长番更多的能给自己注入精神力量。番里最关键的是决心，每个人的决心，有许许多多的力量，比如追随赏识自己的人，追求极限，兴趣使然，守护自己在乎的人，守护自己的家园和信条，以及怒火。</li>
-<li>当然，不应该沉浸其中，它只是手段，不能成为我的目的</li>
-<li>近来逐渐意识到：<em><strong>事情都需要靠自己想，自己做，效率很高</strong></em>；而知乎，谷歌，只有自己全然无知，或者问答系统很完备下才需借助，不然还是自己探索最好最适合；已经卸掉了知乎。</li>
-<li><em><strong>靠谱的成年人</strong></em>，也正是基于上述原因，因为你亲历亲为，所以能很好地掌握局面，以及负起责任</li>
-<li><em><strong>剥离手机功能</strong></em>，沉迷手机，对眼睛不好，浪费时间；手机应当回归本质，一个电子产品，移动的信息终端，本质功能就是得知有人在找你（微信，邮件，电话），以及提供移动网络，支付和意外的必需时刻；不如将它功能拆解，微信等功能回归电脑，视频或者临时功能分到平板，而游戏并非必需。</li>
-<li>学术路上我类似笹川了平，喜欢追求极限，能带来快乐；追求极限才能突破自我</li>
-<li>下午写E3，晚上夜跑，用激昂的音乐冲！</li>
-</ul>
-<h2 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h2><ul>
-<li>笑死，protac文章里发现有人做草药库虚筛想学习一下，打开是shaomeng wang的。<ul>
-<li>基于PROTAC中的XIAP（E3 Cullin Complex）筛中草药库</li>
-</ul>
-</li>
-<li>上厕所和休息可以偶尔看看视频，但主要的时间还是要拿来处理种种杂事正事，因为多，所以才需要更多时间</li>
-<li>下午写了一会儿E3，晚上跑来实验室后没忍住，做起了gmx_d 工作</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2021/04/26/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2-2021-4-26-%E7%AC%AC%E4%B9%9D%E5%91%A8-5-2/" data-id="clblr261j0029zkv27f3seui2" data-title="第九周-5.2" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2021/05/24/%E5%91%A8%E6%8A%A5-2021-2%E5%AD%A3%E5%BA%A6-2021-5-24-%E7%AC%AC%E5%8D%81%E4%B8%89%E5%91%A8-5-30-2021-5-24-%E7%AC%AC%E5%8D%81%E4%B8%89%E5%91%A8-5-30/" data-id="clc4z8jvy002tbwv26qa0gmw3" data-title="第十三周 -5.30" class="article-share-link">Share</a>
       
       
       
@@ -862,7 +876,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AMBER/" style="font-size: 17.5px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 17.5px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 15px;">生活反思</a>
+      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
     </div>
   </div>
 
@@ -884,23 +898,23 @@
       <ul>
         
           <li>
-            <a href="/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/">Weekly blog</a>
+            <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/hello-world/">Hello World</a>
+            <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/">Weekly blog</a>
+            <a href="/2022/12/21/test/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/">Gamd-01</a>
+            <a href="/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">Git版本控制</a>
           </li>
         
           <li>
-            <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
+            <a href="/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/">(no title)</a>
           </li>
         
       </ul>

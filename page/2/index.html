@@ -71,6 +71,360 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-周报-2022-3-Quarter-2022-10-3-至2022-10-10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/" class="article-date">
+  <time class="dt-published" datetime="2022-10-03T14:55:42.000Z" itemprop="datePublished">2022-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="10-3"><a href="#10-3" class="headerlink" title="10.3"></a>10.3</h2><p>一个很好的jupyter 插件介绍<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Olgbl8s_ty6ADsJx_SwOaQ%EF%BC%8Ctable">https://mp.weixin.qq.com/s/Olgbl8s_ty6ADsJx_SwOaQ，table</a> of contents, autopep8, variable inspector, executetime, 移仓代码输入</p>
+<p><code>paste</code> 命令 直接 合并两个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste file1 file2 &gt; combine_file</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/" data-id="clc4z8jvg001fbwv25oza8juv" data-title="至2022.10.10" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2022-3-Quarter-2022-11-24-至2022-11-27" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/" class="article-date">
+  <time class="dt-published" datetime="2022-10-03T14:55:42.000Z" itemprop="datePublished">2022-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/">至2022.10.10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="11-24"><a href="#11-24" class="headerlink" title="11.24"></a>11.24</h1><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>好久没写周记了，11月初电脑主板motherboard烧了，找人把数据恢复了，电脑留在店里，因为要ownership transfer。开始还不理解啥意思，怎么让我转移ownership。</p>
+<p>数据恢复花了我200刀，老外是真挣钱啊</p>
+<h2 id="工作记录"><a href="#工作记录" class="headerlink" title="工作记录"></a>工作记录</h2><p>今天终于打开了md.in文件的介绍，因为实在是找不到解决方法，因此一项一项看参数。现在英语阅读水平也有了一定的提升，看amber manual里参数设置也没有那么痛苦了hh</p>
+<p>可以打开所有的计算的out文件看标准化参数设置。</p>
+<p>之前有一点纳闷为什么我没有out文件输出，现在看来manual才知道要设置ntwr参数，不设置就是默认的计算完了才输出。而手册里提醒：</p>
+<p><code>Every ntwr steps during dynamics, the “restrt” file will be written, ensuring that recovery from a crash will not be so painful.</code>前两天就是跑了一晚的gamd突然寄了，没结果，也不知道为啥，就只好被迫重跑很折磨</p>
+<p><code>This option is useful if for example one wants to run free energy perturbations from multiple starting points or save a series of restrt files for minimization. Default = nstlim</code></p>
+<p>in文件使用的是fortran编译器</p>
+<h2 id="MD-in-amber"><a href="#MD-in-amber" class="headerlink" title="MD in amber"></a>MD in amber</h2><h3 id="in-文件参数"><a href="#in-文件参数" class="headerlink" title="in 文件参数"></a>in 文件参数</h3><p>第一行是title</p>
+<p>&amp; 后7个字符为comment cards 如 &amp;cntrl，并以 ”&#x2F;“ 结束</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">   2.  CONTROL  DATA  FOR  THE  RUN</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">default_name</span><br><span class="line"></span><br><span class="line">General flags:</span><br><span class="line">     imin    =       0, </span><br><span class="line">     0：无min条件下跑MD</span><br><span class="line">     1：min</span><br><span class="line">     5：read in trajectory using min算法进行analysis</span><br><span class="line">     </span><br><span class="line">     nmropt  =       0</span><br><span class="line">     默认0</span><br><span class="line">     1：使用NMR约束（与NMR结构有关）</span><br><span class="line">     2：读取更多信息</span><br><span class="line">Nature and format of input:</span><br><span class="line">     ntx     =       1</span><br><span class="line">     1： 默认，读取坐标，不读取速度。自建结构或者能量最小化后进行MD使用这个参数，</span><br><span class="line">     5：读取坐标和速度，当有rst文件续跑的时候使用这个，但速度信息在irest=1才会使用。ntb&gt;0会读盒子信息</span><br><span class="line">     </span><br><span class="line">     irest   =       0, </span><br><span class="line">     0：默认，跑新MD，忽略输入文件的速度，除非给了t参数，否则timestep归零</span><br><span class="line">     1：续跑MD，ntx必须为5，</span><br><span class="line">     </span><br><span class="line">     ntrx    =       1</span><br><span class="line"></span><br><span class="line">Nature and format of output:</span><br><span class="line">     ntxo    =       2, ntpr    =      50, ntrx    =       1, ntwr    =26000000</span><br><span class="line">     </span><br><span class="line">     ntxo </span><br><span class="line">     	写入rst文件中的格式</span><br><span class="line">     	=1 ascii 可读文件</span><br><span class="line">     	=2 （default）二进制NetCDF文件</span><br><span class="line">     	</span><br><span class="line">     ntpr 写入mdinfo的频率。默认50</span><br><span class="line">     	最好让结果几百M，不要几个G，太大了没有意义，变化不明显。GaMD 50ns ntpr，566G，dt=0.001ps</span><br><span class="line">     </span><br><span class="line">      ntwr !重要</span><br><span class="line">     	写rst文件的频率，默认为nstlim</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0</span><br><span class="line">     </span><br><span class="line">     ntwx </span><br><span class="line">     	md中写入轨迹mdcrd文件的频率，默认不输出</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">    iwrap</span><br><span class="line">    	把坐标轨迹放到primary box运算，尤其对于长时间模拟建议使用=1，否则会跑出去。如果等于0可能需要进一步	使用cpptraj进行矫正</span><br><span class="line">    	=1 使用</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">     ioutfm  =       1, ntwprt  =       0, idecomp =       0, rbornstat=      0</span><br><span class="line">     </span><br><span class="line">     ioutfm</span><br><span class="line">     	轨迹文件格式</span><br><span class="line">     	=0 ascii</span><br><span class="line">     	=1 二进制 default</span><br><span class="line">     	</span><br><span class="line">     ntwprt</span><br><span class="line">     	轨迹文件（mdcrd 和 mdvel）中包含的原子数。该标志可用于减少这些文件的大小</span><br><span class="line">     	=0 所有</span><br><span class="line">     	&gt;0 包括原子 1 到 ntwprt</span><br><span class="line"></span><br><span class="line">Potential function:</span><br><span class="line">	ntf     =       1, ntb     =       1, igb     =       0, nsnb    =      25</span><br><span class="line">	ipol    =       0, gbsa    =       0, iesp    =       0</span><br><span class="line">	dielc   =   1.00000, cut     =   8.00000, intdiel =   1.00000</span><br><span class="line"></span><br><span class="line">	ntf</span><br><span class="line">		force evaluation，如果使用了shake，则不必需开启</span><br><span class="line">		=1 default</span><br><span class="line">		=2 和ntc=2联用</span><br><span class="line">	ntb</span><br><span class="line">		周期性边界是否在系统上施加非键相互作用的计算，无需设置，由igb和ntp决定，二者默认为0.ntb默认为1</span><br><span class="line">		使用constant volume。如果非0，必须使用周期性盒子</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">Frozen or restrained atoms:</span><br><span class="line">     ibelly  =       0, ntr     =       0</span><br><span class="line"></span><br><span class="line">Molecular dynamics:</span><br><span class="line">     nstlim  =  26000000, nscm    =      1000, nrespa  =         1</span><br><span class="line">          t       =   0.00000, dt      =   0.00100, vlimit  =  -1.00000</span><br><span class="line">          </span><br><span class="line">          dt太小了，需要指定为0.002</span><br><span class="line">          </span><br><span class="line">Langevin dynamics temperature regulation:</span><br><span class="line">     ig      =  413783</span><br><span class="line">     temp0   = 300.00000, tempi   = 300.00000, gamma_ln=   0.00000</span><br><span class="line"></span><br><span class="line">	ntt</span><br><span class="line">		=3开启langevin 温度调节</span><br><span class="line">	ig</span><br><span class="line">		= -1表明体系恒温</span><br><span class="line"></span><br><span class="line">SHAKE:</span><br><span class="line">	ntc     =       2, jfastw  =       0</span><br><span class="line">	tol     =   0.00000</span><br><span class="line">	</span><br><span class="line">	ntc</span><br><span class="line">	要使用 TIP3P，请设置 NTF = NTC = 2</span><br><span class="line">		=2开启shake进行键长约束，和ntf=2联用</span><br><span class="line">	tol</span><br><span class="line">	抖动坐标复位的相对几何公差。推荐最大值：&lt;0.00005埃 默认值 0.00001</span><br><span class="line">		=0.00001 default</span><br><span class="line"></span><br><span class="line">| Intermolecular bonds treatment:</span><br><span class="line">|     no_intermolecular_bonds =       1</span><br><span class="line"></span><br><span class="line">| Energy averages sample interval:</span><br><span class="line">|     ene_avg_sampling =       1</span><br><span class="line"></span><br><span class="line">Ewald parameters:</span><br><span class="line">     verbose =       0, ew_type =       0, nbflag  =       1, use_pme =       1</span><br><span class="line">     vdwmeth =       1, eedmeth =       1, netfrc  =       1</span><br><span class="line">     Box X =  129.245   Box Y =  120.487   Box Z =  147.365</span><br><span class="line">     Alpha =   90.000   Beta  =   90.000   Gamma =   90.000</span><br><span class="line">     NFFT1 =  128       NFFT2 =  128       NFFT3 =  160</span><br><span class="line">     Cutoff=    8.000   Tol   =0.100E-04</span><br><span class="line">     Ewald Coefficient =  0.34864</span><br><span class="line">     Interpolation order =    4</span><br><span class="line">     </span><br><span class="line"> | Gaussian Accelerated Molecular Dynamics (GaMD)</span><br><span class="line">| GaMD input parameters:</span><br><span class="line">| igamd,iEP,iED       =          3         1         1</span><br><span class="line">| ntcmd,nteb,ntave    =    1000000   1000000     50000</span><br><span class="line">| ntcmdprep,ntebprep  =          0         0</span><br><span class="line">| sigma0P,sigma0D     =         6.0000        6.0000</span><br><span class="line"></span><br><span class="line">ntcmd和nteb用于gamd正式计算时的加速度参数评估，尤其是E和k0，netlim=ntcmd+nteb</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="npt与nvt"><a href="#npt与nvt" class="headerlink" title="npt与nvt"></a>npt与nvt</h3><p>通常建议在运行 md 模拟之前平衡系统温度和密度。有几种不同的方法可以做到这一点，但最常用的方法是使用 Berendsen 恒温器和恒压器。要在 Amber 中设置参数，您需要指定以下内容：<br>-nvt：此标志表示您要使用 Berendsen 恒温器。<br>-ntb：此标志表示您要使用 Berendsen 恒压器。<br>-ntt：这是系统的目标温度。<br>-nst：这是您要平衡系统所需的步骤数。<br>-taup：这是 Berendsen 恒温器的时间常数。<br>-tauv：这是 Berendsen 恒压器的时间常数。<br>有关如何设置这些参数的更多信息，请参阅 Amber 手册。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-11-24-%E8%87%B32022-11-27/" data-id="clc4z8jvi001jbwv29tg2gbk6" data-title="至2022.10.10" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2022-3-Quarter-2022-7-6-至2022-07-13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/" class="article-date">
+  <time class="dt-published" datetime="2022-07-06T18:09:35.000Z" itemprop="datePublished">2022-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/">至2022.07.13</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="07-06"><a href="#07-06" class="headerlink" title="07-06"></a>07-06</h1><p>今天和娄欣怡来了一个古董店, 试了一下它的咖啡豆 偏酸的, 肯尼亚豆 莓莓果风味.</p>
+<p>用的相机:EOS MK500, 感觉这种相机能对焦, 而且设置了白平衡(即什么是白色)</p>
+<p><img src="/2022.7.6-%E8%87%B32022-07-13/image-20220706151249178.png" alt="image-20220706151249178"></p>
+<p>​	色调的不同分布影响色温,</p>
+<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><h3 id="光圈F"><a href="#光圈F" class="headerlink" title="光圈F"></a>光圈F</h3><img src="2022.7.6-至2022-07-13/url=http%3A%2F%2Fdingyue.ws.126.net%2F2020%2F0505%2Faaab4429j00q9uar3000lc000hs008hm.jpeg" alt="img" style="zoom:50%;" /> 
+
+<p>影响照片景深, 光圈越大背景越虚</p>
+<p>大小影响暗亮</p>
+<h3 id="快门速度T"><a href="#快门速度T" class="headerlink" title="快门速度T"></a>快门速度T</h3><p>控制曝光时间, 慢快门等于延时摄影, 看不清快的东西 </p>
+<h3 id="感光度ISO"><a href="#感光度ISO" class="headerlink" title="感光度ISO"></a>感光度ISO</h3><p>ISO等于设置本底背景对光的敏感程度, 大ISO, 对光敏感, 可以拍出暗处, 但是有更大噪点和颗粒</p>
+<h3 id="曝光标尺"><a href="#曝光标尺" class="headerlink" title="曝光标尺"></a>曝光标尺</h3><p>曝光补偿, 加号就曝光多一些,亮一点,过曝; 减号少一些, 暗一点, 欠曝</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/07/06/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-7-6-%E8%87%B32022-07-13/" data-id="clc4z8jvh001hbwv26xnyer79" data-title="至2022.07.13" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2022-2-Quarter-2022-4-26-至2022-05-03" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/" class="article-date">
+  <time class="dt-published" datetime="2022-04-26T13:49:11.000Z" itemprop="datePublished">2022-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/">至2022.05.03</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h1><p>恢复干活! </p>
+<p>好文章: <a target="_blank" rel="noopener" href="https://www.guokr.com/article/461217/">打游戏能打一整天，看书半小时就累，做“正经事”真的不快乐吗？| 果壳 科技有意思 (guokr.com)</a></p>
+<hr>
+<p><strong>坚持写记录:</strong> <strong>每天娱乐时间2h, 如果坚持写记录, 可以2.5h</strong></p>
+<p><strong>&#x3D;&#x3D;毕设 tica&#x3D;&#x3D;</strong></p>
+<p>&#x3D;&#x3D;<strong>junmei的材料还没看, 说好4月开始干活的呢?</strong>&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;王老师 说好写英文材料呢?&#x3D;&#x3D;</p>
+<p><strong>&#x3D;&#x3D;自己的学习&#x3D;&#x3D;</strong></p>
+<hr>
+<h2 id="今日任务"><a href="#今日任务" class="headerlink" title="今日任务"></a>今日任务</h2><p>KjarmaMedic的疫情居家学习时刻表<br>7.30    起床——闹钟×1<br>          洗脸<br>          煮咖啡   做早饭（利用了煮咖啡时间隙做早饭，替代刷油管）<br>8.30    浏览油管刷手机——休闲时光×1<br>          虐狗，吸猫， 放松，变装<br>9.00    开始学习（暂停其它所有工作）<br>           4小时的学习（泡咖啡，啃水果，吃零食，上厕所）——效率最高的状态<br>1.00    做午餐<br>2.00    边看电视剧边吃饭——休闲时光×2<br>2.30    处理生活琐事——闹钟×2<br>         （给父母打电话，虐狗×2）<br>3.00    开始学习（暂停其它所有工作）<br>           下午第二轮四小时学习（上午偏向于学习 ，下偏向于复习巩固）——状态没那么好，比较困顿<br>           灌咖啡<br>           中间抽出15分钟在外面眺望放松<br>7.00     做晚饭<br>            吃饭    收拾<br>8.30     给自己打气（再学一小时就行啦）<br>           学习轻松容易的知识（动画视频网课）<br>9.30     做视频   打电动   处理琐事<br>            三小时娱乐时间——休闲时光×3<br>12.00    洗漱<br>12.30    睡觉（7小时的睡眠）</p>
+<p>一下坐很久 会让我觉得是难事</p>
+<p>应该给自己一个一个简单任务</p>
+<h3 id="休息时"><a href="#休息时" class="headerlink" title="休息时"></a><strong>休息时</strong></h3><ul>
+<li><input checked="" disabled="" type="checkbox"> <strong>&#x3D;&#x3D;给家长打电话&#x3D;&#x3D;</strong></li>
+<li><input checked="" disabled="" type="checkbox"> <strong>&#x3D;&#x3D;打扫屋子&#x3D;&#x3D;</strong></li>
+</ul>
+<h2 id="体重管理"><a href="#体重管理" class="headerlink" title="体重管理"></a>体重管理</h2><table>
+<thead>
+<tr>
+<th>目标体重</th>
+<th>今日体重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:nine: :four:</td>
+<td>:nine::eight:.:one:</td>
+</tr>
+</tbody></table>
+<p>昨天的运动有非常好的效果</p>
+<hr>
+<h3 id="今日运动"><a href="#今日运动" class="headerlink" title="今日运动"></a>今日运动</h3><p>​	<em><strong>热身</strong></em></p>
+<ul>
+<li><input disabled="" type="checkbox"> 10分钟 其他无跳跃有氧</li>
+</ul>
+<p><em><strong>训练</strong></em>(三选一)</p>
+<ul>
+<li><input disabled="" type="checkbox"> 练腿26min+手臂</li>
+<li><input disabled="" type="checkbox"> 练腹部和背</li>
+<li><input disabled="" type="checkbox"> 全身燃脂:波比跳</li>
+</ul>
+<hr>
+<blockquote>
+<p>实时自我省察(在没手机的情况下, 形成正反馈, 没手机能更好省察, 省察自己按时活动)</p>
+</blockquote>
+<hr>
+<p>今天九点多才起, 然后刷了一上午手机</p>
+<h2 id="待办事项"><a href="#待办事项" class="headerlink" title="待办事项"></a>待办事项</h2><p>说出示留学生签证和电子会员卡可以多带一件23kg, 那第三程怎么办</p>
+<h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><h1 id="4-28"><a href="#4-28" class="headerlink" title="4.28"></a>4.28</h1><p>恢复干活! </p>
+<p>好文章: <a target="_blank" rel="noopener" href="https://www.guokr.com/article/461217/">打游戏能打一整天，看书半小时就累，做“正经事”真的不快乐吗？| 果壳 科技有意思 (guokr.com)</a></p>
+<hr>
+<p><strong>坚持写记录:</strong> <strong>每天娱乐时间2h, 如果坚持写记录, 可以2.5h</strong></p>
+<p><strong>&#x3D;&#x3D;毕设 tica&#x3D;&#x3D;</strong></p>
+<p>&#x3D;&#x3D;<strong>junmei的材料还没看, 说好4月开始干活的呢?</strong>&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;王老师 说好写英文材料呢?&#x3D;&#x3D;</p>
+<p><strong>&#x3D;&#x3D;自己的学习&#x3D;&#x3D;</strong></p>
+<hr>
+<h2 id="今日任务-1"><a href="#今日任务-1" class="headerlink" title="今日任务"></a>今日任务</h2><p>Fengyang的疫情居家学习时刻表<br>7.30    起床——闹钟×1<br>          洗脸<br>          煮咖啡   做早饭（利用了煮咖啡时间隙做早饭，替代刷油管）<br>8.30    浏览油管刷手机——休闲时光×1<br>            虐狗，吸猫， 放松，变装<br>            开始学习前5分钟快速收拾干净桌面进入状态<br>9.30    开始学习（暂停其它所有工作）<br>           4小时的学习（泡咖啡，啃水果，吃零食，上厕所）——效率最高的状态<br>1.00    做午餐<br>2.00    边看电视剧边吃饭——休闲时光×2<br>2.30    处理生活琐事——闹钟×2<br>         （给父母打电话，虐狗×2）<br>3.00    开始学习（暂停其它所有工作）<br>           下午第二轮四小时学习（上午偏向于学习 ，下偏向于复习巩固）——状态没那么好，比较困顿<br>           灌咖啡<br>           中间抽出15分钟在外面眺望放松<br>7.00     做晚饭<br>            吃饭    收拾<br>8.30     给自己打气（再学一小时就行啦）<br>           学习轻松容易的知识（动画视频网课）<br>9.30     做视频   打电动   处理琐事<br>            三小时娱乐时间——休闲时光×3<br>12.00    洗漱<br>12.30    睡觉（7小时的睡眠）</p>
+<p>一下坐很久 会让我觉得是难事</p>
+<p>应该给自己一个一个简单任务</p>
+<h3 id="休息时-1"><a href="#休息时-1" class="headerlink" title="休息时"></a><strong>休息时</strong></h3><h2 id="体重管理-1"><a href="#体重管理-1" class="headerlink" title="体重管理"></a>体重管理</h2><table>
+<thead>
+<tr>
+<th>目标体重</th>
+<th>今日体重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:nine: :four:</td>
+<td>:nine::eight:.:seven:</td>
+</tr>
+</tbody></table>
+<p>因为昨晚看比赛吃了东西, 所以今早体重上升. 睡衣净重1kg</p>
+<p>5分钟手机时间可以吗? 只抗原看, 其余时间不</p>
+<p>小新:作为职业 你会的别人都会 对自己还是不满意 真的都很不容易 职业 竞技 就是让人热血沸腾的</p>
+<h1 id="4-29"><a href="#4-29" class="headerlink" title="4.29"></a>4.29</h1><p>没有一点压力就是不行，你不努力别人却始终在努力 因为你做的是职业，是professional的事</p>
+<img src="2022.4.26-至2022-05-03/image-20220429221112021.png" alt="image-20220429221112021" style="zoom:200%;" />
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/04/26/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-26-%E8%87%B32022-05-03/" data-id="clc4z8jvf001bbwv27c112u5i" data-title="至2022.05.03" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-周报-2022-2-Quarter-2022-4-19-至2022-04-26" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/" class="article-date">
+  <time class="dt-published" datetime="2022-04-19T05:51:26.000Z" itemprop="datePublished">2022-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/">至2022.04.26</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="4-18"><a href="#4-18" class="headerlink" title="4.18"></a>4.18</h1><p>早上起来一直看netflix, 属于是后反劲反噬.没有运动, </p>
+<p>乐园之夜,朴勋政新作(新世界导演) 很有力度,然后突然知道了有阳可能要滚蛋后就自暴自弃看王国去了..哈哈哈,一直到2点. </p>
+<p>然后写了一个bat脚本更新本日记, 感觉bat也有很多可以学的: 参考</p>
+<h1 id="4-20"><a href="#4-20" class="headerlink" title="4.20"></a>4.20</h1><p>开始学习c语言和MD</p>
+<h1 id="4-21"><a href="#4-21" class="headerlink" title="4.21"></a>4.21</h1><p>今天就干劲满满了,和检查点的设置也有关系.</p>
+<p>早晨起来必须喝咖啡, 才能使中午不用睡觉.</p>
+<p>将事件列2个检查点, 比如和xx口头汇报(纸质汇报似乎对我鞭策力度不大)</p>
+<p>和室友聊分房费(我爸认为二楼好多了轮流半年), 和junmei交周报多沟通, 赶紧交毕设, 运动(厕所运动)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/04/19/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-19-%E8%87%B32022-04-26/" data-id="clc4z8jve001abwv2euotf0ve" data-title="至2022.04.26" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-学习总结-2022-4-16-关于解决问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-04-16T13:08:45.000Z" itemprop="datePublished">2022-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">关于解决问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>以综述，和以成音化工作为例<br> (提醒自己启动反思的方法: 睡个好觉，工作时间包括午休时间不要娱乐，然后散步，或者独自思考，有一个舒服的环境，非常重要，这也是我最最最核心的竞争力，我的大脑</p>
+<p> 根据已有知识思考总结，如果发现迷茫解决不了，先找出困惑的点就，或者查询文献看看别人类似工作怎么做的，这样找到问题，然后解决问题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fyhan.blog.github.io/2022/04/16/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-16-%E5%85%B3%E4%BA%8E%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/" data-id="clc4z8jul0005bwv2gv09h9b1" data-title="关于解决问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-学习总结-2022-4-15-关于写综述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/15/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-15-%E5%85%B3%E4%BA%8E%E5%86%99%E7%BB%BC%E8%BF%B0/" class="article-date">
@@ -100,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/15/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-15-%E5%85%B3%E4%BA%8E%E5%86%99%E7%BB%BC%E8%BF%B0/" data-id="clblr25zk0002zkv2ddxi3an2" data-title="关于写综述" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/04/15/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-2022-4-15-%E5%85%B3%E4%BA%8E%E5%86%99%E7%BB%BC%E8%BF%B0/" data-id="clc4z8jul0004bwv2braq2sle" data-title="关于写综述" class="article-share-link">Share</a>
       
       
       
@@ -200,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/13/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2022-4-13-%E5%85%B3%E4%BA%8E%E6%89%8B%E6%9C%BA/" data-id="clblr25zp0006zkv225102jpy" data-title="关于手机" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/04/13/%E7%94%9F%E6%B4%BB%E6%80%BB%E7%BB%93-2022-4-13-%E5%85%B3%E4%BA%8E%E6%89%8B%E6%9C%BA/" data-id="clc4z8jup0008bwv2gll3fjrj" data-title="关于手机" class="article-share-link">Share</a>
       
       
       
@@ -491,7 +845,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/04/08/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-8-%E8%87%B32022-04-17/" data-id="clblr260j0018zkv21fvrht7s" data-title="至2022-04-17" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/04/08/%E5%91%A8%E6%8A%A5-2022-2-Quarter-2022-4-8-%E8%87%B32022-04-17/" data-id="clc4z8jvf001dbwv2bts0hvss" data-title="至2022-04-17" class="article-share-link">Share</a>
       
       
       
@@ -543,405 +897,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/03/26/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-26-%E8%87%B32022-03-27/" data-id="clblr260f0012zkv26vuv946m" data-title="至2022-03-27" class="article-share-link">Share</a>
+      <a data-url="https://fyhan.blog.github.io/2022/03/26/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-26-%E8%87%B32022-03-27/" data-id="clc4z8jvd0016bwv2eklagh2m" data-title="至2022-03-27" class="article-share-link">Share</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-科研-软件使用-2022-3-18-vmd-tcl教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/18/%E7%A7%91%E7%A0%94-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8-2022-3-18-vmd-tcl%E6%95%99%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2022-03-18T14:22:27.000Z" itemprop="datePublished">2022-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/18/%E7%A7%91%E7%A0%94-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8-2022-3-18-vmd-tcl%E6%95%99%E7%A8%8B/">vmd-tcl教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>TCL(Tool Command Language)是一种解释执行的脚本语言(Scripting Language)</p>
-<p><a target="_blank" rel="noopener" href="http://jerkwin.github.io/2016/10/28/TCL%E5%9F%B9%E8%AE%AD%E6%95%99%E7%A8%8B/">TCL培训教程|Jerkwin</a></p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h2 id="2-1-脚本-命令和单词符号"><a href="#2-1-脚本-命令和单词符号" class="headerlink" title="2.1 脚本, 命令和单词符号"></a>2.1 脚本, 命令和单词符号</h2><p>一个 TCL 脚本可以包含一个或多个命令. 命令之间必须用换行符或分号隔开, 下面的两个脚本都是合法的:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set a 1</span><br><span class="line">set b 2</span><br></pre></td></tr></table></figure>
-
-<p>或</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set a 1; set b 2</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-置换-substitution"><a href="#2-2-置换-substitution" class="headerlink" title="2.2 置换(substitution)"></a>2.2 置换(substitution)</h2><p><strong>注</strong>: %<code>为 TCL 的命令提示符, 输入命令回车后, TCL 会在接着的一行输出命令执行结果. </code>&#x2F;&#x2F;&#96;后面是我自己加上的说明, 不是例子的一部分.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%set x 10    //定义变量 x, 并把 x 的值赋为10</span><br><span class="line">10</span><br><span class="line">%set y x+100 //y的值是 x+100, 而不是我们期望的 110</span><br><span class="line">x+100</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-1-变量置换-variable-subtitution"><a href="#2-2-1-变量置换-variable-subtitution" class="headerlink" title="2.2.1 变量置换(variable subtitution)"></a>2.2.1 变量置换(variable subtitution)</h3><p>变量置换由一个<code>$</code>符号标记, 变量置换会导致变量的值插入一个单词中. 例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%set y $x+100 //y 的值是 10+100, 这里 x 被置换成它的值 10</span><br><span class="line">10+100</span><br></pre></td></tr></table></figure>
-
-<p>这时, <code>y</code>的值还不是我们想要的值<code>110</code>, 而是<code>10+100</code>, 因为 TCL 解释器把<code>10+100</code>看成是 一个字符串而不是表达式, <code>y</code>要想得到值<code>110</code>, 还必须用命令置换, 使得 TCL 会把<code>10+100</code>看成一个表达式并求值</p>
-<h3 id="2-2-2-命令置换-command-substitution"><a href="#2-2-2-命令置换-command-substitution" class="headerlink" title="2.2.2 命令置换(command substitution)"></a>2.2.2 命令置换(command substitution)</h3><p>命令置换是由<code>[]</code>括起来的 TCL 命令及其参数, 命令置换会导致某一个命令的所有或部分单词被另一个命令的结果所代替. 例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%set y [expr $x+100]</span><br><span class="line">110</span><br></pre></td></tr></table></figure>
-
-<p><code>y</code>的值是<code>110</code>. 这里当 TCL 解释器遇到字符<code>[</code>时, 它就会把随后的<code>expr</code>作为一个命令名, 从而激活与<code>expr</code>对应的 C&#x2F;C++过程, 并把<code>expr</code>和变量置换后得到的<code>10+110</code>传递给该命令过程进行处理.</p>
-<p>如果在上例中我们去掉<code>[]</code>, 那么 TCL 会报错. 因为在正常情况下, TCL 解释器只把命令行中的第一个单词看作命令, 其他的单词都作为普通字符串处理, 看作是命令的参数.</p>
-<p>注意, <code>[]</code>中必须是一个合法的 TCL 脚本, 长度不限. <code>[]</code>中脚本的值为最后一个命令的返回值, 例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%set y [expr $x+100;set b 300] //y 的值为 300, 因为 set b 300 的返回值为 300</span><br><span class="line">300</span><br></pre></td></tr></table></figure>
-
-<p>有了命令置换, 实际上就表示命令之间是可以嵌套的, 即一个命令的结果可以作为别的命令的参数.</p>
-<h3 id="2-2-3-反斜杠置换-backslash-substitution"><a href="#2-2-3-反斜杠置换-backslash-substitution" class="headerlink" title="2.2.3 反斜杠置换(backslash substitution)"></a>2.2.3 反斜杠置换(backslash substitution)</h3><p>TCL 语言中的反斜杠置换类似于 C 语言中反斜杠的用法, 主要用于在单词符号中插入诸如换行符, 空格, <code>[</code>, <code>$</code>等被 TCL 解释器当作特殊符号对待的字符. 例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set msg multiple\ space //msg 的值为 multiple space.</span><br></pre></td></tr></table></figure>
-
-<p>解释器会把这里最后两个单词之间的空格认为是分隔符, 于是发现<code>set</code>命令有多于两个参数, 从而报错. </p>
-<p>TCL 支持以下的反斜杠置换:</p>
-<table>
-<thead>
-<tr>
-<th align="center">转义序列</th>
-<th align="center">替换为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">\a</td>
-<td align="center">Audible alert (0x7)</td>
-</tr>
-<tr>
-<td align="center">\b</td>
-<td align="center">Backspace (0x8)</td>
-</tr>
-<tr>
-<td align="center">\f</td>
-<td align="center">Form feed (0xc)</td>
-</tr>
-<tr>
-<td align="center">\n</td>
-<td align="center">Newline (0xa)</td>
-</tr>
-<tr>
-<td align="center">\r</td>
-<td align="center">Carriage return (0xd)</td>
-</tr>
-<tr>
-<td align="center">\t</td>
-<td align="center">Tab (0x9)</td>
-</tr>
-<tr>
-<td align="center">\v</td>
-<td align="center">Vertical tab (0xb)</td>
-</tr>
-<tr>
-<td align="center">\ddd</td>
-<td align="center">Octal value given by ddd (one, two, or three d’s)</td>
-</tr>
-<tr>
-<td align="center">\xhh</td>
-<td align="center">Hex value given by hh (any number of h’s)</td>
-</tr>
-<tr>
-<td align="center">\newline space</td>
-<td align="center">A single space character</td>
-</tr>
-</tbody></table>
-<h2 id="2-3-注释"><a href="#2-3-注释" class="headerlink" title="2.3 注释"></a>2.3 注释</h2><p>TCL 中的注释符是<code>#</code>, <code>#</code>和直到所在行结尾的所有字符都被 TCL 看作注释, TCL 解释器对注释将不作任何处理. 不过, 要注意的是, <code>#</code>必须出现在 TCL 解释器期望命令的第一个字符出现的地方, 才被当作注释.</p>
-<p>例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%#This is a comment</span><br><span class="line">%set a 100 # Not a comment</span><br><span class="line">wrong # args: should be &quot;set varName ?newValue?&quot;</span><br><span class="line">%set b 101 ; # this is a comment</span><br><span class="line">101</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="RMSD脚本"><a href="#RMSD脚本" class="headerlink" title="RMSD脚本"></a>RMSD脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mol new ../step3_pbcsetup.psf  waitfor all</span><br><span class="line">mol addfile step5.1_production.dcd waitfor all</span><br><span class="line">set file [open &quot;rmsd.dat&quot; w]</span><br><span class="line"></span><br><span class="line">set reference [atomselect 0 &quot;name CA&quot; frame 0]</span><br><span class="line">set compare [atomselect top &quot;name CA&quot;]</span><br><span class="line"></span><br><span class="line">set num_steps [molinfo top get numframes]</span><br><span class="line">for &#123;set frame 0&#125; &#123;$frame &lt; $num_steps&#125; &#123;incr frame&#125; &#123;</span><br><span class="line">    # get the correct frame</span><br><span class="line">    $compare frame $frame</span><br><span class="line">    # compute the transformation</span><br><span class="line">    set trans_mat [measure fit $compare $reference]</span><br><span class="line">    # do the alignment</span><br><span class="line">    $compare move $trans_mat</span><br><span class="line">    # compute the RMSD</span><br><span class="line">    set rmsd [measure rmsd $compare $reference]</span><br><span class="line">    # print the RMSD</span><br><span class="line">    puts &quot;RMSD of $frame is $rmsd&quot;</span><br><span class="line">    puts $file $rmsd</span><br><span class="line">&#125;</span><br><span class="line">exit</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>mol 表示新建一个分子, 而waitfor all则表示同一批的材料, 不然等于新建页面添加分子 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">atomselect 0 &quot;name CA&quot; frame 0;#表示选择molecule_id为0,即导入的第一个mol分子, 规则是所有的name CA, 在frame 0中找. 结果被称为Tcl proc</span><br></pre></td></tr></table></figure>
-
-
-
-<p>yuchen问问为什么不继续?绿卡</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/03/18/%E7%A7%91%E7%A0%94-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8-2022-3-18-vmd-tcl%E6%95%99%E7%A8%8B/" data-id="clblr2602000ozkv2ewy31zyc" data-title="vmd-tcl教程" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vmd/" rel="tag">vmd</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-1-Quarter-2022-3-17-2022-03-14至2022-03-20" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/17/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-17-2022-03-14%E8%87%B32022-03-20/" class="article-date">
-  <time class="dt-published" datetime="2022-03-18T03:26:03.000Z" itemprop="datePublished">2022-03-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/17/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-17-2022-03-14%E8%87%B32022-03-20/">2022-03-14至2022-03-20</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="3-17"><a href="#3-17" class="headerlink" title="3.17"></a>3.17</h2><p>隔离第四天了, 隔离前把自己的显示器弄了回来</p>
-<p>美国绿卡政策 似乎可以一开始就NIW排期? 以后也没想好去哪里工作, 比如boston? 因为想先读一个phd出来.</p>
-<p>政策说明 <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-778415-1-1.html">DIY 申请NIW|一亩三分地移民绿卡版 (1point3acres.com)</a></p>
-<p>显示器 u2419hs 1300-1500 23.9寸</p>
-<h2 id="3-19"><a href="#3-19" class="headerlink" title="3.19"></a>3.19</h2><p>VMD RMSD得到了,然后做什么来着?</p>
-<p>一个是说有了视频动图,可以播放MD中的构象变化与RMSD的对应关系,以及声音</p>
-<h2 id="3-20"><a href="#3-20" class="headerlink" title="3.20"></a>3.20</h2><p>昨天改了一天代码为了证明PCA结果与RMSD的相关性,但是结果一般</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/03/17/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-17-2022-03-14%E8%87%B32022-03-20/" data-id="clblr260d0010zkv2avredrgv" data-title="2022-03-14至2022-03-20" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-1-Quarter-2022-3-12-2022-03-13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-12-2022-03-13/" class="article-date">
-  <time class="dt-published" datetime="2022-03-12T20:49:45.000Z" itemprop="datePublished">2022-03-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-12-2022-03-13/">Sun Mar 13 2022 00:00:00 GMT-0500 (GMT-05:00)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="3-12"><a href="#3-12" class="headerlink" title="3.12"></a>3.12</h2><p>发现D盘特别大, 于是卸载了删除很多东西</p>
-<p>但是实际占用统计发现</p>
-<p><img src="/2022.3.12-2022-03-13/image-20220312232232234.png" alt="image-20220312232232234"></p>
-<p>而</p>
-<p><img src="/2022.3.12-2022-03-13/image-20220312232255337.png" alt="image-20220312232255337"></p>
-<p>于是想到有隐藏文件, 但是直接无法显示出来</p>
-<p>于是使用管理员权限的bash ls发现确实有一个很大的</p>
-<p><img src="/2022.3.12-2022-03-13/image-20220312232633190.png" alt="image-20220312232633190"></p>
-<p><img src="/2022.3.12-2022-03-13/image-20220312232701362.png" alt="image-20220312232701362"></p>
-<p>差不多就占用了多的内存</p>
-<p>查询得知这是系统备忘文件</p>
-<p><a target="_blank" rel="noopener" href="https://answers.microsoft.com/zh-hans/windows/forum/all/d%E7%9B%98%E7%9A%84system-volume/87cda44b-45cb-4aef-bba9-e62ab2224692">D盘的System Volume Information文件夹过大 - Microsoft Community</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/03/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-3-12-2022-03-13/" data-id="clblr260c000yzkv2aa2hgm2j" data-title="Sun Mar 13 2022 00:00:00 GMT-0500 (GMT-05:00)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-科研-PPT排版设计-2022-3-10-学术类PPT-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/10/%E7%A7%91%E7%A0%94-PPT%E6%8E%92%E7%89%88%E8%AE%BE%E8%AE%A1-2022-3-10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/" class="article-date">
-  <time class="dt-published" datetime="2022-03-10T15:46:49.000Z" itemprop="datePublished">2022-03-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/10/%E7%A7%91%E7%A0%94-PPT%E6%8E%92%E7%89%88%E8%AE%BE%E8%AE%A1-2022-3-10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/">学术类PPT(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="封图设计"><a href="#封图设计" class="headerlink" title="封图设计"></a>封图设计</h2><p>在<a target="_blank" rel="noopener" href="https://www.freepik.com/">Freepik</a>选择干净的PPT做封图素材, 使用ppt调色效果选择合适颜色</p>
-<h3 id="图片网站"><a href="#图片网站" class="headerlink" title="图片网站"></a>图片网站</h3><img src="2022.3.10-学术类PPT-1/realistic-molecules-background_1361-767.jpg" alt="Realistic molecules background" style="zoom:200%;" />
-
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220310105140976.png" alt="image-20220310105140976"></p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220310105149087.png" alt="image-20220310105149087"></p>
-<h2 id="Gerneral-Idea"><a href="#Gerneral-Idea" class="headerlink" title="Gerneral Idea"></a>Gerneral Idea</h2><h3 id="划定主体内容区域"><a href="#划定主体内容区域" class="headerlink" title="划定主体内容区域"></a>划定主体内容区域</h3><p>使用网格线和参考线划定</p>
-<h3 id="配色"><a href="#配色" class="headerlink" title="配色"></a>配色</h3><p>提取主题色选择相邻色系</p>
-<h3 id="蒙版"><a href="#蒙版" class="headerlink" title="蒙版"></a>蒙版</h3><p>适当为图像添加蒙版打底, 或者突出重点</p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201101825.png" alt="image-20220325201101825"></p>
-<h2 id="文本内容"><a href="#文本内容" class="headerlink" title="文本内容"></a>文本内容</h2><h3 id="突出重点"><a href="#突出重点" class="headerlink" title="突出重点"></a>突出重点</h3><h4 id="加深色衬色"><a href="#加深色衬色" class="headerlink" title="加深色衬色"></a>加深色衬色</h4><p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201158606.png" alt="image-20220325201158606"></p>
-<p>使用圆圈增加连接感</p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201724215.png" alt="image-20220325201724215"></p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201659582.png" alt="image-20220325201659582"></p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201711504.png" alt="image-20220325201711504"></p>
-<h3 id="突出数量多"><a href="#突出数量多" class="headerlink" title="突出数量多"></a>突出数量多</h3><p>饱和度拉到最低,然后加蒙版排列,最后一行加上虚化艺术效果</p>
-<p>然后再加上路径,每行图片分别从左右进入,退出</p>
-<p><img src="/2022.3.10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/image-20220325201433638.png" alt="image-20220325201433638"></p>
-<h2 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h2><h3 id="特定内容的平滑切换"><a href="#特定内容的平滑切换" class="headerlink" title="特定内容的平滑切换"></a>特定内容的平滑切换</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31447253">PPT平滑切换玩出新高度</a></p>
-<p>将纯黑图像在ai中 对象-图像描摹-扩展 成形状,然后使用剪切板填充原图</p>
-<p>注意,组合后无法被识别为前后图形, 或许需要强制指定前后图形</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/03/10/%E7%A7%91%E7%A0%94-PPT%E6%8E%92%E7%89%88%E8%AE%BE%E8%AE%A1-2022-3-10-%E5%AD%A6%E6%9C%AF%E7%B1%BBPPT-1/" data-id="clblr25zw000fzkv29vda585v" data-title="学术类PPT(1)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PPT/" rel="tag">PPT</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-1-Quarter-2022-2-24-2022-2-21-2-27" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/24/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-24-2022-2-21-2-27/" class="article-date">
-  <time class="dt-published" datetime="2022-02-24T17:14:19.000Z" itemprop="datePublished">2022-02-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/24/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-24-2022-2-21-2-27/">2022.2.21-2.27</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="2-24"><a href="#2-24" class="headerlink" title="2.24"></a>2.24</h2><p><a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-590002-1-1.html">关于我自己观察到的中国学生在PhD面试过程中的一点特点|一亩三分地研究生申请版 (1point3acres.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://posts.careerengine.us/p/5cc89a42a1345611d6adb074">老生常谈问题：DS要不要转码？怎么转？ (careerengine.us)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.physixfan.com/woderenshengzhuiqiu/">我的人生追求 - physixfan</a></p>
-<p>美国医疗: <a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-777730-1-1.html">分享一个最近发生的medical emergency以及垃圾的美国医疗体制|一亩三分地健康|保险版 (1point3acres.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.1point3acres.com/bbs/thread-832125-2-1.html">码农+药厂统计师如何选择Boston vs Seattle|一亩三分地职场达人版 (1point3acres.com)</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/02/24/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-24-2022-2-21-2-27/" data-id="clblr2609000wzkv210msfox2" data-title="2022.2.21-2.27" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-周报-2022-1-Quarter-2022-2-12-2-20" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-12-2-20/" class="article-date">
-  <time class="dt-published" datetime="2022-02-13T02:48:56.000Z" itemprop="datePublished">2022-02-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-12-2-20/">2022.2.12-2-20</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="2-12"><a href="#2-12" class="headerlink" title="2.12"></a>2.12</h2><p>看到王旖萌安利的吃的东西澳门的tromba rija吃自助, 200人均左右</p>
-<p>想给老爸买个长筒摄像, 给老妈换个ipad</p>
-<h2 id="2-13"><a href="#2-13" class="headerlink" title="2.13"></a>2.13</h2><p>生信技能树账号密码, 8核16G 1T 但不能用了<br>ssh <a href="mailto:&#x76;&#x69;&#112;&#x35;&#x37;&#57;&#64;&#49;&#49;&#56;&#46;&#x32;&#52;&#x2e;&#50;&#49;&#x36;&#46;&#50;&#x32;&#x33;">&#x76;&#x69;&#112;&#x35;&#x37;&#57;&#64;&#49;&#49;&#56;&#46;&#x32;&#52;&#x2e;&#50;&#49;&#x36;&#46;&#50;&#x32;&#x33;</a><br>密码: pd405</p>
-<h2 id="2-14"><a href="#2-14" class="headerlink" title="2.14"></a>2.14</h2><ul>
-<li><p>跟着挣钱的岗位学或者跟着兴趣学? </p>
-</li>
-<li><p>时间规划，本质是事件规划，因为要做的事情太多了</p>
-</li>
-<li><p>出色的人生，意味着环境给你，并且你自己创造更多的选择</p>
-</li>
-<li><p>君子慎独，慎私密空间</p>
-</li>
-</ul>
-<h4 id="个人的历史，影响你认为一件事情的主观难易"><a href="#个人的历史，影响你认为一件事情的主观难易" class="headerlink" title="个人的历史，影响你认为一件事情的主观难易"></a>个人的历史，影响你认为一件事情的主观难易</h4><p>带着羁绊(听歌，看视频)做事会让你觉得一件事很难因为要做很久</p>
-<p>比如和异性建立关系，并进一步发生性行为，我认为是很难，很珍贵的</p>
-<p> 但是实际上好看的异性很多</p>
-<p>转码</p>
-<p><img src="/2022.2.12-2-20/da770987edded60c262616303e7b9545_r.jpg" alt="preview"></p>
-<h2 id="2-16"><a href="#2-16" class="headerlink" title="2.16"></a>2.16</h2><p>请假准备wustl面试, 面试官还比较友好, 而且的所有问题都充分准备到了, 至少自己把自己想讲的都说了出来.</p>
-<h2 id="2-17"><a href="#2-17" class="headerlink" title="2.17"></a>2.17</h2><p>做</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fyhan.blog.github.io/2022/02/12/%E5%91%A8%E6%8A%A5-2022-1-Quarter-2022-2-12-2-20/" data-id="clblr2608000uzkv2cqfw8lxi" data-title="2022.2.12-2-20" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E6%8A%A5/" rel="tag">周报</a></li></ul>
-
     </footer>
   </div>
   
@@ -978,7 +937,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AMBER/" style="font-size: 17.5px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 17.5px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 15px;">生活反思</a>
+      <a href="/tags/AMBER/" style="font-size: 18px;">AMBER</a> <a href="/tags/Gaussian/" style="font-size: 10px;">Gaussian</a> <a href="/tags/MD/" style="font-size: 10px;">MD</a> <a href="/tags/PPT/" style="font-size: 10px;">PPT</a> <a href="/tags/chemdraw/" style="font-size: 10px;">chemdraw</a> <a href="/tags/gmx/" style="font-size: 16px;">gmx</a> <a href="/tags/mae/" style="font-size: 10px;">mae</a> <a href="/tags/vmd/" style="font-size: 10px;">vmd</a> <a href="/tags/%E4%BD%9C%E6%9B%B2/" style="font-size: 10px;">作曲</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%8B/" style="font-size: 10px;">博客建立</a> <a href="/tags/%E5%91%A8%E6%8A%A5/" style="font-size: 20px;">周报</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px;">学习</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 10px;">环境配置</a> <a href="/tags/%E7%94%9F%E6%B4%BB%E5%8F%8D%E6%80%9D/" style="font-size: 14px;">生活反思</a>
     </div>
   </div>
 
@@ -1000,23 +959,23 @@
       <ul>
         
           <li>
-            <a href="/2022/12/12/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-12-Weekly-blog/">Weekly blog</a>
+            <a href="/2022/12/26/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-26-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/hello-world/">Hello World</a>
+            <a href="/2022/12/23/%E5%91%A8%E6%8A%A5-2022-4-Quarter-2022-12-23-Weekly-blog/">Weekly blog</a>
           </li>
         
           <li>
-            <a href="/2022/12/11/%E7%A7%91%E7%A0%94-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-%E6%9D%82%E8%AE%B01/">Weekly blog</a>
+            <a href="/2022/12/21/test/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2022/10/19/%E7%A7%91%E7%A0%94-%E5%88%86%E5%AD%90%E6%A8%A1%E6%8B%9F-AMBER-2022-10-19-Gamd-01/">Gamd-01</a>
+            <a href="/2022/12/15/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">Git版本控制</a>
           </li>
         
           <li>
-            <a href="/2022/10/03/%E5%91%A8%E6%8A%A5-2022-3-Quarter-2022-10-3-%E8%87%B32022-10-10/">至2022.10.10</a>
+            <a href="/2022/12/15/%E7%A7%91%E7%A0%94-CRC-1-basic/">(no title)</a>
           </li>
         
       </ul>
